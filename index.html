@@ -9,38 +9,62 @@
 
 <style>
 
+/* =========================================================
+   VARIABLES
+========================================================= */
+
 :root{
-    --primary:#0b4f9c;
-    --primary2:#1677d2;
+    --bg:#f3f6fa;
+    --card:#ffffff;
+    --text:#17212b;
+    --muted:#697586;
+    --border:#dfe5ec;
+
+    --blue:#0b4f9c;
+    --blue2:#1677d2;
+
     --green:#16a34a;
     --yellow:#eab308;
     --red:#dc2626;
-    --bg:#f2f5f9;
-    --card:#ffffff;
-    --text:#17212b;
-    --muted:#687582;
-    --border:#dce3ea;
-    --shadow:0 5px 18px rgba(0,0,0,.08);
+
+    --shadow:
+        0 7px 25px rgba(0,0,0,.08);
 }
 
 body.dark{
-    --bg:#10151c;
+    --bg:#0d131a;
     --card:#18212b;
     --text:#f5f7fa;
     --muted:#aab5c0;
     --border:#303c48;
-    --shadow:0 5px 18px rgba(0,0,0,.35);
+
+    --shadow:
+        0 7px 25px rgba(0,0,0,.30);
 }
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
 
 *{
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     margin:0;
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     background:var(--bg);
     color:var(--text);
+
     transition:.25s;
 }
 
@@ -56,64 +80,205 @@ button{
 }
 
 .app{
-    width:min(1150px,95%);
+    width:min(1100px,95%);
     margin:auto;
-    padding-bottom:40px;
+    padding-bottom:50px;
 }
 
+
+/* =========================================================
+   HEADER
+========================================================= */
+
 header{
-    margin-top:12px;
-    padding:28px 20px 22px;
-    border-radius:18px;
-    background:linear-gradient(
-        135deg,
-        #063b78,
-        #0b66c2
-    );
-    color:#fff;
-    box-shadow:var(--shadow);
     position:relative;
+
+    margin-top:12px;
+
+    padding:
+        35px
+        20px
+        25px;
+
+    border-radius:20px;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #06366c,
+            #0b66c2
+        );
+
+    box-shadow:var(--shadow);
 }
 
 header h1{
+    margin:
+        10px
+        0
+        5px;
+
     text-align:center;
-    margin:12px 0 5px;
-    font-size:clamp(1.7rem,5vw,2.5rem);
+
+    font-size:
+        clamp(
+            1.7rem,
+            5vw,
+            2.5rem
+        );
+
+    letter-spacing:.5px;
 }
 
 header p{
-    text-align:center;
     margin:0;
+
+    text-align:center;
+
     opacity:.9;
 }
 
-.theme{
+.theme-button{
     position:absolute;
-    right:14px;
-    top:14px;
+
+    top:13px;
+    right:13px;
+
     border:0;
-    background:rgba(255,255,255,.18);
-    color:white;
+
+    padding:
+        9px
+        13px;
+
     border-radius:30px;
-    padding:9px 13px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .18
+        );
+
+    color:#fff;
 }
 
 
-/* =========================
-   SECCIONES
-========================= */
+/* =========================================================
+   RESUMEN
+========================================================= */
+
+.summary{
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                170px,
+                1fr
+            )
+        );
+
+    gap:12px;
+
+    margin-top:17px;
+}
+
+.summary-card{
+    background:var(--card);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:15px;
+
+    padding:16px;
+
+    box-shadow:var(--shadow);
+}
+
+.summary-card span{
+    display:block;
+
+    color:var(--muted);
+
+    font-size:.78rem;
+
+    font-weight:bold;
+}
+
+.summary-card strong{
+    display:block;
+
+    margin-top:7px;
+
+    font-size:1.25rem;
+}
+
+.summary-card.green{
+    border-left:
+        5px solid
+        var(--green);
+}
+
+.summary-card.red{
+    border-left:
+        5px solid
+        var(--red);
+}
+
+
+/* =========================================================
+   MENSAJE
+========================================================= */
+
+.feedback{
+    margin-top:14px;
+
+    padding:14px;
+
+    text-align:center;
+
+    background:var(--card);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:14px;
+
+    box-shadow:var(--shadow);
+
+    font-weight:bold;
+}
+
+
+/* =========================================================
+   TITULOS DE SECCION
+========================================================= */
 
 .section-title{
     display:flex;
+
     justify-content:space-between;
     align-items:center;
+
     gap:10px;
-    margin:22px 0 12px;
+
+    margin:
+        24px
+        0
+        12px;
 }
 
 .section-title h2{
     margin:0;
-    font-size:1.25rem;
+
+    font-size:1.2rem;
 }
 
 .section-title small{
@@ -121,571 +286,1116 @@ header p{
 }
 
 
-/* =========================
-   RESUMEN
-========================= */
+/* =========================================================
+   CONTENEDOR DE TARJETAS
+========================================================= */
 
-.summary{
-    display:grid;
-    grid-template-columns:
-        repeat(auto-fit,minmax(180px,1fr));
-    gap:12px;
-    margin-top:18px;
-}
+.cards-wrapper{
 
-.summary-card{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:15px;
-    padding:17px;
-    box-shadow:var(--shadow);
-}
+    /*
+       Permite hacer scroll entre todas
+       las tarjetas.
+    */
 
-.summary-card span{
-    color:var(--muted);
-    font-size:.86rem;
-}
+    max-height:
+        730px;
 
-.summary-card strong{
-    display:block;
-    margin-top:7px;
-    font-size:1.3rem;
-}
+    overflow-y:auto;
 
-.summary-card.positive{
-    border-left:5px solid var(--green);
-}
+    overflow-x:hidden;
 
-.summary-card.negative{
-    border-left:5px solid var(--red);
+    padding:
+        5px
+        8px
+        15px
+        4px;
+
+    scroll-behavior:smooth;
 }
 
 
-/* =========================
-   MENSAJE
-========================= */
+/* Scroll bonito */
 
-.feedback{
-    margin-top:15px;
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:14px;
-    padding:14px;
-    text-align:center;
-    box-shadow:var(--shadow);
-    font-weight:bold;
+.cards-wrapper::-webkit-scrollbar{
+    width:7px;
+}
+
+.cards-wrapper::-webkit-scrollbar-track{
+    background:
+        rgba(
+            128,
+            128,
+            128,
+            .08
+        );
+
+    border-radius:20px;
+}
+
+.cards-wrapper::-webkit-scrollbar-thumb{
+    background:
+        var(--blue);
+
+    border-radius:20px;
 }
 
 
-/* =========================
-   FORMULARIOS
-========================= */
-
-.form-section{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:16px;
-    padding:18px;
-    box-shadow:var(--shadow);
-    margin-top:15px;
-}
-
-.form-grid{
-    display:grid;
-    grid-template-columns:
-        repeat(2,1fr);
-    gap:13px;
-}
-
-.form-group{
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-}
-
-.form-group label{
-    font-size:.86rem;
-    font-weight:bold;
-}
-
-input,
-select,
-textarea{
-    width:100%;
-    padding:11px;
-    border-radius:10px;
-    border:1px solid var(--border);
-    background:var(--card);
-    color:var(--text);
-    outline:none;
-}
-
-textarea{
-    min-height:80px;
-    resize:vertical;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-    border-color:var(--primary2);
-}
-
-.actions{
-    display:flex;
-    flex-wrap:wrap;
-    gap:9px;
-    margin-top:15px;
-}
-
-.btn{
-    border:0;
-    border-radius:9px;
-    padding:10px 15px;
-    font-weight:bold;
-    color:#fff;
-}
-
-.btn-primary{
-    background:var(--primary);
-}
-
-.btn-green{
-    background:var(--green);
-}
-
-.btn-red{
-    background:var(--red);
-}
-
-.btn-gray{
-    background:#6b7280;
-}
-
-
-/* =========================
-   TARJETAS
-========================= */
-
-.obligations{
-    display:flex;
-    flex-direction:column;
-    gap:14px;
-}
+/* =========================================================
+   TARJETA
+========================================================= */
 
 .obligation-card{
+
     position:relative;
+
+    margin-bottom:15px;
+
     background:var(--card);
-    border:1px solid var(--border);
-    border-radius:16px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:20px;
+
     overflow:hidden;
+
     box-shadow:var(--shadow);
-    transition:.3s;
+
+    transition:
+        transform .25s,
+        box-shadow .25s;
+
 }
 
 .obligation-card:hover{
-    transform:translateY(-1px);
+
+    transform:
+        translateY(-2px);
+
 }
 
 
-/* barra lateral de color */
+/* Línea lateral editable */
 
-.card-color{
+.card-color-line{
+
     position:absolute;
+
     left:0;
     top:0;
     bottom:0;
+
     width:7px;
-    background:#0b4f9c;
+
+    background:
+        var(--blue);
+
 }
 
 
-/* encabezado */
+/* =========================================================
+   CABECERA TARJETA
+========================================================= */
 
 .card-header{
-    padding:17px 17px 13px 21px;
+
+    padding:
+        17px
+        18px
+        14px
+        23px;
+
     cursor:pointer;
 }
 
-.card-top{
+.card-header-top{
+
     display:flex;
-    align-items:center;
+
     justify-content:space-between;
-    gap:12px;
+
+    align-items:center;
+
+    gap:15px;
 }
 
 .card-title{
+
     display:flex;
+
     align-items:center;
+
     gap:9px;
+
     min-width:0;
 }
 
 .card-title h3{
+
     margin:0;
-    font-size:1.05rem;
+
+    font-size:
+        clamp(
+            .95rem,
+            3vw,
+            1.15rem
+        );
+
     word-break:break-word;
+
 }
 
 .arrow{
+
+    color:var(--muted);
+
     transition:.25s;
-    color:var(--muted);
+
+    flex:none;
+
 }
 
-.open .arrow{
-    transform:rotate(180deg);
-}
+.obligation-card.open
+.arrow{
 
-.amount{
-    white-space:nowrap;
-    background:rgba(11,79,156,.1);
-    color:var(--primary);
-    padding:6px 10px;
-    border-radius:20px;
-    font-size:.78rem;
-    font-weight:bold;
+    transform:
+        rotate(180deg);
+
 }
 
 
-/* =========================
-   BARRA DE PROGRESO
-========================= */
+/* =========================================================
+   PORCENTAJE
+========================================================= */
 
-.progress-area{
-    margin-top:14px;
-}
+.dashboard{
 
-.progress-labels{
-    display:flex;
-    justify-content:space-between;
-    font-size:.72rem;
-    color:var(--muted);
-    margin-bottom:5px;
-}
+    width:74px;
+    height:74px;
 
-.progress-track{
-    height:13px;
-    width:100%;
-    background:#e5e7eb;
-    border-radius:20px;
-    overflow:hidden;
+    flex:none;
+
     position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
 }
 
-body.dark .progress-track{
-    background:#303944;
+
+/*
+   Círculo exterior
+*/
+
+.dashboard-circle{
+
+    width:74px;
+    height:74px;
+
+    border-radius:50%;
+
+    background:
+        conic-gradient(
+            var(--progress-color)
+            var(--progress),
+            rgba(
+                128,
+                128,
+                128,
+                .16
+            )
+            0
+        );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
 }
 
-.progress-bar{
-    height:100%;
-    width:0%;
+
+/*
+   Centro blanco/oscuro
+*/
+
+.dashboard-center{
+
+    width:57px;
+    height:57px;
+
+    border-radius:50%;
+
+    background:var(--card);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
+
+}
+
+.dashboard-center strong{
+
+    font-size:
+        1rem;
+
+}
+
+.dashboard-center small{
+
+    color:var(--muted);
+
+    font-size:
+        .55rem;
+
+}
+
+
+/* =========================================================
+   BARRA DE FECHAS
+========================================================= */
+
+.date-progress{
+
+    margin-top:13px;
+
+}
+
+.date-progress-labels{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:5px;
+
+    color:var(--muted);
+
+    font-size:.65rem;
+
+    margin-bottom:5px;
+
+}
+
+.date-progress-track{
+
+    width:100%;
+
+    height:12px;
+
     border-radius:20px;
+
+    overflow:hidden;
+
+    background:
+        rgba(
+            128,
+            128,
+            128,
+            .15
+        );
+
+}
+
+.date-progress-bar{
+
+    width:0%;
+
+    height:100%;
+
+    border-radius:20px;
+
     transition:
         width .5s ease,
         background .5s ease;
+
 }
 
-.progress-bar.green{
-    background:linear-gradient(
-        90deg,
-        #22c55e,
-        #16a34a
-    );
+.date-progress-bar.green{
+
+    background:
+        linear-gradient(
+            90deg,
+            #22c55e,
+            #15803d
+        );
+
 }
 
-.progress-bar.yellow{
-    background:linear-gradient(
-        90deg,
-        #fde047,
-        #eab308
-    );
+.date-progress-bar.yellow{
+
+    background:
+        linear-gradient(
+            90deg,
+            #fde047,
+            #ca8a04
+        );
+
 }
 
-.progress-bar.red{
-    background:linear-gradient(
-        90deg,
-        #f87171,
-        #dc2626
-    );
+.date-progress-bar.red{
+
+    background:
+        linear-gradient(
+            90deg,
+            #f87171,
+            #dc2626
+        );
+
 }
 
-.progress-status{
+.date-status{
+
     margin-top:6px;
-    font-size:.8rem;
+
+    font-size:.75rem;
+
     font-weight:bold;
+
 }
 
 
-/* =========================
-   DETALLES
-========================= */
+/* =========================================================
+   DETALLES DESPLEGABLES
+========================================================= */
 
 .card-details{
+
     display:none;
-    padding:0 17px 18px 21px;
-    border-top:1px solid var(--border);
+
+    border-top:
+        1px solid
+        var(--border);
+
+    padding:
+        15px
+        18px
+        18px
+        23px;
+
 }
 
-.open .card-details{
+.obligation-card.open
+.card-details{
+
     display:block;
+
 }
 
-.details-grid{
+
+/* =========================================================
+   DETALLES DE FECHAS
+========================================================= */
+
+.detail-grid{
+
     display:grid;
+
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(
+            3,
+            1fr
+        );
+
     gap:9px;
-    margin-top:14px;
+
 }
 
-.detail{
-    background:rgba(128,128,128,.07);
-    border-radius:9px;
-    padding:10px;
-}
+.detail-box{
 
-.detail span{
-    display:block;
-    color:var(--muted);
-    font-size:.72rem;
-}
+    padding:11px;
 
-.detail strong{
-    display:block;
-    margin-top:4px;
-    font-size:.9rem;
-}
-
-.days-box{
-    margin-top:12px;
-    padding:14px;
     border-radius:11px;
-    background:rgba(11,79,156,.08);
+
+    background:
+        rgba(
+            128,
+            128,
+            128,
+            .07
+        );
+
 }
 
-.days-box .big{
-    font-size:1.25rem;
-    font-weight:bold;
-}
+.detail-box span{
 
-.days-box small{
+    display:block;
+
     color:var(--muted);
+
+    font-size:.68rem;
+
 }
+
+.detail-box strong{
+
+    display:block;
+
+    margin-top:5px;
+
+    font-size:.88rem;
+
+}
+
+
+/* =========================================================
+   DIAS RESTANTES
+========================================================= */
+
+.days-remaining{
+
+    margin-top:12px;
+
+    padding:15px;
+
+    border-radius:13px;
+
+    background:
+        rgba(
+            220,
+            38,
+            38,
+            .09
+        );
+
+    border:
+        1px solid
+        rgba(
+            220,
+            38,
+            38,
+            .2
+        );
+
+}
+
+.days-remaining strong{
+
+    display:block;
+
+    font-size:
+        1.3rem;
+
+    color:
+        var(--red);
+
+}
+
+.days-remaining small{
+
+    color:var(--muted);
+
+}
+
+
+/* =========================================================
+   PAGOS
+========================================================= */
+
+.payment-inputs{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            1fr
+        );
+
+    gap:10px;
+
+    margin-top:13px;
+
+}
+
+.payment-input{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:5px;
+
+}
+
+.payment-input label{
+
+    color:var(--muted);
+
+    font-size:.7rem;
+
+    font-weight:bold;
+
+}
+
+.payment-input input{
+
+    width:100%;
+
+    padding:9px;
+
+    border-radius:9px;
+
+    border:
+        1px solid
+        var(--border);
+
+    background:var(--card);
+
+    color:var(--text);
+
+}
+
+
+/* =========================================================
+   COMENTARIO
+========================================================= */
 
 .comment{
+
     margin-top:12px;
+
     padding:11px;
-    background:rgba(128,128,128,.07);
+
     border-radius:10px;
+
+    background:
+        rgba(
+            128,
+            128,
+            128,
+            .07
+        );
+
+    font-size:.85rem;
+
 }
 
-.card-buttons{
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+.card-actions{
+
     display:flex;
+
     flex-wrap:wrap;
+
     gap:8px;
+
     margin-top:13px;
+
 }
 
-.card-buttons button{
+.card-actions button{
+
     border:0;
+
     color:#fff;
-    border-radius:8px;
-    padding:8px 12px;
-    font-size:.82rem;
+
+    border-radius:9px;
+
+    padding:
+        8px
+        12px;
+
+    font-size:.78rem;
+
+    font-weight:bold;
+
 }
 
-.edit{
-    background:var(--primary2);
+.edit-button{
+
+    background:
+        var(--blue2);
+
 }
 
-.delete{
-    background:var(--red);
+.delete-button{
+
+    background:
+        var(--red);
+
+}
+
+.save-payment-button{
+
+    background:
+        var(--green);
+
 }
 
 
-/* =========================
+/* =========================================================
+   FORMULARIO
+========================================================= */
+
+.form-section{
+
+    background:var(--card);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:17px;
+
+    padding:18px;
+
+    box-shadow:var(--shadow);
+
+    margin-top:18px;
+
+}
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            1fr
+        );
+
+    gap:12px;
+
+}
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:6px;
+
+}
+
+.form-group label{
+
+    font-size:.8rem;
+
+    font-weight:bold;
+
+}
+
+input,
+textarea,
+select{
+
+    width:100%;
+
+    padding:11px;
+
+    border-radius:10px;
+
+    border:
+        1px solid
+        var(--border);
+
+    background:var(--card);
+
+    color:var(--text);
+
+}
+
+textarea{
+
+    min-height:80px;
+
+    resize:vertical;
+
+}
+
+.form-actions{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+    margin-top:14px;
+
+}
+
+.main-button{
+
+    border:0;
+
+    border-radius:9px;
+
+    padding:
+        10px
+        15px;
+
+    background:
+        var(--blue);
+
+    color:#fff;
+
+    font-weight:bold;
+
+}
+
+.cancel-button{
+
+    border:0;
+
+    border-radius:9px;
+
+    padding:
+        10px
+        15px;
+
+    background:#6b7280;
+
+    color:#fff;
+
+}
+
+
+/* =========================================================
    ALERTAS
-========================= */
+========================================================= */
 
 .alert-section{
+
     margin-top:25px;
+
     padding:17px;
-    border:2px solid var(--red);
-    border-radius:16px;
-    background:rgba(220,38,38,.08);
+
+    border:
+        2px solid
+        var(--red);
+
+    border-radius:17px;
+
+    background:
+        rgba(
+            220,
+            38,
+            38,
+            .07
+        );
+
 }
 
 .alert-section h2{
-    color:var(--red);
+
+    color:
+        var(--red);
+
 }
 
 .alert{
+
     margin-top:9px;
+
     padding:12px;
+
     border-radius:10px;
+
     background:var(--card);
-    border-left:5px solid var(--red);
+
+    border-left:
+        5px solid
+        var(--red);
+
 }
 
 .alert.priority{
-    border-left-color:#f97316;
+
+    border-left-color:
+        #f97316;
+
 }
 
 .alert strong{
+
     display:block;
+
 }
 
 .alert small{
+
     color:var(--muted);
+
 }
 
 .alert-button{
-    background:var(--red);
-    color:#fff;
+
     border:0;
+
     border-radius:9px;
-    padding:9px 12px;
+
+    padding:
+        9px
+        12px;
+
+    background:
+        var(--red);
+
+    color:#fff;
+
     font-weight:bold;
+
 }
 
 
-/* =========================
+/* =========================================================
    CALENDARIO
-========================= */
+========================================================= */
 
 .calendar{
+
     margin-top:25px;
+
 }
 
 .calendar-box{
+
     background:var(--card);
-    border:1px solid var(--border);
-    border-radius:16px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:17px;
+
     padding:16px;
+
     box-shadow:var(--shadow);
+
 }
 
-.calendar-nav{
+.calendar-navigation{
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
-    margin-bottom:14px;
+
+    margin-bottom:13px;
+
 }
 
-.calendar-nav button{
+.calendar-navigation button{
+
     border:0;
+
     border-radius:8px;
-    background:var(--primary);
+
+    background:
+        var(--blue);
+
     color:#fff;
-    padding:8px 12px;
+
+    padding:
+        8px
+        12px;
+
 }
 
-.month{
+.month-title{
+
     font-weight:bold;
+
 }
 
 .weekdays,
 .calendar-grid{
+
     display:grid;
+
     grid-template-columns:
-        repeat(7,1fr);
+        repeat(
+            7,
+            1fr
+        );
+
     gap:5px;
+
 }
 
 .weekdays div{
+
     text-align:center;
+
     color:var(--muted);
-    font-size:.72rem;
+
+    font-size:.7rem;
+
     font-weight:bold;
+
 }
 
 .day{
-    min-height:48px;
-    border:1px solid var(--border);
-    background:var(--card);
-    color:var(--text);
+
+    min-height:45px;
+
+    border:
+        1px solid
+        var(--border);
+
     border-radius:8px;
-    padding:7px;
+
+    background:var(--card);
+
+    color:var(--text);
+
     position:relative;
+
 }
 
 .day.today{
-    outline:2px solid var(--primary2);
+
+    outline:
+        2px solid
+        var(--blue2);
+
 }
 
 .day.has-event{
-    background:rgba(22,119,210,.1);
+
+    background:
+        rgba(
+            22,
+            119,
+            210,
+            .12
+        );
+
 }
 
-.day.priority{
-    background:rgba(220,38,38,.13);
-}
+.event-dot{
 
-.dot{
-    position:absolute;
-    bottom:5px;
-    right:5px;
     width:7px;
     height:7px;
-    background:var(--primary2);
+
+    position:absolute;
+
+    right:5px;
+    bottom:5px;
+
     border-radius:50%;
+
+    background:
+        var(--blue2);
+
 }
 
 .events{
+
     display:flex;
+
     gap:9px;
+
     overflow-x:auto;
+
     margin-top:14px;
+
 }
 
 .event-card{
+
     min-width:220px;
+
     padding:11px;
+
     background:var(--card);
-    border:1px solid var(--border);
-    border-left:5px solid var(--primary2);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-left:
+        5px solid
+        var(--blue2);
+
     border-radius:10px;
+
 }
 
 .event-card.priority{
-    border-left-color:var(--red);
+
+    border-left-color:
+        var(--red);
+
 }
 
 
-/* =========================
+/* =========================================================
    RESPONSIVE
-========================= */
+========================================================= */
 
 @media(max-width:700px){
 
-    .form-grid,
-    .details-grid{
-        grid-template-columns:1fr;
+    .detail-grid{
+
+        grid-template-columns:
+            1fr;
+
     }
 
-    .card-top{
-        align-items:flex-start;
-    }
+    .form-grid{
 
-    .amount{
-        font-size:.7rem;
+        grid-template-columns:
+            1fr;
+
     }
 
 }
 
-@media(max-width:480px){
-
-    .app{
-        width:96%;
-    }
-
-    header{
-        padding-top:52px;
-    }
+@media(max-width:500px){
 
     .summary{
+
         grid-template-columns:
-            repeat(2,1fr);
+            repeat(
+                2,
+                1fr
+            );
+
+    }
+
+    .card-header-top{
+
+        align-items:flex-start;
+
+    }
+
+    .dashboard{
+
+        width:65px;
+        height:65px;
+
+    }
+
+    .dashboard-circle{
+
+        width:65px;
+        height:65px;
+
+    }
+
+    .dashboard-center{
+
+        width:50px;
+        height:50px;
+
     }
 
 }
@@ -698,60 +1408,86 @@ body.dark .progress-track{
 
 <div class="app">
 
+
+<!-- =====================================================
+     ENCABEZADO
+===================================================== -->
+
 <header>
 
 <button
-    class="theme"
-    id="themeToggle">
+    class="theme-button"
+    id="themeButton">
+
     🌙 / ☀️
+
 </button>
 
-<h1>PAGOS JUAN HILARIO</h1>
+<h1>
+PAGOS JUAN HILARIO
+</h1>
 
 <p>
-Controla tus pagos, fechas y obligaciones
+Control y seguimiento de obligaciones
 </p>
 
 </header>
 
 
-<!-- =========================
+<!-- =====================================================
      RESUMEN
-========================= -->
+===================================================== -->
 
 <div class="summary">
 
 <div class="summary-card">
-<span>💵 EFECTIVO</span>
+
+<span>
+💵 EFECTIVO
+</span>
+
 <strong id="cashDisplay">
 RD$0.00
 </strong>
+
 </div>
 
+
 <div class="summary-card">
-<span>🏦 AHORROS</span>
+
+<span>
+🏦 AHORROS
+</span>
+
 <strong id="savingsDisplay">
 RD$0.00
 </strong>
+
 </div>
+
+
+<div class="summary-card">
+
+<span>
+📋 TOTAL OBLIGACIONES
+</span>
+
+<strong id="obligationsDisplay">
+RD$0.00
+</strong>
+
+</div>
+
 
 <div
     class="summary-card"
     id="balanceCard">
 
-<span>BALANCE</span>
+<span>
+💰 BALANCE
+</span>
 
 <strong id="balanceDisplay">
-RD$0.00
-</strong>
-
-</div>
-
-<div class="summary-card">
-
-<span>📋 OBLIGACIONES</span>
-
-<strong id="totalObligations">
 RD$0.00
 </strong>
 
@@ -763,23 +1499,23 @@ RD$0.00
 <div
     class="feedback"
     id="feedback">
-Organiza tus pagos y toma el control de tus finanzas.
+
+Organiza tus obligaciones y mantén tus pagos bajo control.
+
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      FONDOS
-========================= -->
+===================================================== -->
 
 <section class="form-section">
 
 <div class="section-title">
 
-<h2>💰 FONDOS DISPONIBLES</h2>
-
-<small>
-Actualiza tus recursos
-</small>
+<h2>
+💰 FONDOS DISPONIBLES
+</h2>
 
 </div>
 
@@ -789,7 +1525,7 @@ Actualiza tus recursos
 <div class="form-group">
 
 <label>
-Total de efectivo
+TOTAL EFECTIVO
 </label>
 
 <input
@@ -797,7 +1533,7 @@ Total de efectivo
     id="cashInput"
     min="0"
     step="0.01"
-    placeholder="RD$0.00">
+    placeholder="0">
 
 </div>
 
@@ -805,7 +1541,7 @@ Total de efectivo
 <div class="form-group">
 
 <label>
-Total de ahorros
+TOTAL AHORROS
 </label>
 
 <input
@@ -813,19 +1549,21 @@ Total de ahorros
     id="savingsInput"
     min="0"
     step="0.01"
-    placeholder="RD$0.00">
+    placeholder="0">
 
 </div>
 
 </div>
 
 
-<div class="actions">
+<div class="form-actions">
 
 <button
-    class="btn btn-green"
+    class="main-button"
     id="saveFunds">
-    💾 GUARDAR FONDOS
+
+💾 GUARDAR FONDOS
+
 </button>
 
 </div>
@@ -833,13 +1571,15 @@ Total de ahorros
 </section>
 
 
-<!-- =========================
-     OBLIGACIONES
-========================= -->
+<!-- =====================================================
+     TARJETAS
+===================================================== -->
 
 <div class="section-title">
 
-<h2>📋 MIS OBLIGACIONES</h2>
+<h2>
+📋 MIS OBLIGACIONES
+</h2>
 
 <small id="counter">
 0 obligaciones
@@ -849,47 +1589,56 @@ Total de ahorros
 
 
 <div
-    class="obligations"
-    id="obligations">
+    class="cards-wrapper"
+    id="cards">
+
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      ALERTAS
-========================= -->
+===================================================== -->
 
 <section class="alert-section">
 
 <div class="section-title">
 
-<h2>🚨 ALERTAS Y RECORDATORIOS</h2>
+<h2>
+🚨 ALERTAS Y RECORDATORIOS
+</h2>
 
 <button
     class="alert-button"
-    id="enableAlerts">
-    🔔 ACTIVAR ALERTAS
+    id="activateAlerts">
+
+🔔 ACTIVAR ALERTAS
+
 </button>
 
 </div>
 
+
 <div id="alerts">
+
 </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      CALENDARIO
-========================= -->
+===================================================== -->
 
 <section class="calendar">
 
 <div class="section-title">
 
-<h2>📅 CALENDARIO</h2>
+<h2>
+📅 CALENDARIO
+</h2>
 
 <small>
-Toca un día para agregar un recordatorio
+Toca un día
 </small>
 
 </div>
@@ -897,15 +1646,15 @@ Toca un día para agregar un recordatorio
 
 <div class="calendar-box">
 
-<div class="calendar-nav">
+<div class="calendar-navigation">
 
-<button id="prevMonth">
+<button id="previousMonth">
 ◀
 </button>
 
 <div
-    class="month"
-    id="month">
+    class="month-title"
+    id="monthTitle">
 </div>
 
 <button id="nextMonth">
@@ -937,431 +1686,13 @@ Toca un día para agregar un recordatorio
 </section>
 
 
-<!-- =========================
-     AGREGAR / MODIFICAR
-========================= -->
+<!-- =====================================================
+     AGREGAR OBLIGACIÓN
+===================================================== -->
 
 <section class="form-section">
 
 <div class="section-title">
 
-<h2>➕ AGREGAR / MODIFICAR OBLIGACIÓN</h2>
-
-</div>
-
-
-<form id="form">
-
-<div class="form-grid">
-
-<div class="form-group">
-
-<label>
-Nombre
-</label>
-
-<input
-    id="name"
-    type="text"
-    required
-    placeholder="Ej.: BANCO ADEMI">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Monto a pagar
-</label>
-
-<input
-    id="amount"
-    type="number"
-    min="0"
-    step="0.01"
-    placeholder="RD$0.00">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Fecha de corte
-</label>
-
-<input
-    id="cutoff"
-    type="date">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Fecha personal
-</label>
-
-<input
-    id="personal"
-    type="date">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Fecha límite de pago
-</label>
-
-<input
-    id="payment"
-    type="date"
-    required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-🎨 Color del título
-</label>
-
-<input
-    id="color"
-    type="color"
-    value="#0b4f9c">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Prioridad
-</label>
-
-<select id="priority">
-
-<option value="normal">
-NORMAL
-</option>
-
-<option value="alta">
-🔴 ALTA
-</option>
-
-<option value="urgente">
-🚨 URGENTE
-</option>
-
-</select>
-
-</div>
-
-</div>
-
-
-<div
-    class="form-group"
-    style="margin-top:13px;">
-
-<label>
-Comentario
-</label>
-
-<textarea
-    id="comment"
-    placeholder="Escribe un comentario o recordatorio..."></textarea>
-
-</div>
-
-
-<div class="actions">
-
-<button
-    class="btn btn-primary"
-    type="submit"
-    id="saveButton">
-
-➕ GUARDAR OBLIGACIÓN
-
-</button>
-
-
-<button
-    class="btn btn-gray"
-    type="button"
-    id="cancelEdit"
-    style="display:none;">
-
-CANCELAR
-
-</button>
-
-</div>
-
-</form>
-
-</section>
-
-</div>
-
-
-<script>
-
-/* =========================================================
-   CONFIGURACIÓN
-========================================================= */
-
-const STORAGE =
-"pagos_juan_hilario_obligaciones_v5";
-
-
-const positiveMessages = [
-
-"¡Vas muy bien este mes! Si continúas así alcanzarás tus objetivos muy pronto.",
-"¡Excelente trabajo! Cada peso bien administrado te acerca a tus metas.",
-"Estás tomando el control de tus finanzas. ¡Sigue así!",
-"Cada pago realizado es un paso más hacia tu tranquilidad financiera.",
-"¡Muy bien! Tu disciplina financiera está dando resultados.",
-"Continúa así. La organización de hoy construye estabilidad para mañana.",
-"¡Excelente! Mantener tus obligaciones bajo control es una gran decisión.",
-"Tu administración financiera está avanzando correctamente.",
-"¡Sigue adelante! Cada decisión cuenta.",
-"Estás construyendo buenos hábitos financieros."
-
-];
-
-
-const negativeMessages = [
-
-"Estás gastando demasiado este mes. Debes detenerte y controlar tus gastos.",
-"Nadie pagará tus obligaciones por ti. Toma el control.",
-"Tus obligaciones están superando tus recursos.",
-"Debes revisar tus gastos antes de asumir nuevas obligaciones.",
-"Cuidado: estás comprometiendo demasiado dinero.",
-"Tu presupuesto necesita atención.",
-"Controla tus gastos antes de que la situación empeore.",
-"No ignores tus obligaciones.",
-"Tu balance está en negativo. Necesitas actuar.",
-"Prioriza tus pagos antes de realizar nuevos gastos."
-
-];
-
-
-/* =========================================================
-   OBLIGACIONES PRECARGADAS
-========================================================= */
-
-const defaultObligations = [
-
-{
-    id:"ademi",
-    name:"BANCO ADEMI",
-    amount:0,
-    cutoffDay:13,
-    personalDay:15,
-    paymentDay:5,
-    color:"#10b981",
-    priority:"alta",
-    comment:"CORTE DÍA 13. FECHA PERSONAL 15-30. PAGO DÍA 05."
-},
-
-{
-    id:"popular",
-    name:"BANCO POPULAR",
-    amount:0,
-    cutoffDay:28,
-    personalDay:15,
-    paymentDay:22,
-    color:"#2563eb",
-    priority:"alta",
-    comment:"CORTE DÍA 28. FECHA PERSONAL ENTRE 15-30. PAGO DÍA 22."
-},
-
-{
-    id:"vimenca",
-    name:"BANCO VIMENCA",
-    amount:0,
-    cutoffDay:10,
-    personalDay:15,
-    paymentDay:2,
-    color:"#1d4ed8",
-    priority:"alta",
-    comment:"CORTE DÍA 10. FECHA PERSONAL ENTRE 15-30. PAGO DÍA 02."
-},
-
-{
-    id:"apap",
-    name:"BANCO APAP",
-    amount:0,
-    cutoffDay:21,
-    personalDay:30,
-    paymentDay:13,
-    color:"#facc15",
-    priority:"alta",
-    comment:"CORTE DÍA 21. FECHA PERSONAL DÍA 30. PAGO DÍA 13."
-},
-
-{
-    id:"coop-aspire",
-    name:"COOP ASPIRE",
-    amount:0,
-    cutoffDay:28,
-    personalDay:30,
-    paymentDay:5,
-    color:"#16a34a",
-    priority:"alta",
-    comment:"PAGAR LOS DÍAS 28, 30 Y FECHA FINAL DÍA 05."
-},
-
-{
-    id:"qik",
-    name:"BANCO QIK",
-    amount:0,
-    cutoffDay:15,
-    personalDay:30,
-    paymentDay:12,
-    color:"#14b8a6",
-    priority:"alta",
-    comment:"CORTE DÍA 15. FECHA PERSONAL DÍA 30. PAGO DÍA 12."
-},
-
-{
-    id:"santa-cruz",
-    name:"BANCO SANTA CRUZ",
-    amount:0,
-    cutoffDay:13,
-    personalDay:30,
-    paymentDay:9,
-    color:"#2563eb",
-    priority:"alta",
-    comment:"CORTE DÍA 13. FECHA PERSONAL DÍA 30. PAGO DÍA 09."
-},
-
-{
-    id:"prestamo-qik",
-    name:"PRÉSTAMO BANCO QIK",
-    amount:0,
-    cutoffDay:30,
-    personalDay:30,
-    paymentDay:5,
-    color:"#06b6d4",
-    priority:"alta",
-    comment:"FECHA DE PAGO DÍA 30 / DÍA 05 DE CADA MES."
-},
-
-{
-    id:"prestamo-aspire",
-    name:"PRÉSTAMO COOP ASPIRE",
-    amount:0,
-    cutoffDay:30,
-    personalDay:30,
-    paymentDay:5,
-    color:"#16a34a",
-    priority:"alta",
-    comment:"FECHA DE PAGO DÍA 30 / DÍA 05 DE CADA MES."
-},
-
-{
-    id:"claro",
-    name:"CLARO CODETEL",
-    amount:0,
-    cutoffDay:15,
-    personalDay:30,
-    paymentDay:2,
-    color:"#dc2626",
-    priority:"alta",
-    comment:"FECHA DE PAGO DÍA 15, DÍA 30 Y FECHA FINAL DÍA 02."
-},
-
-{
-    id:"viva",
-    name:"VIVA",
-    amount:0,
-    cutoffDay:15,
-    personalDay:30,
-    paymentDay:30,
-    color:"#22c55e",
-    priority:"normal",
-    comment:"FECHA DE PAGO DÍA 15 Y DÍA 30."
-}
-
-];
-
-
-/* =========================================================
-   ESTADO
-========================================================= */
-
-let state = {
-
-    cash:0,
-
-    savings:0,
-
-    obligations:[],
-
-    calendarEvents:[],
-
-    currentDate:new Date(),
-
-    editing:null
-
-};
-
-
-/* =========================================================
-   CARGAR
-========================================================= */
-
-function load(){
-
-    const saved =
-        localStorage.getItem(
-            STORAGE
-        );
-
-
-    if(saved){
-
-        try{
-
-            const data =
-                JSON.parse(saved);
-
-
-            state.cash =
-                Number(data.cash)||0;
-
-
-            state.savings =
-                Number(data.savings)||0;
-
-
-            state.obligations =
-                Array.isArray(
-                    data.obligations
-                )
-                ? data.obligations
-                : [];
-
-
-            state.calendarEvents =
-                Array.isArray(
-                    data.calendarEvents
-                )
-                ? data.calendarEvents
-                : [];
-
-
-            if(
-                data.currentDate
-            ){
-
-                state.cur
+<h2>
+➕ AG
