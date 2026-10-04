@@ -1,1698 +1,362 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b4f9c">
-
-<title>PAGOS JUAN HILARIO</title>
-
-<style>
-
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-:root{
-    --bg:#f3f6fa;
-    --card:#ffffff;
-    --text:#17212b;
-    --muted:#697586;
-    --border:#dfe5ec;
-
-    --blue:#0b4f9c;
-    --blue2:#1677d2;
-
-    --green:#16a34a;
-    --yellow:#eab308;
-    --red:#dc2626;
-
-    --shadow:
-        0 7px 25px rgba(0,0,0,.08);
-}
-
-body.dark{
-    --bg:#0d131a;
-    --card:#18212b;
-    --text:#f5f7fa;
-    --muted:#aab5c0;
-    --border:#303c48;
-
-    --shadow:
-        0 7px 25px rgba(0,0,0,.30);
-}
-
-
-/* =========================================================
-   GENERAL
-========================================================= */
-
-*{
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    margin:0;
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    background:var(--bg);
-    color:var(--text);
-
-    transition:.25s;
-}
-
-button,
-input,
-textarea,
-select{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
-
-.app{
-    width:min(1100px,95%);
-    margin:auto;
-    padding-bottom:50px;
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-header{
-    position:relative;
-
-    margin-top:12px;
-
-    padding:
-        35px
-        20px
-        25px;
-
-    border-radius:20px;
-
-    color:#fff;
-
-    background:
-        linear-gradient(
-            135deg,
-            #06366c,
-            #0b66c2
-        );
-
-    box-shadow:var(--shadow);
-}
-
-header h1{
-    margin:
-        10px
-        0
-        5px;
-
-    text-align:center;
-
-    font-size:
-        clamp(
-            1.7rem,
-            5vw,
-            2.5rem
-        );
-
-    letter-spacing:.5px;
-}
-
-header p{
-    margin:0;
-
-    text-align:center;
-
-    opacity:.9;
-}
-
-.theme-button{
-    position:absolute;
-
-    top:13px;
-    right:13px;
-
-    border:0;
-
-    padding:
-        9px
-        13px;
-
-    border-radius:30px;
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            .18
-        );
-
-    color:#fff;
-}
-
-
-/* =========================================================
-   RESUMEN
-========================================================= */
-
-.summary{
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(
-                170px,
-                1fr
-            )
-        );
-
-    gap:12px;
-
-    margin-top:17px;
-}
-
-.summary-card{
-    background:var(--card);
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:15px;
-
-    padding:16px;
-
-    box-shadow:var(--shadow);
-}
-
-.summary-card span{
-    display:block;
-
-    color:var(--muted);
-
-    font-size:.78rem;
-
-    font-weight:bold;
-}
-
-.summary-card strong{
-    display:block;
-
-    margin-top:7px;
-
-    font-size:1.25rem;
-}
-
-.summary-card.green{
-    border-left:
-        5px solid
-        var(--green);
-}
-
-.summary-card.red{
-    border-left:
-        5px solid
-        var(--red);
-}
-
-
-/* =========================================================
-   MENSAJE
-========================================================= */
-
-.feedback{
-    margin-top:14px;
-
-    padding:14px;
-
-    text-align:center;
-
-    background:var(--card);
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:14px;
-
-    box-shadow:var(--shadow);
-
-    font-weight:bold;
-}
-
-
-/* =========================================================
-   TITULOS DE SECCION
-========================================================= */
-
-.section-title{
-    display:flex;
-
-    justify-content:space-between;
-    align-items:center;
-
-    gap:10px;
-
-    margin:
-        24px
-        0
-        12px;
-}
-
-.section-title h2{
-    margin:0;
-
-    font-size:1.2rem;
-}
-
-.section-title small{
-    color:var(--muted);
-}
-
-
-/* =========================================================
-   CONTENEDOR DE TARJETAS
-========================================================= */
-
-.cards-wrapper{
-
-    /*
-       Permite hacer scroll entre todas
-       las tarjetas.
-    */
-
-    max-height:
-        730px;
-
-    overflow-y:auto;
-
-    overflow-x:hidden;
-
-    padding:
-        5px
-        8px
-        15px
-        4px;
-
-    scroll-behavior:smooth;
-}
-
-
-/* Scroll bonito */
-
-.cards-wrapper::-webkit-scrollbar{
-    width:7px;
-}
-
-.cards-wrapper::-webkit-scrollbar-track{
-    background:
-        rgba(
-            128,
-            128,
-            128,
-            .08
-        );
-
-    border-radius:20px;
-}
-
-.cards-wrapper::-webkit-scrollbar-thumb{
-    background:
-        var(--blue);
-
-    border-radius:20px;
-}
-
-
-/* =========================================================
-   TARJETA
-========================================================= */
-
-.obligation-card{
-
-    position:relative;
-
-    margin-bottom:15px;
-
-    background:var(--card);
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-    box-shadow:var(--shadow);
-
-    transition:
-        transform .25s,
-        box-shadow .25s;
-
-}
-
-.obligation-card:hover{
-
-    transform:
-        translateY(-2px);
-
-}
-
-
-/* Línea lateral editable */
-
-.card-color-line{
-
-    position:absolute;
-
-    left:0;
-    top:0;
-    bottom:0;
-
-    width:7px;
-
-    background:
-        var(--blue);
-
-}
-
-
-/* =========================================================
-   CABECERA TARJETA
-========================================================= */
-
-.card-header{
-
-    padding:
-        17px
-        18px
-        14px
-        23px;
-
-    cursor:pointer;
-}
-
-.card-header-top{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:15px;
-}
-
-.card-title{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:9px;
-
-    min-width:0;
-}
-
-.card-title h3{
-
-    margin:0;
-
-    font-size:
-        clamp(
-            .95rem,
-            3vw,
-            1.15rem
-        );
-
-    word-break:break-word;
-
-}
-
-.arrow{
-
-    color:var(--muted);
-
-    transition:.25s;
-
-    flex:none;
-
-}
-
-.obligation-card.open
-.arrow{
-
-    transform:
-        rotate(180deg);
-
-}
-
-
-/* =========================================================
-   PORCENTAJE
-========================================================= */
-
-.dashboard{
-
-    width:74px;
-    height:74px;
-
-    flex:none;
-
-    position:relative;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-}
-
-
-/*
-   Círculo exterior
-*/
-
-.dashboard-circle{
-
-    width:74px;
-    height:74px;
-
-    border-radius:50%;
-
-    background:
-        conic-gradient(
-            var(--progress-color)
-            var(--progress),
-            rgba(
-                128,
-                128,
-                128,
-                .16
-            )
-            0
-        );
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-}
-
-
-/*
-   Centro blanco/oscuro
-*/
-
-.dashboard-center{
-
-    width:57px;
-    height:57px;
-
-    border-radius:50%;
-
-    background:var(--card);
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    flex-direction:column;
-
-}
-
-.dashboard-center strong{
-
-    font-size:
-        1rem;
-
-}
-
-.dashboard-center small{
-
-    color:var(--muted);
-
-    font-size:
-        .55rem;
-
-}
-
-
-/* =========================================================
-   BARRA DE FECHAS
-========================================================= */
-
-.date-progress{
-
-    margin-top:13px;
-
-}
-
-.date-progress-labels{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:5px;
-
-    color:var(--muted);
-
-    font-size:.65rem;
-
-    margin-bottom:5px;
-
-}
-
-.date-progress-track{
-
-    width:100%;
-
-    height:12px;
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-    background:
-        rgba(
-            128,
-            128,
-            128,
-            .15
-        );
-
-}
-
-.date-progress-bar{
-
-    width:0%;
-
-    height:100%;
-
-    border-radius:20px;
-
-    transition:
-        width .5s ease,
-        background .5s ease;
-
-}
-
-.date-progress-bar.green{
-
-    background:
-        linear-gradient(
-            90deg,
-            #22c55e,
-            #15803d
-        );
-
-}
-
-.date-progress-bar.yellow{
-
-    background:
-        linear-gradient(
-            90deg,
-            #fde047,
-            #ca8a04
-        );
-
-}
-
-.date-progress-bar.red{
-
-    background:
-        linear-gradient(
-            90deg,
-            #f87171,
-            #dc2626
-        );
-
-}
-
-.date-status{
-
-    margin-top:6px;
-
-    font-size:.75rem;
-
-    font-weight:bold;
-
-}
-
-
-/* =========================================================
-   DETALLES DESPLEGABLES
-========================================================= */
-
-.card-details{
-
-    display:none;
-
-    border-top:
-        1px solid
-        var(--border);
-
-    padding:
-        15px
-        18px
-        18px
-        23px;
-
-}
-
-.obligation-card.open
-.card-details{
-
-    display:block;
-
-}
-
-
-/* =========================================================
-   DETALLES DE FECHAS
-========================================================= */
-
-.detail-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            3,
-            1fr
-        );
-
-    gap:9px;
-
-}
-
-.detail-box{
-
-    padding:11px;
-
-    border-radius:11px;
-
-    background:
-        rgba(
-            128,
-            128,
-            128,
-            .07
-        );
-
-}
-
-.detail-box span{
-
-    display:block;
-
-    color:var(--muted);
-
-    font-size:.68rem;
-
-}
-
-.detail-box strong{
-
-    display:block;
-
-    margin-top:5px;
-
-    font-size:.88rem;
-
-}
-
-
-/* =========================================================
-   DIAS RESTANTES
-========================================================= */
-
-.days-remaining{
-
-    margin-top:12px;
-
-    padding:15px;
-
-    border-radius:13px;
-
-    background:
-        rgba(
-            220,
-            38,
-            38,
-            .09
-        );
-
-    border:
-        1px solid
-        rgba(
-            220,
-            38,
-            38,
-            .2
-        );
-
-}
-
-.days-remaining strong{
-
-    display:block;
-
-    font-size:
-        1.3rem;
-
-    color:
-        var(--red);
-
-}
-
-.days-remaining small{
-
-    color:var(--muted);
-
-}
-
-
-/* =========================================================
-   PAGOS
-========================================================= */
-
-.payment-inputs{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            2,
-            1fr
-        );
-
-    gap:10px;
-
-    margin-top:13px;
-
-}
-
-.payment-input{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:5px;
-
-}
-
-.payment-input label{
-
-    color:var(--muted);
-
-    font-size:.7rem;
-
-    font-weight:bold;
-
-}
-
-.payment-input input{
-
-    width:100%;
-
-    padding:9px;
-
-    border-radius:9px;
-
-    border:
-        1px solid
-        var(--border);
-
-    background:var(--card);
-
-    color:var(--text);
-
-}
-
-
-/* =========================================================
-   COMENTARIO
-========================================================= */
-
-.comment{
-
-    margin-top:12px;
-
-    padding:11px;
-
-    border-radius:10px;
-
-    background:
-        rgba(
-            128,
-            128,
-            128,
-            .07
-        );
-
-    font-size:.85rem;
-
-}
-
-
-/* =========================================================
-   BOTONES
-========================================================= */
-
-.card-actions{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:8px;
-
-    margin-top:13px;
-
-}
-
-.card-actions button{
-
-    border:0;
-
-    color:#fff;
-
-    border-radius:9px;
-
-    padding:
-        8px
-        12px;
-
-    font-size:.78rem;
-
-    font-weight:bold;
-
-}
-
-.edit-button{
-
-    background:
-        var(--blue2);
-
-}
-
-.delete-button{
-
-    background:
-        var(--red);
-
-}
-
-.save-payment-button{
-
-    background:
-        var(--green);
-
-}
-
-
-/* =========================================================
-   FORMULARIO
-========================================================= */
-
-.form-section{
-
-    background:var(--card);
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:17px;
-
-    padding:18px;
-
-    box-shadow:var(--shadow);
-
-    margin-top:18px;
-
-}
-
-.form-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            2,
-            1fr
-        );
-
-    gap:12px;
-
-}
-
-.form-group{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:6px;
-
-}
-
-.form-group label{
-
-    font-size:.8rem;
-
-    font-weight:bold;
-
-}
-
-input,
-textarea,
-select{
-
-    width:100%;
-
-    padding:11px;
-
-    border-radius:10px;
-
-    border:
-        1px solid
-        var(--border);
-
-    background:var(--card);
-
-    color:var(--text);
-
-}
-
-textarea{
-
-    min-height:80px;
-
-    resize:vertical;
-
-}
-
-.form-actions{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:8px;
-
-    margin-top:14px;
-
-}
-
-.main-button{
-
-    border:0;
-
-    border-radius:9px;
-
-    padding:
-        10px
-        15px;
-
-    background:
-        var(--blue);
-
-    color:#fff;
-
-    font-weight:bold;
-
-}
-
-.cancel-button{
-
-    border:0;
-
-    border-radius:9px;
-
-    padding:
-        10px
-        15px;
-
-    background:#6b7280;
-
-    color:#fff;
-
-}
-
-
-/* =========================================================
-   ALERTAS
-========================================================= */
-
-.alert-section{
-
-    margin-top:25px;
-
-    padding:17px;
-
-    border:
-        2px solid
-        var(--red);
-
-    border-radius:17px;
-
-    background:
-        rgba(
-            220,
-            38,
-            38,
-            .07
-        );
-
-}
-
-.alert-section h2{
-
-    color:
-        var(--red);
-
-}
-
-.alert{
-
-    margin-top:9px;
-
-    padding:12px;
-
-    border-radius:10px;
-
-    background:var(--card);
-
-    border-left:
-        5px solid
-        var(--red);
-
-}
-
-.alert.priority{
-
-    border-left-color:
-        #f97316;
-
-}
-
-.alert strong{
-
-    display:block;
-
-}
-
-.alert small{
-
-    color:var(--muted);
-
-}
-
-.alert-button{
-
-    border:0;
-
-    border-radius:9px;
-
-    padding:
-        9px
-        12px;
-
-    background:
-        var(--red);
-
-    color:#fff;
-
-    font-weight:bold;
-
-}
-
-
-/* =========================================================
-   CALENDARIO
-========================================================= */
-
-.calendar{
-
-    margin-top:25px;
-
-}
-
-.calendar-box{
-
-    background:var(--card);
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:17px;
-
-    padding:16px;
-
-    box-shadow:var(--shadow);
-
-}
-
-.calendar-navigation{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    margin-bottom:13px;
-
-}
-
-.calendar-navigation button{
-
-    border:0;
-
-    border-radius:8px;
-
-    background:
-        var(--blue);
-
-    color:#fff;
-
-    padding:
-        8px
-        12px;
-
-}
-
-.month-title{
-
-    font-weight:bold;
-
-}
-
-.weekdays,
-.calendar-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            7,
-            1fr
-        );
-
-    gap:5px;
-
-}
-
-.weekdays div{
-
-    text-align:center;
-
-    color:var(--muted);
-
-    font-size:.7rem;
-
-    font-weight:bold;
-
-}
-
-.day{
-
-    min-height:45px;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:8px;
-
-    background:var(--card);
-
-    color:var(--text);
-
-    position:relative;
-
-}
-
-.day.today{
-
-    outline:
-        2px solid
-        var(--blue2);
-
-}
-
-.day.has-event{
-
-    background:
-        rgba(
-            22,
-            119,
-            210,
-            .12
-        );
-
-}
-
-.event-dot{
-
-    width:7px;
-    height:7px;
-
-    position:absolute;
-
-    right:5px;
-    bottom:5px;
-
-    border-radius:50%;
-
-    background:
-        var(--blue2);
-
-}
-
-.events{
-
-    display:flex;
-
-    gap:9px;
-
-    overflow-x:auto;
-
-    margin-top:14px;
-
-}
-
-.event-card{
-
-    min-width:220px;
-
-    padding:11px;
-
-    background:var(--card);
-
-    border:
-        1px solid
-        var(--border);
-
-    border-left:
-        5px solid
-        var(--blue2);
-
-    border-radius:10px;
-
-}
-
-.event-card.priority{
-
-    border-left-color:
-        var(--red);
-
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media(max-width:700px){
-
-    .detail-grid{
-
-        grid-template-columns:
-            1fr;
-
-    }
-
-    .form-grid{
-
-        grid-template-columns:
-            1fr;
-
-    }
-
-}
-
-@media(max-width:500px){
-
-    .summary{
-
-        grid-template-columns:
-            repeat(
-                2,
-                1fr
-            );
-
-    }
-
-    .card-header-top{
-
-        align-items:flex-start;
-
-    }
-
-    .dashboard{
-
-        width:65px;
-        height:65px;
-
-    }
-
-    .dashboard-circle{
-
-        width:65px;
-        height:65px;
-
-    }
-
-    .dashboard-center{
-
-        width:50px;
-        height:50px;
-
-    }
-
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAGOS JUAN HILARIO - DASHBOARD FINANCIAL</title>
+
+    <!-- Chart.js para la Gráfica Interactiva -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        :root {
+            --bg-color: #0F111A;
+            --card-bg: #1B1E2B;
+            --text-color: #FFFFFF;
+            --subtext-color: #9CA3AF;
+            --border-color: #2A2E3D;
+            --gold: #D4AF37;
+            --green: #10B981;
+            --yellow: #F59E0B;
+            --red: #EF4444;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #F3F4F6;
+            --card-bg: #FFFFFF;
+            --text-color: #111827;
+            --subtext-color: #4B5563;
+            --border-color: #E5E7EB;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; transition: background 0.3s, color 0.3s; }
+        body { background-color: var(--bg-color); color: var(--text-color); padding: 20px; padding-top: 30px; min-height: 100vh; }
+
+        /* Encabezado y Título */
+        .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        .user-profile { display: flex; align-items: center; }
+        .avatar { width: 44px; height: 44px; background: linear-gradient(135deg, var(--gold), #F59E0B); color: #0F111A; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 12px; }
+        
+        .app-title-container { text-align: center; margin-top: 10px; margin-bottom: 25px; }
+        .app-title-container h1 { font-size: 24px; font-weight: 800; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; }
+
+        .theme-toggle { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-color); padding: 8px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: bold; }
+
+        /* Dashboard & Gráfica General */
+        .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+        .dash-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 14px; text-align: center; }
+        .dash-title { font-size: 11px; color: var(--subtext-color); margin-bottom: 4px; }
+        .dash-value { font-size: 16px; font-weight: bold; color: var(--gold); }
+
+        .chart-section { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 16px; margin-bottom: 20px; text-align: center; }
+
+        /* Frase Motivacional */
+        .phrase-card { background: var(--card-bg); border-left: 4px solid var(--gold); border-radius: 12px; padding: 14px; margin-bottom: 20px; font-style: italic; font-size: 13px; border-top: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+
+        /* Calculadora */
+        .calculator-card { background: var(--card-bg); border-radius: 16px; padding: 18px; margin-bottom: 20px; border: 1px solid var(--border-color); }
+        .calc-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+        .calc-inputs input { background: rgba(0,0,0,0.1); border: 1px solid var(--border-color); color: var(--text-color); padding: 10px; border-radius: 8px; font-size: 13px; width: 100%; }
+        .balance-status { font-size: 13px; font-weight: bold; margin-top: 8px; padding: 12px; border-radius: 8px; text-align: center; }
+        .status-positive { background: rgba(16, 185, 129, 0.15); color: var(--green); border: 1px solid var(--green); }
+        .status-negative { background: rgba(239, 68, 68, 0.15); color: var(--red); border: 1px solid var(--red); }
+
+        /* Alertas */
+        .alerts-section { background: rgba(239, 68, 68, 0.12); border: 2px solid var(--red); border-radius: 16px; padding: 16px; margin-bottom: 20px; box-shadow: 0 0 10px rgba(239, 68, 68, 0.2); }
+        .alerts-title { color: var(--red); font-weight: bold; font-size: 15px; margin-bottom: 8px; }
+
+        /* Contenedor de Tarjetas con Scroll */
+        .scroll-container { max-height: 520px; overflow-y: auto; padding-right: 4px; margin-bottom: 24px; }
+        .scroll-container::-webkit-scrollbar { width: 5px; }
+        .scroll-container::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+
+        /* Tarjetas de Obligaciones Rectangulares con Bordes Redondeados */
+        .card { background: var(--card-bg); border-radius: 16px; padding: 16px; margin-bottom: 14px; border: 1px solid var(--border-color); position: relative; cursor: pointer; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-2px); }
+
+        .card-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .card-title-input { font-size: 15px; font-weight: bold; color: var(--text-color); text-transform: uppercase; background: transparent; border: none; border-bottom: 1px dashed transparent; width: 70%; }
+        .card-title-input:focus { border-bottom: 1px dashed var(--gold); outline: none; }
+
+        /* Círculo Gráfico Porcentaje (0% - 100%) */
+        .progress-circle-box { position: relative; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; }
+        .progress-circle-box canvas { position: absolute; top: 0; left: 0; }
+        .progress-text { font-size: 10px; font-weight: bold; color: var(--gold); }
+
+        /* Barra de Carga de Fecha Límite */
+        .progress-bar-bg { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; margin: 10px 0; }
+        .progress-bar-fill { height: 100%; width: 0%; border-radius: 10px; transition: width 0.5s ease-in-out, background-color 0.5s; }
+
+        /* Línea según la proximidad de fecha */
+        .border-green { background-color: var(--green) !important; }
+        .border-yellow { background-color: var(--yellow) !important; }
+        .border-red { background-color: var(--red) !important; }
+
+        .card-details { display: none; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border-color); font-size: 12px; color: var(--subtext-color); line-height: 1.6; }
+        .card-details.active { display: block; }
+
+        /* Calendario Notas Horizontales */
+        .calendar-card { background: var(--card-bg); border-radius: 16px; padding: 16px; margin-bottom: 24px; border: 1px solid var(--border-color); }
+        .calendar-notes { display: flex; gap: 10px; overflow-x: auto; padding-top: 10px; }
+        .note-box { min-width: 160px; background: rgba(0,0,0,0.15); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px; font-size: 11px; flex-shrink: 0; }
+
+        /* Formulario Inferior */
+        .add-form-card { background: var(--card-bg); border-radius: 16px; padding: 18px; border: 1px solid var(--border-color); margin-bottom: 30px; }
+        .form-group { margin-bottom: 10px; }
+        .form-group label { display: block; font-size: 11px; color: var(--subtext-color); margin-bottom: 4px; }
+        .form-group input { width: 100%; padding: 10px; background: rgba(0,0,0,0.1); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 8px; font-size: 13px; }
+        .btn-submit { width: 100%; background: var(--gold); color: #000; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+    </style>
 </head>
-
-
 <body>
 
-<div class="app">
-
-
-<!-- =====================================================
-     ENCABEZADO
-===================================================== -->
-
-<header>
-
-<button
-    class="theme-button"
-    id="themeButton">
-
-    🌙 / ☀️
-
-</button>
-
-<h1>
-PAGOS JUAN HILARIO
-</h1>
-
-<p>
-Control y seguimiento de obligaciones
-</p>
-
-</header>
-
-
-<!-- =====================================================
-     RESUMEN
-===================================================== -->
-
-<div class="summary">
-
-<div class="summary-card">
-
-<span>
-💵 EFECTIVO
-</span>
-
-<strong id="cashDisplay">
-RD$0.00
-</strong>
-
-</div>
-
-
-<div class="summary-card">
-
-<span>
-🏦 AHORROS
-</span>
-
-<strong id="savingsDisplay">
-RD$0.00
-</strong>
-
-</div>
-
-
-<div class="summary-card">
-
-<span>
-📋 TOTAL OBLIGACIONES
-</span>
-
-<strong id="obligationsDisplay">
-RD$0.00
-</strong>
-
-</div>
-
-
-<div
-    class="summary-card"
-    id="balanceCard">
-
-<span>
-💰 BALANCE
-</span>
-
-<strong id="balanceDisplay">
-RD$0.00
-</strong>
-
-</div>
-
-</div>
-
-
-<div
-    class="feedback"
-    id="feedback">
-
-Organiza tus obligaciones y mantén tus pagos bajo control.
-
-</div>
-
-
-<!-- =====================================================
-     FONDOS
-===================================================== -->
-
-<section class="form-section">
-
-<div class="section-title">
-
-<h2>
-💰 FONDOS DISPONIBLES
-</h2>
-
-</div>
-
-
-<div class="form-grid">
-
-<div class="form-group">
-
-<label>
-TOTAL EFECTIVO
-</label>
-
-<input
-    type="number"
-    id="cashInput"
-    min="0"
-    step="0.01"
-    placeholder="0">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-TOTAL AHORROS
-</label>
-
-<input
-    type="number"
-    id="savingsInput"
-    min="0"
-    step="0.01"
-    placeholder="0">
-
-</div>
-
-</div>
-
-
-<div class="form-actions">
-
-<button
-    class="main-button"
-    id="saveFunds">
-
-💾 GUARDAR FONDOS
-
-</button>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     TARJETAS
-===================================================== -->
-
-<div class="section-title">
-
-<h2>
-📋 MIS OBLIGACIONES
-</h2>
-
-<small id="counter">
-0 obligaciones
-</small>
-
-</div>
-
-
-<div
-    class="cards-wrapper"
-    id="cards">
-
-</div>
-
-
-<!-- =====================================================
-     ALERTAS
-===================================================== -->
-
-<section class="alert-section">
-
-<div class="section-title">
-
-<h2>
-🚨 ALERTAS Y RECORDATORIOS
-</h2>
-
-<button
-    class="alert-button"
-    id="activateAlerts">
-
-🔔 ACTIVAR ALERTAS
-
-</button>
-
-</div>
-
-
-<div id="alerts">
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     CALENDARIO
-===================================================== -->
-
-<section class="calendar">
-
-<div class="section-title">
-
-<h2>
-📅 CALENDARIO
-</h2>
-
-<small>
-Toca un día
-</small>
-
-</div>
-
-
-<div class="calendar-box">
-
-<div class="calendar-navigation">
-
-<button id="previousMonth">
-◀
-</button>
-
-<div
-    class="month-title"
-    id="monthTitle">
-</div>
-
-<button id="nextMonth">
-▶
-</button>
-
-</div>
-
-
-<div
-    class="weekdays"
-    id="weekdays">
-</div>
-
-
-<div
-    class="calendar-grid"
-    id="calendar">
-</div>
-
-
-<div
-    class="events"
-    id="events">
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     AGREGAR OBLIGACIÓN
-===================================================== -->
-
-<section class="form-section">
-
-<div class="section-title">
-
-<h2>
-➕ AG
+    <!-- Encabezado -->
+    <div class="header">
+        <div class="user-profile">
+            <div class="avatar">JH</div>
+            <div>
+                <h3 style="font-size: 14px;">Juan Carlos Hilario</h3>
+                <p style="font-size: 11px; color: var(--green);">Estado: Al día</p>
+            </div>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()">☀️ / 🌙 Tema</button>
+    </div>
+
+    <!-- Título Desplazado -->
+    <div class="app-title-container">
+        <h1>PAGOS JUAN HILARIO</h1>
+    </div>
+
+    <!-- Dashboard Resumen -->
+    <div class="dashboard-grid">
+        <div class="dash-card">
+            <div class="dash-title">Total Obligaciones</div>
+            <div class="dash-value" id="dashTotalCommitments">RD$ 0</div>
+        </div>
+        <div class="dash-card">
+            <div class="dash-title">Pagos Realizados</div>
+            <div class="dash-value" style="color: var(--green);" id="dashPaidCount">0 %</div>
+        </div>
+    </div>
+
+    <!-- Gráfica de Anillo Interactivas de Pagos -->
+    <div class="chart-section">
+        <h4 style="font-size: 13px; margin-bottom: 10px; color: var(--gold);">📊 Distribución del Presupuesto</h4>
+        <div style="max-width: 200px; margin: 0 auto;">
+            <canvas id="mainChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Frase Motivacional -->
+    <div class="phrase-card" id="motivationPhrase">
+        Cargando mensaje motivacional...
+    </div>
+
+    <!-- Calculadora de Balance -->
+    <div class="calculator-card">
+        <h4 style="font-size: 13px; margin-bottom: 10px; color: var(--gold);">💰 Calculadora de Balance e Ingresos</h4>
+        <div class="calc-inputs">
+            <div>
+                <label style="font-size: 10px; color: var(--subtext-color);">Efectivo Disponible</label>
+                <input type="number" id="cashInput" placeholder="RD$ 0" oninput="calculateBalance()">
+            </div>
+            <div>
+                <label style="font-size: 10px; color: var(--subtext-color);">Cuentas Ahorros</label>
+                <input type="number" id="savingsInput" placeholder="RD$ 0" oninput="calculateBalance()">
+            </div>
+        </div>
+        <div id="balanceStatus" class="balance-status status-positive">
+            Ingresa tus fondos para calcular el balance actual.
+        </div>
+    </div>
+
+    <!-- Alertas en Rojo -->
+    <div class="alerts-section">
+        <div class="alerts-title">🚨 Alertas Próximas a Vencer</div>
+        <div id="alertsList" style="font-size: 12px; line-height: 1.5;">
+            Verificando fechas límite de pago...
+        </div>
+    </div>
+
+    <!-- Scroll Lista de Tarjetas con Bordes Redondeados y Gráficas -->
+    <h3 style="font-size: 15px; margin-bottom: 12px;">Tarjetas de Obligaciones</h3>
+    <div class="scroll-container" id="cardsContainer">
+        <!-- Generado dinámicamente -->
+    </div>
+
+    <!-- Calendario en Tarjetas Horizontales -->
+    <div class="calendar-card">
+        <h4 style="font-size: 13px; margin-bottom: 10px; color: var(--gold);">🗓️ Calendario Resumido de Pagos</h4>
+        <div class="calendar-notes">
+            <div class="note-box"><strong style="color:var(--gold)">Día 02:</strong> Vimenca / Claro</div>
+            <div class="note-box"><strong style="color:var(--gold)">Día 05:</strong> Ademi / Aspire / Qik</div>
+            <div class="note-box"><strong style="color:var(--gold)">Día 09:</strong> Santa Cruz</div>
+            <div class="note-box"><strong style="color:var(--gold)">Día 12/13:</strong> Qik / APAP</div>
+            <div class="note-box"><strong style="color:var(--gold)">Día 15:</strong> Claro / Viva</div>
+            <div class="note-box"><strong style="color:var(--gold)">Día 22/28:</strong> Popular / Aspire</div>
+        </div>
+    </div>
+
+    <!-- Formulario para Agregar Otros (Al final) -->
+    <div class="add-form-card">
+        <h4 style="font-size: 14px; margin-bottom: 12px; color: var(--gold);">➕ Agregar Nuevo Compromiso ("Agregar Otros")</h4>
+        <div class="form-group">
+            <label>Título del Compromiso (Editable)</label>
+            <input type="text" id="newTitle" placeholder="Ej: PRÉSTAMO VEHÍCULO">
+        </div>
+        <div class="form-group">
+            <label>Monto a Pagar (RD$)</label>
+            <input type="number" id="newAmount" placeholder="Ej: 5000">
+        </div>
+        <div class="form-group">
+            <label>Día Límite de Pago del mes</label>
+            <input type="number" id="newPayDay" min="1" max="31" placeholder="Ej: 15">
+        </div>
+        <div class="form-group">
+            <label>Comentario / Nota</label>
+            <input type="text" id="newComment" placeholder="Ej: Transferencia Banco BHD">
+        </div>
+        <button class="btn-submit" onclick="addObligation()">Guardar Obligación</button>
+    </div>
+
+    <audio id="alertSound" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" preload="auto"></audio>
+
+    <script>
+        const positivePhrases = [
+            "Vas muy bien este mes, no le bajes, eres brillante.",
+            "¡Excelente trabajo! Cada peso bien administrado te acerca a tus metas.",
+            "Tu esfuerzo está dando resultados. ¡Mantén el ritmo!",
+            "¡Estás avanzando! La constancia de hoy construye tu tranquilidad de mañana."
+        ];
+
+        const warningPhrases = [
+            "No desmayes, ponte al día, tú puedes, no gaste mucho este mes.",
+            "Estás gastando demasiado este mes. ¡Debes detenerte y controlar tus gastos!",
+            "¡Cuidado! Tus gastos están creciendo más rápido que tus ingresos."
+        ];
+
+        // Datos con las reglas facilitadas
+        let obligations = [
+            { id: 1, title: "1-BANCO ADEMI", cutDay: 13, personalDay: 30, payDay: 5, amount: 12300, comment: "Corte los día 13 hasta 15-30 el día 5", paid: false },
+            { id: 2, title: "2-BANCO POPULAR", cutDay: 28, personalDay: 15, payDay: 22, amount: 24500, comment: "Corte los día 28 hasta 30-15 el día 22", paid: false },
+            { id: 3, title: "3-BANCO VIMENCA", cutDay: 10, personalDay: 30, payDay: 2, amount: 8200, comment: "Corte los día 10 hasta 15-30 el día 02", paid: false },
+            { id: 4, title: "4-BANCO APAP", cutDay: 21, personalDay: 30, payDay: 13, amount: 5000, comment: "Corte los día 21 hasta 30 el día 13", paid: false },
+            { id: 5, title: "COOP ASPIRE", cutDay: 28, personalDay: 30, payDay: 5, amount: 3500, comment: "Pagar todos los días 28, 30 y día final 05", paid: false },
+            { id: 6, title: "BANCO QIK", cutDay: 15, personalDay: 30, payDay: 12, amount: 4000, comment: "Corte los día 15 hasta 30 el día 12", paid: false },
+            { id: 7, title: "BANCO SANTA CRUZ", cutDay: 13, personalDay: 30, payDay: 9, amount: 6500, comment: "Corte los día 13 hasta 30 el día 09", paid: false },
+            { id: 8, title: "PRÉSTAMO BANCO QIK", cutDay: 30, personalDay: 30, payDay: 5, amount: 5500, comment: "Fecha de pago los día 30 los día 05 de cada mes", paid: false },
+            { id: 9, title: "PRÉSTAMO COOP ASPIRÉ", cutDay: 30, personalDay: 30, payDay: 5, amount: 3000, comment: "Fecha de pago los día 30 los día 05 de cada mes", paid: false },
+            { id: 10, title: "CLARO CODETEL", cutDay: 15, personalDay: 30, payDay: 2, amount: 3850, comment: "Fecha de pago los día 15 los día 30 y día 02", paid: false },
+            { id: 11, title: "VIVA", cutDay: 15, personalDay: 15, payDay: 30, amount: 1500, comment: "Fecha de pago los día 15 los día 30", paid: false }
+        ];
+
+        let chartInstance = null;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadMotivationalPhrase();
+            renderCards();
+            checkAlerts();
+            initMainChart();
+            updateDashboard();
+        });
+
+        function toggleTheme() {
+            const body = document.body;
+            if (body.getAttribute("data-theme") === "light") {
+                body.removeAttribute("data-theme");
+            } else {
+                body.setAttribute("data-theme", "light");
+            }
+        }
+
+        function loadMotivationalPhrase() {
+            const list = positivePhrases;
+            const randomIndex = Math.floor(Math.random() * list.length);
+            document.getElementById("motivationPhrase").innerText = `“${list[randomIndex]}”`;
+        }
+
+        function renderCards() {
+            const container = document.getElementById("cardsContainer");
+            container.innerHTML = "";
+            const today = new Date().getDate();
+
+            obligations.forEach((card, index) => {
+                const cardEl = document.createElement("div");
+                cardEl.className = "card";
+
+                // Cálculo de días restantes
+                let daysLeft = card.payDay - today;
+                if (daysLeft < 0) daysLeft += 30; // Ajuste cíclico del mes
+
+                // Porcentaje de avance
+                const percent = card.paid ? 100 : Math.min(100, Math.max(10, Math.round(((30 - daysLeft) / 30) * 100)));
+
+                // Color de la barra de carga según la proximidad
+                let barClass = "border-green";
+                if (daysLeft <= 7 && daysLeft > 2) {
+                    barClass = "border-yellow";
+                } else if (daysLeft <= 2) {
+                    barClass = "border-red";
+                }
+
+                cardEl.innerHTML = `
+                    <div class="card-header-flex" onclick="toggleDetails(${index})">
+                        <input type="text" class="card-title-input" value="${card.title}" onchange="updateTitle(${index}, this.value)" onclick="event.stopPropagation()">
+                        <div class="progress-circle-box">
+                            <canvas id="circle-${index}" width="48" height="48"></canvas>
+                            <span class="progress-text">${percent}%</span>
+                        </div>
+                    </div>
+
+                    <!-- Barra de carga de fecha -->
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill ${barClass}" style="width: ${percent}%;"></div>
+                    </div>
+
+                    <div style="display:flex; justify-between; font-size:12px; font-weight:bold;">
+                        <span>RD$ ${card.amount.toLocaleString()}</span>
+                        <span style="color: ${daysLeft <= 3 ? 'var(--red)' : 'var(--gold)'};">${daysLeft} días restantes</span>
+                    </div>
+
+                    <div class="card-details" id="details-${index}">
+                        <p><strong>Fecha de Corte:</strong> Día ${card.cutDay}</p>
+                        <p><strong>Fecha Personal:</strong> Día ${card.personalDay}</p>
+                        <p><strong>Fecha Límite de Pago:</strong> Día ${card.payDay}</p>
+                        <p><strong>Comentario:</strong> ${card.comment}</p>
+                        <button onclick="togglePaid(${index})" style="margin-top:10px; padding:6px 12px; border:none; border-radius:6px; background:var(--gold); font-weight:bold; cursor:pointer;">
+                            ${card.paid ? 'Marcado como Pagado' : 'Marcar como Pagado'}
+                        </button>
+                    </div>
+                `;
+
+                container.appendChild(cardEl);
+
+                // Dibujar círculo de progreso individual
+                setTimeout(() => drawCircleChart(`circle-${index}`, percent), 50);
+            });
+        }
+
+        function toggleDetails(index) {
+            const details = document.getElementById(`details-${index}`);
+            details.classList.toggle("active");
+        }
+
+        function updateTitle(index, newTitle) {
+            obligations[index].title = newTitle.toUpperCase();
+        }
+
+        function togglePaid(index) {
+            obligations[index].paid = !obligations[index].paid;
+            renderCards();
+            updateDashboard();
+        }
+
+        function drawCircleChart(canvasId, percent) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+            const ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, 48, 48);
+
+            ctx.beginPath();
+            ctx.arc(24, 24, 20, 0, 2 * Math.PI);
+            ctx.strokeStyle = "rgba(255,255,255,0.1)"
