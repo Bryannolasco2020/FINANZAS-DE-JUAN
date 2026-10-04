@@ -3,356 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control Financiero Personal</title>
+    <title>FinanceApp UI</title>
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        :root {
+            --bg-body: #0f172a;
+            --app-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --primary: #4f46e5;
+            --primary-light: #e0e7ff;
+            --accent-gold: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --border: #e2e8f0;
+            --nav-bg: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --app-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --nav-bg: #1e293b;
+        }
+
         * {
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: #f4f6f9;
-            color: #333;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #1e293b;
-        }
-
-        /* Resumen financiero */
-        .summary-cards {
+            background-color: var(--bg-body);
             display: flex;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .card {
-            flex: 1;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            text-align: center;
-        }
-
-        .card h3 {
-            font-size: 0.9rem;
-            color: #64748b;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .card p {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .income-val { color: #10b981; }
-        .expense-val { color: #ef4444; }
-        .balance-val { color: #2563eb; }
-
-        /* Formulario */
-        .form-container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            margin-bottom: 25px;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .form-group {
-            flex: 1;
-            min-width: 150px;
-        }
-
-        label {
-            display: block;
-            font-size: 0.85rem;
-            color: #475569;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        input, select {
-            width: 100%;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             padding: 10px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            outline: none;
         }
 
-        input:focus, select:focus {
-            border-color: #2563eb;
-        }
-
-        button {
-            background: #2563eb;
-            color: white;
-            border: none;
-            padding: 11px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.95rem;
-            margin-top: 22px;
+        /* Marco de Pantalla Móvil */
+        .mobile-frame {
             width: 100%;
-            transition: background 0.2s;
+            max-width: 390px;
+            height: 800px;
+            background-color: var(--app-bg);
+            border-radius: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            border: 8px solid #1e293b;
+            transition: background 0.3s;
         }
 
-        button:hover {
-            background: #1d4ed8;
+        /* Encabezado */
+        .header {
+            padding: 20px 20px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--app-bg);
+            z-index: 10;
         }
 
-        /* Tabla de registros */
-        .history-container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
+        .avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
         }
-
-        th, td {
-            text-align: left;
-            padding: 12px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        th {
-            background-color: #f8fafc;
-            color: #475569;
-            font-size: 0.85rem;
-        }
-
-        .badge {
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        .badge-income { background: #d1fae5; color: #065f46; }
-        .badge-expense { background: #fee2e2; color: #991b1b; }
-
-        .btn-delete {
-            background: #ef4444;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            margin: 0;
-            width: auto;
-        }
-
-        .btn-delete:hover {
-            background: #dc2626;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <h1>Panel de Control Financiero</h1>
-
-    <!-- Tarjetas de resumen -->
-    <div class="summary-cards">
-        <div class="card">
-            <h3>Ingresos Totales</h3>
-            <p class="income-val" id="total-income">$0.00</p>
-        </div>
-        <div class="card">
-            <h3>Gastos Totales</h3>
-            <p class="expense-val" id="total-expense">$0.00</p>
-        </div>
-        <div class="card">
-            <h3>Balance Neto</h3>
-            <p class="balance-val" id="net-balance">$0.00</p>
-        </div>
-    </div>
-
-    <!-- Formulario para agregar registros -->
-    <div class="form-container">
-        <form id="finance-form">
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="date">Fecha</label>
-                    <input type="date" id="date" required>
-                </div>
-                <div class="form-group">
-                    <label for="description">Concepto / Descripción</label>
-                    <input type="text" id="description" placeholder="Ej. Sueldo, Comida" required>
-                </div>
-                <div class="form-group">
-                    <label for="amount">Monto ($)</label>
-                    <input type="number" id="amount" step="0.01" min="0.01" placeholder="0.00" required>
-                </div>
-                <div class="form-group">
-                    <label for="type">Tipo</label>
-                    <select id="type">
-                        <option value="income">Ingreso</option>
-                        <option value="expense">Gasto</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <button type="submit">Agregar Record</button>
-                </div>
-            </div>
-        </form>
-    </div>
-
-    <!-- Tabla de historial -->
-    <div class="history-container">
-        <h3>Historial de Transacciones</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Fecha</th>
-                    <th>Concepto</th>
-                    <th>Tipo</th>
-                    <th>Monto</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody id="transaction-list">
-                <!-- Se poblará dinámicamente con JavaScript -->
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<script>
-    // Recuperar datos almacenados o inicializar arreglo vacío
-    let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
-
-    const form = document.getElementById('finance-form');
-    const transactionList = document.getElementById('transaction-list');
-    const totalIncomeEl = document.getElementById('total-income');
-    const totalExpenseEl = document.getElementById('total-expense');
-    const netBalanceEl = document.getElementById('net-balance');
-
-    // Asignar fecha de hoy por defecto al campo de fecha
-    document.getElementById('date').valueAsDate = new Date();
-
-    // Guardar registros en localStorage
-    function saveToLocalStorage() {
-        localStorage.setItem('transactions', JSON.stringify(transactions));
-    }
-
-    // Formatear números a moneda
-    function formatCurrency(amount) {
-        return '$' + parseFloat(amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-    }
-
-    // Actualizar los valores de las tarjetas principales
-    function updateSummary() {
-        const income = transactions
-            .filter(item => item.type === 'income')
-            .reduce((acc, item) => acc + item.amount, 0);
-
-        const expense = transactions
-            .filter(item => item.type === 'expense')
-            .reduce((acc, item) => acc + item.amount, 0);
-
-        const balance = income - expense;
-
-        totalIncomeEl.textContent = formatCurrency(income);
-        totalExpenseEl.textContent = formatCurrency(expense);
-        netBalanceEl.textContent = formatCurrency(balance);
-    }
-
-    // Renderizar la tabla de transacciones
-    function renderTransactions() {
-        transactionList.innerHTML = '';
-
-        if (transactions.length === 0) {
-            transactionList.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#94a3b8;">No hay registros cargados aún.</td></tr>`;
-            return;
-        }
-
-        transactions.forEach((item, index) => {
-            const row = document.createElement('tr');
-            
-            const isIncome = item.type === 'income';
-            const badgeClass = isIncome ? 'badge-income' : 'badge-expense';
-            const badgeText = isIncome ? 'Ingreso' : 'Gasto';
-
-            row.innerHTML = `
-                <td>${item.date}</td>
-                <td>${item.description}</td>
-                <td><span class="badge ${badgeClass}">${badgeText}</span></td>
-                <td><strong>${formatCurrency(item.amount)}</strong></td>
-                <td><button class="btn-delete" onclick="deleteTransaction(${index})">Eliminar</button></td>
-            `;
-
-            transactionList.appendChild(row);
-        });
-    }
-
-    // Manejar evento de envío de formulario
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const date = document.getElementById('date').value;
-        const description = document.getElementById('description').value;
-        const amount = parseFloat(document.getElementById('amount').value);
-        const type = document.getElementById('type').value;
-
-        const newTransaction = {
-            date,
-            description,
-            amount,
-            type
-        };
-
-        transactions.push(newTransaction);
-        saveToLocalStorage();
-        updateUI();
-
-        // Limpiar campos de texto
-        document.getElementById('description').value = '';
-        document.getElementById('amount').value = '';
-    });
-
-    // Eliminar transacción
-    function deleteTransaction(index) {
-        transactions.splice(index, 1);
-        saveToLocalStorage();
-        updateUI();
-    }
-
-    // Actualizar toda la interfaz de usuario
-    function updateUI() {
-        renderTransactions();
-        updateSummary();
-    }
-
-    // Carga inicial al abrir la página
-    updateUI();
-</script>
-
-</body>
-</html>
