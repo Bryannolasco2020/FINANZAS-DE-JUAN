@@ -3,45 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinanceApp UI</title>
-    <!-- Iconos FontAwesome -->
+    <title>FinanceApp - Control Financiero</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        :root {
-            --bg-body: #0f172a;
-            --app-bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --primary: #4f46e5;
-            --primary-light: #e0e7ff;
-            --accent-gold: #f59e0b;
-            --success: #10b981;
-            --danger: #ef4444;
-            --border: #e2e8f0;
-            --nav-bg: #ffffff;
-        }
-
-        [data-theme="dark"] {
-            --app-bg: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: #334155;
-            --nav-bg: #1e293b;
-        }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: var(--bg-body);
+            background-color: #0f172a;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -49,29 +24,26 @@
             padding: 10px;
         }
 
-        /* Marco de Pantalla Móvil */
         .mobile-frame {
             width: 100%;
             max-width: 390px;
             height: 800px;
-            background-color: var(--app-bg);
-            border-radius: 40px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            background-color: #f8fafc;
+            border-radius: 36px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
             display: flex;
             flex-direction: column;
             position: relative;
             overflow: hidden;
-            border: 8px solid #1e293b;
-            transition: background 0.3s;
+            border: 6px solid #334155;
         }
 
-        /* Encabezado */
         .header {
             padding: 20px 20px 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: var(--app-bg);
+            background-color: #f8fafc;
             z-index: 10;
         }
 
@@ -85,5 +57,452 @@
             width: 42px;
             height: 42px;
             border-radius: 50%;
+            background: #cbd5e1;
             object-fit: cover;
         }
+
+        .user-info h4 { font-size: 14px; color: #0f172a; }
+        .user-info p { font-size: 11px; color: #64748b; }
+
+        .icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .badge-dot {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 8px;
+            height: 8px;
+            background-color: #ef4444;
+            border-radius: 50%;
+        }
+
+        .content-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px 20px 90px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .content-body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .view-section {
+            display: none;
+        }
+
+        .view-section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 18px 0 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title span {
+            font-size: 12px;
+            color: #4f46e5;
+            cursor: pointer;
+        }
+
+        .balance-card {
+            background: linear-gradient(135deg, #4f46e5, #3b82f6);
+            border-radius: 20px;
+            padding: 20px;
+            color: white;
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+            margin-bottom: 15px;
+        }
+
+        .balance-card .label { font-size: 12px; opacity: 0.85; }
+        .balance-card .amount { font-size: 26px; font-weight: 800; margin: 6px 0 15px; }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .horizontal-scroll {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar { display: none; }
+
+        .category-item {
+            min-width: 72px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 12px 6px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .category-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: #e0e7ff;
+            color: #4f46e5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 6px;
+            font-size: 15px;
+        }
+
+        .category-item span {
+            font-size: 11px;
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .card-item {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 14px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .item-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .item-info h5 { font-size: 13px; color: #0f172a; }
+        .item-info p { font-size: 11px; color: #64748b; }
+
+        .item-right { text-align: right; }
+        .item-amount { font-size: 13px; font-weight: 700; }
+        .amount-danger { color: #ef4444; }
+        .amount-success { color: #10b981; }
+
+        .form-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+
+        .form-box input, .form-box select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            background: #f8fafc;
+            color: #0f172a;
+            outline: none;
+            font-size: 13px;
+        }
+
+        .btn-action {
+            width: 100%;
+            padding: 11px;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .nav-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 65px;
+            background: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 5px;
+            z-index: 20;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #94a3b8;
+            font-size: 10px;
+            cursor: pointer;
+            gap: 4px;
+            width: 20%;
+        }
+
+        .nav-item i { font-size: 17px; }
+        .nav-item.active { color: #4f46e5; font-weight: 700; }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-frame">
+        <div class="header">
+            <div class="user-info">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" class="avatar" alt="User">
+                <div>
+                    <h4>Juan Hilario 👋</h4>
+                    <p>Activo hoy</p>
+                </div>
+            </div>
+            <div class="icon-btn" onclick="switchTab('tab-notifications', document.querySelectorAll('.nav-item')[3])">
+                <i class="fa-regular fa-bell"></i>
+                <div class="badge-dot"></div>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <!-- INICIO -->
+            <div id="tab-home" class="view-section active">
+                <div class="balance-card">
+                    <div class="label">Saldo Disponible</div>
+                    <div class="amount" id="home-balance">$12,450.00</div>
+                    <div class="card-footer">
+                        <span>VISA •••• 4829</span>
+                        <span>Exp: 12/28</span>
+                    </div>
+                </div>
+
+                <div class="section-title">Acciones Rápidas</div>
+                <div class="horizontal-scroll">
+                    <div class="category-item" onclick="alert('Abriendo sección: Enviar')">
+                        <div class="category-icon"><i class="fa-solid fa-paper-plane"></i></div>
+                        <span>Enviar</span>
+                    </div>
+                    <div class="category-item" onclick="alert('Abriendo sección: Recarga')">
+                        <div class="category-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                        <span>Recarga</span>
+                    </div>
+                    <div class="category-item" onclick="alert('Abriendo sección: Facturas')">
+                        <div class="category-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                        <span>Facturas</span>
+                    </div>
+                    <div class="category-item" onclick="alert('Abriendo sección: Crédito')">
+                        <div class="category-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                        <span>Crédito</span>
+                    </div>
+                </div>
+
+                <div class="section-title">
+                    <span>Transacciones</span>
+                    <span onclick="switchTab('tab-wallet', document.querySelectorAll('.nav-item')[1])">Ver todo</span>
+                </div>
+
+                <div id="recent-list"></div>
+
+                <div class="section-title">Nuevo Movimiento</div>
+                <div class="form-box">
+                    <input type="text" id="tx-desc" placeholder="Concepto (Ej. Supermercado)">
+                    <input type="number" id="tx-amount" placeholder="Monto ($)">
+                    <select id="tx-type">
+                        <option value="expense">Gasto</option>
+                        <option value="income">Ingreso</option>
+                    </select>
+                    <button class="btn-action" onclick="addTransaction()">Registrar</button>
+                </div>
+            </div>
+
+            <!-- BILLETERA -->
+            <div id="tab-wallet" class="view-section">
+                <div class="section-title">Mis Tarjetas</div>
+                <div class="balance-card" style="background: linear-gradient(135deg, #0f172a, #334155);">
+                    <div class="label">Tarjeta Principal</div>
+                    <div class="amount">$8,300.00</div>
+                    <div class="card-footer">
+                        <span>MASTERCARD</span>
+                        <span>•••• 6240</span>
+                    </div>
+                </div>
+                <div class="section-title">Historial Completo</div>
+                <div id="full-history-list"></div>
+            </div>
+
+            <!-- METAS -->
+            <div id="tab-goals" class="view-section">
+                <div class="section-title">Metas de Ahorro</div>
+                <div class="card-item">
+                    <div class="card-left">
+                        <div class="item-icon" style="background:#fef3c7; color:#d97706;"><i class="fa-solid fa-car"></i></div>
+                        <div class="item-info"><h5>Vehículo Nuevo</h5><p>Meta: $15,000</p></div>
+                    </div>
+                    <div class="item-right"><span class="item-amount amount-success">$6,200</span></div>
+                </div>
+                <div class="card-item">
+                    <div class="card-left">
+                        <div class="item-icon" style="background:#e0e7ff; color:#4f46e5;"><i class="fa-solid fa-plane"></i></div>
+                        <div class="item-info"><h5>Vacaciones</h5><p>Meta: $3,000</p></div>
+                    </div>
+                    <div class="item-right"><span class="item-amount amount-success">$1,850</span></div>
+                </div>
+            </div>
+
+            <!-- NOTIFICACIONES -->
+            <div id="tab-notifications" class="view-section">
+                <div class="section-title">Notificaciones</div>
+                <div class="card-item">
+                    <div class="card-left">
+                        <div class="item-icon" style="background:#d1fae5; color:#10b981;"><i class="fa-solid fa-circle-check"></i></div>
+                        <div class="item-info"><h5>Pago Recibido</h5><p>Nómina agregada con éxito</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AJUSTES -->
+            <div id="tab-settings" class="view-section">
+                <div class="section-title">Ajustes</div>
+                <div class="card-item" onclick="alert('Configuración de cuenta abierta.')" style="cursor:pointer;">
+                    <div class="card-left">
+                        <div class="item-icon" style="background:#e0f2fe; color:#0284c7;"><i class="fa-solid fa-user-gear"></i></div>
+                        <div class="item-info"><h5>Perfil de Usuario</h5><p>Juan Carlos Hilario</p></div>
+                    </div>
+                    <div class="item-right"><i class="fa-solid fa-chevron-right" style="color:#94a3b8;"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BARRA INFERIOR -->
+        <div class="nav-bar">
+            <div class="nav-item active" onclick="switchTab('tab-home', this)">
+                <i class="fa-solid fa-house"></i><span>Inicio</span>
+            </div>
+            <div class="nav-item" onclick="switchTab('tab-wallet', this)">
+                <i class="fa-solid fa-wallet"></i><span>Billetera</span>
+            </div>
+            <div class="nav-item" onclick="switchTab('tab-goals', this)">
+                <i class="fa-solid fa-heart"></i><span>Metas</span>
+            </div>
+            <div class="nav-item" onclick="switchTab('tab-notifications', this)">
+                <i class="fa-solid fa-bell"></i><span>Avisos</span>
+            </div>
+            <div class="nav-item" onclick="switchTab('tab-settings', this)">
+                <i class="fa-solid fa-gear"></i><span>Ajustes</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let transactions = [
+            { id: 1, title: "Netflix", category: "Entretenimiento", amount: -15.99, icon: "fa-film", color: "#fee2e2", iconColor: "#ef4444" },
+            { id: 2, title: "Nómina", category: "Ingreso", amount: 1200.00, icon: "fa-wallet", color: "#d1fae5", iconColor: "#10b981" },
+            { id: 3, title: "Supermercado", category: "Compras", amount: -84.50, icon: "fa-cart-shopping", color: "#fef3c7", iconColor: "#d97706" }
+        ];
+        let totalBalance = 12450.00;
+
+        function renderTransactions() {
+            const recentContainer = document.getElementById("recent-list");
+            const fullContainer = document.getElementById("full-history-list");
+            recentContainer.innerHTML = "";
+            fullContainer.innerHTML = "";
+
+            transactions.forEach(item => {
+                const isExpense = item.amount < 0;
+                const formattedAmount = (isExpense ? "-$" : "+$") + Math.abs(item.amount).toFixed(2);
+                const amountClass = isExpense ? "amount-danger" : "amount-success";
+
+                const html = `
+                    <div class="card-item">
+                        <div class="card-left">
+                            <div class="item-icon" style="background:${item.color}; color:${item.iconColor};">
+                                <i class="fa-solid ${item.icon}"></i>
+                            </div>
+                            <div class="item-info">
+                                <h5>${item.title}</h5>
+                                <p>${item.category}</p>
+                            </div>
+                        </div>
+                        <div class="item-right">
+                            <span class="item-amount ${amountClass}">${formattedAmount}</span>
+                        </div>
+                    </div>
+                `;
+                recentContainer.innerHTML += html;
+                fullContainer.innerHTML += html;
+            });
+            document.getElementById("home-balance").innerText = "$" + totalBalance.toLocaleString("en-US", {minimumFractionDigits: 2});
+        }
+
+        function addTransaction() {
+            const desc = document.getElementById("tx-desc").value.trim();
+            const amount = parseFloat(document.getElementById("tx-amount").value);
+            const type = document.getElementById("tx-type").value;
+
+            if (!desc || isNaN(amount) || amount <= 0) {
+                alert("Ingresa un concepto y un monto válido.");
+                return;
+            }
+
+            const finalAmount = type === "expense" ? -amount : amount;
+            totalBalance += finalAmount;
+            transactions.unshift({
+                id: Date.now(),
+                title: desc,
+                category: type === "expense" ? "Gasto" : "Ingreso",
+                amount: finalAmount,
+                icon: type === "expense" ? "fa-arrow-down" : "fa-arrow-up",
+                color: type === "expense" ? "#fee2e2" : "#d1fae5",
+                iconColor: type === "expense" ? "#ef4444" : "#10b981"
+            });
+
+            document.getElementById("tx-desc").value = "";
+            document.getElementById("tx-amount").value = "";
+            renderTransactions();
+        }
+
+        function switchTab(tabId, element) {
+            document.querySelectorAll(".view-section").forEach(sec => sec.classList.remove("active"));
+            document.getElementById(tabId).classList.add("active");
+            if (element) {
+                document.querySelectorAll(".nav-item").querySelectorAll ? document.querySelectorAll(".nav-item").forEach(item => item.classList.remove("active")) : '';
+                document.querySelectorAll(".nav-item").forEach(item => item.classList.remove("active"));
+                element.classList.add("active");
+            }
+        }
+
+        renderTransactions();
+    </script>
+</body>
+</html>
