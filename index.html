@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finanzas de Juan</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #0F111A; color: #FFFFFF; padding: 20px; min-height: 100vh; }
+        
+        /* Encabezado */
+        .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+        .user-profile { display: flex; align-items: center; }
+        .avatar { width: 48px; height: 48px; background: linear-gradient(135deg, #D4AF37, #F59E0B); color: #0F111A; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px; margin-right: 12px; }
+        .user-info h2 { font-size: 18px; font-weight: bold; }
+        .user-info p { font-size: 12px; color: #10B981; }
+
+        /* Tarjeta Principal de Patrimonio */
+        .card-patrimony { background: linear-gradient(180deg, #2C2405 0%, #1B1E2B 100%); border-radius: 20px; padding: 22px; margin-bottom: 20px; border: 1px solid rgba(212, 175, 55, 0.2); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+        .card-patrimony .label { font-size: 12px; color: #9CA3AF; }
+        .card-patrimony .amount { font-size: 28px; font-weight: bold; color: #D4AF37; margin: 8px 0 16px 0; }
+        .stats-row { display: flex; justify-content: space-between; }
+        .stat-item .val-income { color: #10B981; font-weight: bold; font-size: 14px; }
+        .stat-item .val-expense { color: #EF4444; font-weight: bold; font-size: 14px; }
+
+        /* Progreso de Pagos */
+        .card-progress { background-color: #1B1E2B; border-radius: 16px; padding: 18px; margin-bottom: 24px; border: 1px solid #2A2E3D; }
+        .progress-bar-bg { background-color: #374151; height: 10px; border-radius: 5px; margin-top: 10px; overflow: hidden; }
+        .progress-bar-fill { background-color: #10B981; height: 100%; width: 75%; transition: width 0.3s ease; }
+
+        /* Secciones y Tarjetas */
+        .section-title { font-size: 18px; font-weight: bold; margin-bottom: 14px; color: #F9FAFB; }
+        .account-card { background-color: #1B1E2B; border-radius: 14px; padding: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #2A2E3D; }
+        .account-info h4 { font-size: 15px; margin-bottom: 4px; color: #FFFFFF; }
+        .account-info p { font-size: 12px; color: #9CA3AF; }
+        .account-info .price { font-size: 14px; color: #D4AF37; font-weight: bold; margin-top: 6px; }
+
+        /* Controles interactivos */
+        .checkbox-custom { width: 22px; height: 22px; accent-color: #10B981; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <div class="header">
+        <div class="user-profile">
+            <div class="avatar">JH</div>
+            <div class="user-info">
+                <h2>Hola, Juan Carlos</h2>
+                <p>Finanzas de Juan • Activa</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjeta Principal -->
+    <div class="card-patrimony">
+        <div class="label">Patrimonio Total Estimado</div>
+        <div class="amount">RD$ 4,850,230.00</div>
+        <div class="stats-row">
+            <div class="stat-item">
+                <div class="label">Ingresos del Mes</div>
+                <div class="val-income">+RD$ 185,000</div>
+            </div>
+            <div class="stat-item">
+                <div class="label">Gastos del Mes</div>
+                <div class="val-expense">-RD$ 62,400</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Estado de Pagos con Progreso -->
+    <div class="card-progress">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 14px; font-weight: bold;">Estado de Pagos del Mes (75%)</span>
+            <span style="font-size: 12px; color: #9CA3AF;">3 de 4 completados</span>
+        </div>
+        <div class="progress-bar-bg">
+            <div class="progress-bar-fill"></div>
+        </div>
+    </div>
+
+    <!-- Lista de Compromisos -->
+    <div class="section-title">Cuentas & Compromisos</div>
+
+    <div class="account-card">
+        <div class="account-info">
+            <h4>Tarjeta Banco Popular</h4>
+            <p>Corte el 28 • Vence el 22</p>
+            <div class="price">RD$ 24,500.00</div>
+        </div>
+        <input type="checkbox" class="checkbox-custom" checked>
+    </div>
+
+    <div class="account-card">
+        <div class="account-info">
+            <h4>Préstamo Banco Ademi</h4>
+            <p>Cuota mensual fija</p>
+            <div class="price">RD$ 12,300.00</div>
+        </div>
+        <input type="checkbox" class="checkbox-custom">
+    </div>
+
+    <div class="account-card">
+        <div class="account-info">
+            <h4>Servicio Claro Codetel</h4>
+            <p>Vencimiento día 15</p>
+            <div class="price">RD$ 3,850.00</div>
+        </div>
+        <input type="checkbox" class="checkbox-custom">
+    </div>
+
+    <div class="account-card">
+        <div class="account-info">
+            <h4>Tarjeta Banco Vimenca</h4>
+            <p>Corte el 10 • Vence el 02</p>
+            <div class="price">RD$ 8,200.00</div>
+        </div>
+        <input type="checkbox" class="checkbox-custom" checked>
+    </div>
+
+</body>
+</html>
