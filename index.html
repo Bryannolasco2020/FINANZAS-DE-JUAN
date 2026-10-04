@@ -1,339 +1,1528 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAGOS JUAN HILARIO</title>
-    <style>
-        :root {
-            --bg-color: #0F111A;
-            --card-bg: #1B1E2B;
-            --text-color: #FFFFFF;
-            --subtext-color: #9CA3AF;
-            --border-color: #2A2E3D;
-            --gold: #D4AF37;
-            --green: #10B981;
-            --yellow: #F59E0B;
-            --red: #EF4444;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1f3a">
+<title>PAGOS JUAN HILARIO</title>
 
-        .light-theme {
-            --bg-color: #F3F4F6;
-            --card-bg: #FFFFFF;
-            --text-color: #111827;
-            --subtext-color: #4B5563;
-            --border-color: #E5E7EB;
-        }
+<style>
+/* =========================================================
+   PAGOS JUAN HILARIO
+   PARTE 1 DE 4
+   ========================================================= */
 
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            transition: background-color 0.3s, color 0.3s; 
-        }
+:root {
+    --primary: #0b1f3a;
+    --primary-light: #163b68;
+    --accent: #1d7a46;
 
-        body { 
-            background-color: var(--bg-color); 
-            color: var(--text-color); 
-            padding: 20px; 
-            padding-top: 40px; 
-            min-height: 100vh; 
-        }
+    --background: #f4f7fb;
+    --card: #ffffff;
+    --text: #17202a;
+    --muted: #667085;
+    --border: #dce3eb;
 
-        /* Encabezado y Título Desplazado */
-        .header { 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            margin-bottom: 20px; 
-        }
-        .user-profile { 
-            display: flex; 
-            align-items: center; 
-        }
-        .avatar { 
-            width: 44px; 
-            height: 44px; 
-            background: linear-gradient(135deg, var(--gold), #F59E0B); 
-            color: #0F111A; 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-weight: bold; 
-            font-size: 16px; 
-            margin-right: 12px; 
-        }
-        .app-title-container { 
-            margin-top: 25px; 
-            margin-bottom: 20px; 
-            text-align: center; 
-        }
-        .app-title-container h1 { 
-            font-size: 24px; 
-            font-weight: 800; 
-            color: var(--gold); 
-            letter-spacing: 1px; 
-        }
+    --green: #2e9b59;
+    --green-light: #e8f6ed;
 
-        /* Botón Tema */
-        .theme-toggle { 
-            background: var(--card-bg); 
-            border: 1px solid var(--border-color); 
-            color: var(--text-color); 
-            padding: 8px 14px; 
-            border-radius: 20px; 
-            cursor: pointer; 
-            font-size: 12px; 
-            font-weight: bold; 
-        }
+    --yellow: #e0a800;
+    --yellow-light: #fff7d6;
 
-        /* Frase Motivacional */
-        .phrase-card { 
-            background: var(--card-bg); 
-            border-left: 4px solid var(--gold); 
-            border-radius: 12px; 
-            padding: 14px; 
-            margin-bottom: 20px; 
-            font-style: italic; 
-            font-size: 13px; 
-            line-height: 1.4; 
-            border-top: 1px solid var(--border-color); 
-            border-right: 1px solid var(--border-color); 
-            border-bottom: 1px solid var(--border-color); 
-        }
+    --red: #d93025;
+    --red-light: #fde9e7;
 
-        /* Calculadora de Balance */
-        .calculator-card { 
-            background: var(--card-bg); 
-            border-radius: 16px; 
-            padding: 18px; 
-            margin-bottom: 20px; 
-            border: 1px solid var(--border-color); 
-        }
-        .calc-inputs { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 10px; 
-            margin-bottom: 12px; 
-        }
-        .calc-inputs input { 
-            background: rgba(0,0,0,0.1); 
-            border: 1px solid var(--border-color); 
-            color: var(--text-color); 
-            padding: 10px; 
-            border-radius: 8px; 
-            font-size: 13px; 
-            width: 100%; 
-        }
-        .balance-status { 
-            font-size: 13px; 
-            font-weight: bold; 
-            margin-top: 8px; 
-            padding: 12px; 
-            border-radius: 8px; 
-            text-align: center; 
-        }
-        .status-positive { 
-            background: rgba(16, 185, 129, 0.15); 
-            color: var(--green); 
-            border: 1px solid var(--green); 
-        }
-        .status-negative { 
-            background: rgba(239, 68, 68, 0.15); 
-            color: var(--red); 
-            border: 1px solid var(--red); 
-        }
+    --shadow:
+        0 4px 15px rgba(0, 0, 0, 0.08);
 
-        /* Sección Alertas Destacada en ROJO */
-        .alerts-section { 
-            background: rgba(239, 68, 68, 0.12); 
-            border: 2px solid var(--red); 
-            border-radius: 16px; 
-            padding: 16px; 
-            margin-bottom: 20px; 
-            box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
-        }
-        .alerts-title { 
-            color: var(--red); 
-            font-weight: bold; 
-            font-size: 15px; 
-            margin-bottom: 10px; 
-            display: flex; 
-            align-items: center; 
-            gap: 6px; 
-        }
+    --radius: 16px;
+}
 
-        /* Lista de Tarjetas con Scroll */
-        .scroll-container { 
-            max-height: 480px; 
-            overflow-y: auto; 
-            padding-right: 4px; 
-            margin-bottom: 24px; 
-        }
-        .scroll-container::-webkit-scrollbar { width: 5px; }
-        .scroll-container::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        .card { 
-            background: var(--card-bg); 
-            border-radius: 16px; 
-            padding: 16px; 
-            margin-bottom: 14px; 
-            border: 1px solid var(--border-color); 
-            position: relative; 
-            overflow: hidden; 
-            cursor: pointer;
-        }
-        .card::before { 
-            content: ''; 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 6px; 
-            height: 100%; 
-        }
-        
-        /* Modos de Urgencia con Desvanecido */
-        .status-green::before { background-color: var(--green); }
-        .status-green { background: linear-gradient(90deg, rgba(16, 185, 129, 0.12) 0%, var(--card-bg) 100%); }
-        .status-yellow::before { background-color: var(--yellow); }
-        .status-yellow { background: linear-gradient(90deg, rgba(245, 158, 11, 0.15) 0%, var(--card-bg) 100%); }
-        .status-red::before { background-color: var(--red); }
-        .status-red { background: linear-gradient(90deg, rgba(239, 68, 68, 0.18) 0%, var(--card-bg) 100%); }
+html {
+    scroll-behavior: smooth;
+}
 
-        .card-header { display: flex; justify-content: space-between; align-items: center; }
-        .card-title { font-size: 15px; font-weight: bold; }
-        .card-details { 
-            display: none; 
-            margin-top: 12px; 
-            padding-top: 12px; 
-            border-top: 1px solid var(--border-color); 
-            font-size: 12px; 
-            color: var(--subtext-color); 
-            line-height: 1.6;
-        }
-        .card-details.active { display: block; }
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-        /* Calendario */
-        .calendar-card { 
-            background: var(--card-bg); 
-            border-radius: 16px; 
-            padding: 16px; 
-            margin-bottom: 24px; 
-            border: 1px solid var(--border-color); 
-        }
-        .calendar-header { font-weight: bold; margin-bottom: 12px; font-size: 15px; color: var(--gold); }
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; font-size: 11px; }
-        .day-name { font-weight: bold; color: var(--subtext-color); padding-bottom: 6px; }
-        .day-cell { padding: 8px 2px; border-radius: 6px; background: rgba(0,0,0,0.05); }
-        .day-cell.active-pay { background: var(--gold); color: #000; font-weight: bold; }
+    background: var(--background);
+    color: var(--text);
 
-        .calendar-notes { display: flex; gap: 10px; overflow-x: auto; padding-top: 14px; padding-bottom: 4px; }
-        .note-box { 
-            min-width: 170px; 
-            background: rgba(0,0,0,0.12); 
-            border: 1px solid var(--border-color); 
-            border-radius: 10px; 
-            padding: 10px; 
-            font-size: 11px; 
-            flex-shrink: 0; 
-        }
+    min-height: 100vh;
 
-        /* Formulario Agregar (Ubicado al final) */
-        .add-form-card { 
-            background: var(--card-bg); 
-            border-radius: 16px; 
-            padding: 18px; 
-            border: 1px solid var(--border-color); 
-            margin-top: 20px; 
-            margin-bottom: 30px;
-        }
-        .form-group { margin-bottom: 10px; }
-        .form-group label { display: block; font-size: 11px; color: var(--subtext-color); margin-bottom: 4px; }
-        .form-group input, .form-group select { 
-            width: 100%; 
-            padding: 10px; 
-            background: rgba(0,0,0,0.1); 
-            border: 1px solid var(--border-color); 
-            color: var(--text-color); 
-            border-radius: 8px; 
-            font-size: 13px; 
-        }
-        .btn-submit { 
-            width: 100%; 
-            background: var(--gold); 
-            color: #000; 
-            border: none; 
-            padding: 12px; 
-            border-radius: 8px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            margin-top: 10px; 
-        }
-    </style>
-</head>
-   <script>
-        // Arreglo completo de frases motivacionales positivas
-        const positivePhrases = [
-            "Vas muy bien este mes, no le bajes, eres brillante.",
-            "Vas muy bien este mes. ¡Sigue así y alcanzarás tus objetivos muy pronto!",
-            "¡Excelente trabajo! Cada peso bien administrado te acerca a tus metas.",
-            "Tu esfuerzo está dando resultados. ¡Mantén el ritmo!",
-            "¡Estás avanzando! La constancia de hoy construye tu tranquilidad financiera de mañana.",
-            "Cada pequeño ahorro cuenta. ¡No te detengas ahora!",
-            "¡Muy buen progreso! Estás tomando el control de tus finanzas.",
-            "Si mantienes este ritmo, estarás más cerca de tu meta de lo que imaginas.",
-            "¡Lo estás haciendo muy bien! Tus decisiones financieras están marcando la diferencia.",
-            "Tu futuro financiero se construye con las decisiones que tomas hoy. ¡Sigue adelante!",
-            "¡Meta en camino! Cada día estás un paso más cerca de conseguirla.",
-            "Has avanzado bastante. ¡Ahora solo necesitas mantener la disciplina!",
-            "¡Buen trabajo! Estás convirtiendo tus objetivos financieros en resultados.",
-            "Cada peso que administras bien es un paso hacia una mayor libertad financiera.",
-            "¡No bajes el ritmo! Tu constancia puede llevarte mucho más lejos.",
-            "Estás creando buenos hábitos financieros. ¡Sigue construyendo!",
-            "¡Tu progreso habla por ti! Mantén el enfoque y continúa avanzando.",
-            "Hoy estás más cerca de tu objetivo que ayer. ¡Sigue sumando!",
-            "¡Vas por buen camino! La disciplina financiera tiene grandes recompensas.",
-            "Tus metas son posibles. Organiza, ahorra y avanza un día a la vez."
-        ];
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
 
-        // Arreglo completo de frases de advertencia y atraso
-        const warningPhrases = [
-            "No desmayes, ponte al día, tú puedes, no gaste mucho este mes, manéjate bien.",
-            "Estás gastando demasiado este mes. ¡Debes detenerte y controlar tus gastos!",
-            "¡Cuidado! Tus gastos están creciendo más rápido que tus ingresos.",
-            "Estás perdiendo el control de tu presupuesto. ¡Es momento de frenar!",
-            "Si continúas gastando así, podrías poner en riesgo tus metas financieras.",
-            "¡Alerta! Ya has superado el límite de gastos que estableciste.",
-            "No gastes por impulso. Antes de comprar, pregúntate si realmente lo necesitas.",
-            "Tu dinero se está yendo demasiado rápido. ¡Necesitas tomar el control!",
-            "¡Detente un momento! Tus gastos de este mes están por encima de lo recomendable.",
-            "Cuidado con los pequeños gastos. Juntos pueden convertirse en un gran problema.",
-            "Estás comprometiendo demasiado de tus ingresos. ¡Reduce tus gastos ahora!",
-            "¡No ignores esta señal! Tu presupuesto necesita atención.",
-            "Si sigues gastando al mismo ritmo, podrías quedarte corto antes de terminar el mes.",
-            "Tu meta financiera se está alejando. ¡Es hora de revisar tus gastos!",
-            "Necesitas controlar tus compras. Tu bolsillo también tiene un límite.",
-            "¡Alerta de presupuesto! Has gastado más de lo que deberías hasta ahora.",
-            "No dependas de futuros ingresos para cubrir gastos de hoy. ¡Organízate mejor!",
-            "Cada gasto innecesario te aleja un poco más de tus objetivos. ¡Piensa antes de gastar!",
-            "¡Cuidado! Si no reduces tus gastos, podrías terminar el mes con dificultades.",
-            "Tu dinero necesita dirección. ¡Reduce los gastos y vuelve a enfocarte en tus prioridades!",
-            "Nadie cuidará tus finanzas por ti. ¡Toma el control antes de que sea demasiado tarde!"
-        ];
+body.dark-mode {
+    --background: #101722;
+    --card: #182331;
+    --text: #f1f5f9;
+    --muted: #aab4c0;
+    --border: #2d3a49;
 
-        // Lista completa de tarjetas y compromisos financieros registrados
-        let obligations = [
-            { id: 1, title: "1-BANCO ADEMI", cutDay: 13, payDay: 5, range: "15-30 el Día 5", amount: 12300, color: "#10B981", comment: "Préstamo / Tarjeta - Cuota fija" },
-            { id: 2, title: "2-BANCO POPULAR", cutDay: 28, payDay: 22, range: "30-15 el Día 22", amount: 24500, color: "#3B82F6", comment: "Corte el 28 de cada mes" },
-            { id: 3, title: "3-BANCO VIMENCA", cutDay: 10, payDay: 2, range: "15-30 el Día 02", amount: 8200, color: "#6366F1", comment: "Corte el 10 de cada mes" },
-            { id: 4, title: "4-BANCO APAP", cutDay: 21, payDay: 13, range: "30 el Día 13", amount: 5000, color: "#F59E0B", comment: "Tarjeta de crédito APAP" },
-            { id: 5, title: "COOP ASPIRE", cutDay: 28, payDay: 5, range: "Pagar 28, 30 y Día final 05", amount: 3500, color: "#10B981", comment: "Ahorro / Préstamo mensual" },
-            { id: 6, title: "Banco QIK", cutDay: 15, payDay: 12, range: "30 el Día 12", amount: 4000, color: "#06B6D4", comment: "Corte el 15 de cada mes" },
-            { id: 7, title: "BANCO SANTA CRUZ", cutDay: 13, payDay: 9, range: "30 el Día 09", amount: 6500, color: "#3B82F6", comment: "Corte el 13 de cada mes" },
-            { id: 8, title: "Préstamo Banco QIK", cutDay: 30, payDay: 5, range: "30 y 05 de cada mes", amount: 5500, color: "#10B981", comment: "Cuota fija mensual" },
-            { id: 9, title: "Préstamo Coop Aspiré", cutDay: 30, payDay: 5, range: "30 y 05 de cada mes", amount: 3000, color: "#10B981", comment: "Cuota fija mensual" },
-            { id: 10, title: "CLARO CODETEL", cutDay: 15, payDay: 2, range: "Días 15, 30 y Día 02", amount: 3850, color: "#EF4444", comment: "Servicio de Internet y Móvil" },
-            { id: 11, title: "VIVA", cutDay: 15, payDay: 30, range: "Días 15 y Día 30", amount: 1500, color: "#10B981", comment: "Línea celular de comunicación" }
-        ];
+    --green-light: #173a27;
+    --yellow-light: #443a14;
+    --red-light: #401d1a;
+
+    --shadow:
+        0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+   ========================================================= */
+
+.app-container {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* =========================================================
+   ENCABEZADO
+   ========================================================= */
+
+.header {
+    position: relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-light)
+        );
+
+    color: white;
+
+    border-radius: var(--radius);
+
+    padding: 28px 22px 22px;
+
+    margin-bottom: 18px;
+
+    box-shadow: var(--shadow);
+
+    text-align: center;
+}
+
+.header h1 {
+    font-size: clamp(1.5rem, 5vw, 2.3rem);
+
+    letter-spacing: 0.5px;
+
+    margin-top: 10px;
+
+    line-height: 1.2;
+}
+
+.header p {
+    margin-top: 8px;
+
+    opacity: 0.85;
+
+    font-size: 0.9rem;
+}
+
+/* =========================================================
+   BOTÓN MODO OSCURO / CLARO
+   ========================================================= */
+
+.theme-toggle {
+    position: absolute;
+
+    top: 14px;
+    right: 14px;
+
+    border: 1px solid rgba(255,255,255,0.25);
+
+    background: rgba(255,255,255,0.12);
+
+    color: white;
+
+    border-radius: 50px;
+
+    padding: 8px 12px;
+
+    cursor: pointer;
+
+    font-size: 0.82rem;
+
+    transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+    background: rgba(255,255,255,0.22);
+}
+
+.theme-toggle:active {
+    transform: scale(0.96);
+}
+
+/* =========================================================
+   RESUMEN FINANCIERO
+   ========================================================= */
+
+.financial-summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+.summary-card {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    padding: 17px;
+
+    box-shadow: var(--shadow);
+
+    transition:
+        transform 0.2s ease,
+        background 0.3s ease;
+}
+
+.summary-card:hover {
+    transform: translateY(-2px);
+}
+
+.summary-card .label {
+    color: var(--muted);
+
+    font-size: 0.78rem;
+
+    margin-bottom: 7px;
+}
+
+.summary-card .value {
+    font-size: 1.25rem;
+
+    font-weight: 700;
+}
+
+.summary-card.positive {
+    border-left: 5px solid var(--green);
+}
+
+.summary-card.negative {
+    border-left: 5px solid var(--red);
+}
+
+/* =========================================================
+   FEEDBACK FINANCIERO
+   ========================================================= */
+
+.feedback-box {
+    background: var(--card);
+
+    border-radius: var(--radius);
+
+    border: 1px solid var(--border);
+
+    padding: 18px;
+
+    margin-bottom: 20px;
+
+    box-shadow: var(--shadow);
+
+    text-align: center;
+}
+
+.feedback-box h2 {
+    font-size: 1rem;
+
+    margin-bottom: 8px;
+}
+
+.feedback-message {
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    line-height: 1.5;
+}
+
+.feedback-positive {
+    color: var(--green);
+}
+
+.feedback-negative {
+    color: var(--red);
+}
+
+/* =========================================================
+   TITULOS DE SECCIONES
+   ========================================================= */
+
+.section-title {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin: 22px 0 12px;
+}
+
+.section-title h2 {
+    font-size: 1.15rem;
+}
+
+.section-title small {
+    color: var(--muted);
+
+    font-size: 0.75rem;
+}
+
+/* =========================================================
+   CONTENEDOR DE OBLIGACIONES
+   ========================================================= */
+
+.obligations-container {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    max-height: 650px;
+
+    overflow-y: auto;
+
+    padding: 3px;
+
+    scrollbar-width: thin;
+}
+
+.obligations-container::-webkit-scrollbar {
+    width: 7px;
+}
+
+.obligations-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.obligations-container::-webkit-scrollbar-thumb {
+    background: #9ba8b7;
+
+    border-radius: 20px;
+}
+
+/* =========================================================
+   TARJETA DE OBLIGACIÓN
+   ========================================================= */
+
+.obligation-card {
+    position: relative;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-left: 7px solid var(--green);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease,
+        transform 0.2s ease;
+}
+
+.obligation-card:hover {
+    transform: translateY(-2px);
+}
+
+.obligation-card.green {
+    border-left-color: var(--green);
+}
+
+.obligation-card.yellow {
+    border-left-color: var(--yellow);
+}
+
+.obligation-card.red {
+    border-left-color: var(--red);
+}
+
+.obligation-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 15px;
+
+    cursor: pointer;
+}
+
+.obligation-main {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 0;
+}
+
+.obligation-color {
+    width: 13px;
+    height: 42px;
+
+    border-radius: 10px;
+
+    flex-shrink: 0;
+}
+
+.obligation-title {
+    font-size: 1rem;
+
+    font-weight: 700;
+
+    word-break: break-word;
+}
+
+.obligation-subtitle {
+    color: var(--muted);
+
+    font-size: 0.76rem;
+
+    margin-top: 4px;
+}
+
+.obligation-right {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    flex-shrink: 0;
+}
+
+.amount-badge {
+    background: var(--green-light);
+
+    color: var(--green);
+
+    padding: 7px 9px;
+
+    border-radius: 9px;
+
+    font-size: 0.78rem;
+
+    font-weight: 700;
+}
+
+.expand-icon {
+    font-size: 1rem;
+
+    transition:
+        transform 0.25s ease;
+}
+
+.obligation-card.open .expand-icon {
+    transform: rotate(180deg);
+}
+
+/* =========================================================
+   CONTENIDO INTERNO DE LA TARJETA
+   ========================================================= */
+
+.obligation-details {
+    display: none;
+
+    border-top: 1px solid var(--border);
+
+    padding: 15px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(127,127,127,0.04),
+            transparent
+        );
+}
+
+.obligation-card.open .obligation-details {
+    display: block;
+}
+
+.detail-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+}
+
+.detail-item {
+    background: rgba(127,127,127,0.06);
+
+    border-radius: 10px;
+
+    padding: 10px;
+}
+
+.detail-item .detail-label {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 0.7rem;
+
+    margin-bottom: 4px;
+}
+
+.detail-item .detail-value {
+    font-size: 0.84rem;
+
+    font-weight: 600;
+}
+
+/* =========================================================
+   ESTADO DE FECHAS
+   ========================================================= */
+
+.date-status {
+    margin-top: 12px;
+
+    padding: 10px 12px;
+
+    border-radius: 10px;
+
+    font-size: 0.82rem;
+
+    font-weight: 600;
+}
+
+.date-status.green {
+    background: var(--green-light);
+
+    color: var(--green);
+}
+
+.date-status.yellow {
+    background: var(--yellow-light);
+
+    color: var(--yellow);
+}
+
+.date-status.red {
+    background: var(--red-light);
+
+    color: var(--red);
+}
+
+/* =========================================================
+   ALERTAS Y RECORDATORIOS
+   ========================================================= */
+
+.alerts-section {
+    background: var(--card);
+
+    border: 2px solid var(--red);
+
+    border-radius: var(--radius);
+
+    padding: 16px;
+
+    margin-top: 22px;
+
+    box-shadow: var(--shadow);
+}
+
+.alerts-section h2 {
+    color: var(--red);
+
+    font-size: 1.1rem;
+
+    margin-bottom: 10px;
+}
+
+.alert-item {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    background: var(--red-light);
+
+    margin-bottom: 8px;
+}
+
+.alert-item:last-child {
+    margin-bottom: 0;
+}
+
+.alert-icon {
+    font-size: 1.1rem;
+}
+
+.alert-content {
+    flex: 1;
+
+    font-size: 0.84rem;
+
+    line-height: 1.4;
+}
+
+/* =========================================================
+   CALENDARIO
+   ========================================================= */
+
+.calendar-section {
+    margin-top: 24px;
+}
+
+.calendar-container {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    padding: 15px;
+
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+}
+
+.calendar-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 14px;
+}
+
+.calendar-header button {
+    border: 0;
+
+    background: var(--primary);
+
+    color: white;
+
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+.calendar-month {
+    font-weight: 700;
+
+    text-transform: capitalize;
+}
+
+.calendar-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    gap: 5px;
+}
+
+.calendar-weekday {
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 0.7rem;
+
+    font-weight: 700;
+
+    padding: 5px 0;
+}
+
+.calendar-day {
+    min-height: 48px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: var(--text);
+
+    padding: 5px;
+
+    cursor: pointer;
+
+    position: relative;
+
+    text-align: left;
+}
+
+.calendar-day:hover {
+    background: rgba(127,127,127,0.08);
+}
+
+.calendar-day.today {
+    border: 2px solid var(--primary);
+}
+
+.calendar-day.has-event::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 4px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: var(--red);
+}
+
+.calendar-day-number {
+    font-size: 0.75rem;
+
+    font-weight: 700;
+}
+
+/* =========================================================
+   TARJETAS DE INFORMACIÓN DEL CALENDARIO
+   ========================================================= */
+
+.calendar-events {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+.calendar-event-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 12px;
+
+    min-height: 65px;
+
+    box-shadow:
+        0 2px 8px rgba(0,0,0,0.05);
+}
+
+.calendar-event-date {
+    min-width: 55px;
+
+    text-align: center;
+
+    font-weight: 700;
+
+    font-size: 0.78rem;
+}
+
+.calendar-event-info {
+    flex: 1;
+
+    min-width: 0;
+}
+
+.calendar-event-title {
+    font-size: 0.85rem;
+
+    font-weight: 700;
+}
+
+.calendar-event-note {
+    color: var(--muted);
+
+    font-size: 0.75rem;
+
+    margin-top: 3px;
+}
+
+/* =========================================================
+   FORMULARIOS
+   ========================================================= */
+
+.form-section {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    padding: 18px;
+
+    box-shadow: var(--shadow);
+
+    margin-top: 25px;
+}
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-size: 0.78rem;
+
+    color: var(--muted);
+
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    background: var(--background);
+
+    color: var(--text);
+
+    padding: 11px;
+
+    font-family: inherit;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(11,31,58,0.10);
+}
+
+.form-group textarea {
+    min-height: 85px;
+
+    resize: vertical;
+}
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+
+.btn {
+    border: 0;
+
+    border-radius: 10px;
+
+    padding: 11px 16px;
+
+    cursor: pointer;
+
+    font-family:
+
+<!-- =========================================================
+     PARTE 2 DE 4
+     LÓGICA DE OBLIGACIONES, TARJETAS Y FECHAS
+     ========================================================= -->
+
+<script>
+
+/*
+ * =========================================================
+ * UTILIDADES DE FECHAS
+ * =========================================================
+ */
+
+function parseDateOnly(dateString) {
+
+    if (!dateString) {
+        return null;
+    }
+
+    const parts =
+        dateString.split("-");
+
+    if (parts.length !== 3) {
+        return null;
+    }
+
+    return new Date(
+        Number(parts[0]),
+        Number(parts[1]) - 1,
+        Number(parts[2]),
+        12,
+        0,
+        0,
+        0
+    );
+
+}
+
+
+function formatDate(dateString) {
+
+    const date =
+        parseDateOnly(dateString);
+
+    if (!date) {
+        return "Sin fecha";
+    }
+
+    return date.toLocaleDateString(
+        "es-DO",
+        {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric"
+        }
+    );
+
+}
+
+
+function getDateDifferenceInDays(
+    dateString
+) {
+
+    const target =
+        parseDateOnly(dateString);
+
+    if (!target) {
+        return null;
+    }
+
+    const now =
+        new Date();
+
+    const today =
+        new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            now.getDate(),
+            12,
+            0,
+            0,
+            0
+        );
+
+    const difference =
+        target.getTime() -
+        today.getTime();
+
+    return Math.ceil(
+        difference /
+        (1000 * 60 * 60 * 24)
+    );
+
+}
+
+
+/*
+ * =========================================================
+ * DETERMINAR ESTADO DE UNA OBLIGACIÓN
+ *
+ * VERDE:
+ * Todavía falta suficiente tiempo.
+ *
+ * AMARILLO:
+ * Se acerca la fecha personal.
+ *
+ * ROJO:
+ * Se acerca la fecha límite de pago.
+ * =========================================================
+ */
+
+function getObligationStatus(
+    obligation
+) {
+
+    const cutoffDays =
+        getDateDifferenceInDays(
+            obligation.cutoffDate
+        );
+
+    const personalDays =
+        getDateDifferenceInDays(
+            obligation.personalDate
+        );
+
+    const paymentDays =
+        getDateDifferenceInDays(
+            obligation.paymentDate
+        );
+
+
+    /*
+     * La fecha límite de pago
+     * tiene la prioridad más alta.
+     */
+
+    if (
+        paymentDays !== null &&
+        paymentDays <= 2
+    ) {
+
+        return "red";
+
+    }
+
+
+    /*
+     * Si la fecha de pago ya pasó,
+     * permanece en rojo.
+     */
+
+    if (
+        paymentDays !== null &&
+        paymentDays < 0
+    ) {
+
+        return "red";
+
+    }
+
+
+    /*
+     * Fecha personal cercana.
+     */
+
+    if (
+        personalDays !== null &&
+        personalDays <= 2
+    ) {
+
+        return "yellow";
+
+    }
+
+
+    /*
+     * Si ya pasó la fecha personal
+     * pero todavía no llega el pago,
+     * también mostramos amarillo.
+     */
+
+    if (
+        personalDays !== null &&
+        personalDays < 0
+    ) {
+
+        return "yellow";
+
+    }
+
+
+    /*
+     * Fecha de corte cercana.
+     */
+
+    if (
+        cutoffDays !== null &&
+        cutoffDays <= 2
+    ) {
+
+        return "yellow";
+
+    }
+
+
+    return "green";
+
+}
+
+
+/*
+ * =========================================================
+ * TEXTO DE DÍAS RESTANTES
+ * =========================================================
+ */
+
+function getDaysRemainingText(
+    dateString,
+    label
+) {
+
+    const days =
+        getDateDifferenceInDays(
+            dateString
+        );
+
+
+    if (days === null) {
+
+        return `
+            <span class="detail-value">
+                Sin fecha
+            </span>
+        `;
+
+    }
+
+
+    if (days === 0) {
+
+        return `
+            <span class="detail-value"
+                  style="color:var(--red);">
+                ${escapeHTML(label)}: HOY
+            </span>
+        `;
+
+    }
+
+
+    if (days === 1) {
+
+        return `
+            <span class="detail-value"
+                  style="color:var(--red);">
+                ${escapeHTML(label)}: falta 1 día
+            </span>
+        `;
+
+    }
+
+
+    if (days < 0) {
+
+        const overdue =
+            Math.abs(days);
+
+        return `
+            <span class="detail-value"
+                  style="color:var(--red);">
+                ${escapeHTML(label)}:
+                vencida hace ${overdue}
+                ${overdue === 1 ? "día" : "días"}
+            </span>
+        `;
+
+    }
+
+
+    return `
+        <span class="detail-value">
+            ${escapeHTML(label)}:
+            ${days} días restantes
+        </span>
+    `;
+
+}
+
+
+/*
+ * =========================================================
+ * TEXTO GENERAL DEL ESTADO
+ * =========================================================
+ */
+
+function getStatusMessage(
+    obligation
+) {
+
+    const paymentDays =
+        getDateDifferenceInDays(
+            obligation.paymentDate
+        );
+
+    const personalDays =
+        getDateDifferenceInDays(
+            obligation.personalDate
+        );
+
+    const cutoffDays =
+        getDateDifferenceInDays(
+            obligation.cutoffDate
+        );
+
+
+    if (
+        paymentDays !== null &&
+        paymentDays < 0
+    ) {
+
+        const days =
+            Math.abs(paymentDays);
+
+        return `
+            ⚠️ Pago vencido hace
+            ${days}
+            ${days === 1 ? "día" : "días"}.
+        `;
+
+    }
+
+
+    if (
+        paymentDays !== null &&
+        paymentDays === 0
+    ) {
+
+        return `
+            🔴 La fecha límite de pago es hoy.
+        `;
+
+    }
+
+
+    if (
+        paymentDays !== null &&
+        paymentDays <= 2
+    ) {
+
+        return `
+            🔴 La fecha límite de pago
+            está muy próxima.
+        `;
+
+    }
+
+
+    if (
+        personalDays !== null &&
+        personalDays <= 2
+    ) {
+
+        return `
+            🟡 Tu fecha personal
+            está próxima.
+        `;
+
+    }
+
+
+    if (
+        cutoffDays !== null &&
+        cutoffDays <= 2
+    ) {
+
+        return `
+            🟡 La fecha de corte
+            está próxima.
+        `;
+
+    }
+
+
+    return `
+        🟢 Todo bajo control.
+        Mantén el seguimiento.
+    `;
+
+}
+
+
+/*
+ * =========================================================
+ * CREAR HTML DE UNA TARJETA
+ * =========================================================
+ */
+
+function createObligationCard(
+    obligation
+) {
+
+    const status =
+        getObligationStatus(
+            obligation
+        );
+
+
+    const amount =
+        Number(
+            obligation.amount
+        ) || 0;
+
+
+    const color =
+        obligation.color ||
+        "#2e9b59";
+
+
+    const priority =
+        obligation.priority ||
+        "normal";
+
+
+    const reminder =
+        obligation.reminder === "si";
+
+
+    const comment =
+        obligation.comment ||
+        "";
+
+
+    const priorityLabel =
+        priority === "urgente"
+            ? "🚨 Urgente"
+            : priority === "alta"
+                ? "⚠️ Alta"
+                : "Normal";
+
+
+    const reminderLabel =
+        reminder
+            ? "🔔 Activado"
+            : "Sin recordatorio";
+
+
+    const card =
+        document.createElement(
+            "article"
+        );
+
+
+    card.className =
+        `obligation-card ${status}`;
+
+
+    card.dataset.id =
+        obligation.id;
+
+
+    card.innerHTML = `
+
+        <div
+            class="obligation-header"
+            data-action="toggle">
+
+            <div class="obligation-main">
+
+                <div
+                    class="obligation-color"
+                    style="
+                        background:${escapeHTML(color)};
+                    ">
+                </div>
+
+                <div>
+
+                    <div
+                        class="obligation-title"
+                        style="
+                            color:${escapeHTML(color)};
+                        ">
+                        ${
+                            <!-- =========================================================
+     PARTE 3 DE 4
+     ALERTAS, SONIDO, VIBRACIÓN Y CALENDARIO
+     ========================================================= -->
+
+<script>
+
+/*
+ * =========================================================
+ * SISTEMA DE ALERTAS
+ * =========================================================
+ */
+
+function addAlert(
+    alerts,
+    type,
+    icon,
+    title,
+    message,
+    dateString,
+    priority = false
+) {
+
+    alerts.push({
+
+        type,
+
+        icon,
+
+        title,
+
+        message,
+
+        dateString,
+
+        priority
+
+    });
+
+}
+
+
+/*
+ * =========================================================
+ * OBTENER ALERTAS DE UNA FECHA
+ * =========================================================
+ */
+
+function checkDateForAlert(
+    alerts,
+    obligation,
+    dateString,
+    label,
+    alertType
+) {
+
+    if (!dateString) {
+        return;
+    }
+
+
+    const days =
+        getDateDifferenceInDays(
+            dateString
+        );
+
+
+    if (days === null) {
+        return;
+    }
+
+
+    /*
+     * ALERTA PRINCIPAL:
+     * EXACTAMENTE DOS DÍAS ANTES.
+     */
+
+    if (days === 2) {
+
+        addAlert(
+
+            alerts,
+
+            alertType,
+
+            "🔔",
+
+            `${label}: ${obligation.name}`,
+
+            `Faltan 2 días para ${label.toLowerCase()}. Fecha: ${formatDate(dateString)}.`,
+
+            dateString,
+
+            true
+
+        );
+
+    }
+
+
+    /*
+     * ALERTA PARA HOY.
+     */
+
+    if (days === 0) {
+
+        addAlert(
+
+            alerts,
+
+            alertType,
+
+            "🚨",
+
+            `${label}: ${obligation.name
+                         <!-- =========================================================
+     PARTE 4 DE 4
+     BALANCE FINANCIERO, FONDOS, MENSAJES Y FINALIZACIÓN
+     ========================================================= -->
+
+<script>
+
+/*
+ * =========================================================
+ * CAMPOS DE FONDOS FINANCIEROS
+ *
+ * Se crean dinámicamente dentro del resumen para
+ * mantener la aplicación compacta y responsive.
+ * =========================================================
+ */
+
+function createFinancialInputs() {
+
+    const summary =
+        document.querySelector(
+            ".financial-summary"
+        );
+
+
+    if (!summary) {
+        return;
+    }
+
+
+    /*
+     * Evitar duplicarlos si la función se ejecuta
+     * más
