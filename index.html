@@ -3,372 +3,356 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAGOS JUAN HILARIO - DASHBOARD FINANCIAL</title>
-    
+    <title>Control Financiero Personal</title>
     <style>
-        :root {
-            --bg-color: #0F111A;
-            --card-bg: #1B1E2B;
-            --text-color: #FFFFFF;
-            --subtext-color: #9CA3AF;
-            --border-color: #2A2E3D;
-            --gold: #D4AF37;
-            --green: #10B981;
-            --yellow: #F59E0B;
-            --red: #EF4444;
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
-        [data-theme="light"] {
-            --bg-color: #F3F4F6;
-            --card-bg: #FFFFFF;
-            --text-color: #111827;
-            --subtext-color: #4B5563;
-            --border-color: #E5E7EB;
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            padding: 20px;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-color); padding: 16px; min-height: 100vh; }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
-        /* Encabezado */
-        .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; }
-        .user-profile { display: flex; align-items: center; }
-        .avatar { width: 42px; height: 42px; background: linear-gradient(135deg, var(--gold), #F59E0B); color: #0F111A; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 10px; }
-        
-        .app-title-container { text-align: center; margin: 15px 0 20px 0; }
-        .app-title-container h1 { font-size: 22px; font-weight: 800; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
 
-        .theme-toggle { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-color); padding: 8px 12px; border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: bold; }
+        /* Resumen financiero */
+        .summary-cards {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
 
-        /* Dashboard & Gráfica */
-        .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
-        .dash-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 12px; text-align: center; }
-        .dash-title { font-size: 11px; color: var(--subtext-color); margin-bottom: 4px; }
-        .dash-value { font-size: 15px; font-weight: bold; color: var(--gold); }
+        .card {
+            flex: 1;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
 
-        .chart-section { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 15px; margin-bottom: 15px; text-align: center; }
-        .chart-container { position: relative; width: 140px; height: 140px; margin: 10px auto; }
+        .card h3 {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
 
-        /* Frase Motivacional */
-        .phrase-card { background: var(--card-bg); border-left: 4px solid var(--gold); border-radius: 12px; padding: 12px; margin-bottom: 15px; font-style: italic; font-size: 12px; border-top: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .card p {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
 
-        /* Calculadora */
-        .calculator-card { background: var(--card-bg); border-radius: 14px; padding: 15px; margin-bottom: 15px; border: 1px solid var(--border-color); }
-        .calc-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
-        .calc-inputs input { background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-color); padding: 8px; border-radius: 8px; font-size: 12px; width: 100%; }
-        .balance-status { font-size: 12px; font-weight: bold; padding: 10px; border-radius: 8px; text-align: center; }
-        .status-positive { background: rgba(16, 185, 129, 0.15); color: var(--green); border: 1px solid var(--green); }
-        .status-negative { background: rgba(239, 68, 68, 0.15); color: var(--red); border: 1px solid var(--red); }
+        .income-val { color: #10b981; }
+        .expense-val { color: #ef4444; }
+        .balance-val { color: #2563eb; }
 
-        /* Alertas */
-        .alerts-section { background: rgba(239, 68, 68, 0.12); border: 2px solid var(--red); border-radius: 14px; padding: 14px; margin-bottom: 15px; }
-        .alerts-title { color: var(--red); font-weight: bold; font-size: 14px; margin-bottom: 6px; }
+        /* Formulario */
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+        }
 
-        /* Contenedor con Scroll Vertical Táctil */
-        .scroll-container { max-height: 480px; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-right: 4px; margin-bottom: 20px; }
-        .scroll-container::-webkit-scrollbar { width: 6px; }
-        .scroll-container::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+        .form-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
 
-        /* Tarjetas de Obligaciones */
-        .card { background: var(--card-bg); border-radius: 14px; padding: 14px; margin-bottom: 12px; border: 1px solid var(--border-color); }
-        .card-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-        .card-title-input { font-size: 14px; font-weight: bold; color: var(--text-color); text-transform: uppercase; background: transparent; border: none; border-bottom: 1px dashed var(--border-color); width: 65%; padding: 2px 0; }
-        .card-title-input:focus { border-bottom: 1px dashed var(--gold); outline: none; }
+        .form-group {
+            flex: 1;
+            min-width: 150px;
+        }
 
-        /* Indicador Circular de Porcentaje */
-        .progress-circle-box { position: relative; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
-        .progress-circle-box canvas { position: absolute; top: 0; left: 0; }
-        .progress-text { font-size: 10px; font-weight: bold; color: var(--gold); }
+        label {
+            display: block;
+            font-size: 0.85rem;
+            color: #475569;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
 
-        /* Barra de Carga Dinámica */
-        .progress-bar-bg { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; margin: 8px 0; }
-        .progress-bar-fill { height: 100%; width: 0%; border-radius: 10px; transition: width 0.4s; }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            outline: none;
+        }
 
-        .border-green { background-color: var(--green) !important; }
-        .border-yellow { background-color: var(--yellow) !important; }
-        .border-red { background-color: var(--red) !important; }
+        input:focus, select:focus {
+            border-color: #2563eb;
+        }
 
-        .btn-toggle-details { background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--subtext-color); width: 100%; padding: 6px; border-radius: 6px; font-size: 11px; cursor: pointer; margin-top: 8px; text-align: center; }
-        .card-details { display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border-color); font-size: 12px; color: var(--subtext-color); line-height: 1.5; }
-        .card-details.active { display: block; }
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 11px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin-top: 22px;
+            width: 100%;
+            transition: background 0.2s;
+        }
 
-        /* Formulario Inferior */
-        .add-form-card { background: var(--card-bg); border-radius: 14px; padding: 16px; border: 1px solid var(--border-color); margin-bottom: 25px; }
-        .form-group { margin-bottom: 10px; }
-        .form-group label { display: block; font-size: 11px; color: var(--subtext-color); margin-bottom: 4px; }
-        .form-group input { width: 100%; padding: 10px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 8px; font-size: 12px; }
-        .btn-submit { width: 100%; background: var(--gold); color: #000; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 5px; font-size: 13px; }
-        .btn-submit:active { transform: scale(0.98); }
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        /* Tabla de registros */
+        .history-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #f8fafc;
+            color: #475569;
+            font-size: 0.85rem;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .badge-income { background: #d1fae5; color: #065f46; }
+        .badge-expense { background: #fee2e2; color: #991b1b; }
+
+        .btn-delete {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin: 0;
+            width: auto;
+        }
+
+        .btn-delete:hover {
+            background: #dc2626;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Encabezado -->
-    <div class="header">
-        <div class="user-profile">
-            <div class="avatar">JH</div>
-            <div>
-                <h3 style="font-size: 13px;">Juan Carlos Hilario</h3>
-                <p style="font-size: 10px; color: var(--green);">Estado: Activo</p>
+<div class="container">
+    <h1>Panel de Control Financiero</h1>
+
+    <!-- Tarjetas de resumen -->
+    <div class="summary-cards">
+        <div class="card">
+            <h3>Ingresos Totales</h3>
+            <p class="income-val" id="total-income">$0.00</p>
+        </div>
+        <div class="card">
+            <h3>Gastos Totales</h3>
+            <p class="expense-val" id="total-expense">$0.00</p>
+        </div>
+        <div class="card">
+            <h3>Balance Neto</h3>
+            <p class="balance-val" id="net-balance">$0.00</p>
+        </div>
+    </div>
+
+    <!-- Formulario para agregar registros -->
+    <div class="form-container">
+        <form id="finance-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="date">Fecha</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Concepto / Descripción</label>
+                    <input type="text" id="description" placeholder="Ej. Sueldo, Comida" required>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Monto ($)</label>
+                    <input type="number" id="amount" step="0.01" min="0.01" placeholder="0.00" required>
+                </div>
+                <div class="form-group">
+                    <label for="type">Tipo</label>
+                    <select id="type">
+                        <option value="income">Ingreso</option>
+                        <option value="expense">Gasto</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Agregar Record</button>
+                </div>
             </div>
-        </div>
-        <button class="theme-toggle" onclick="toggleTheme()">☀️ / 🌙 Tema</button>
+        </form>
     </div>
 
-    <!-- Título Desplazado -->
-    <div class="app-title-container">
-        <h1>PAGOS JUAN HILARIO</h1>
+    <!-- Tabla de historial -->
+    <div class="history-container">
+        <h3>Historial de Transacciones</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Concepto</th>
+                    <th>Tipo</th>
+                    <th>Monto</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="transaction-list">
+                <!-- Se poblará dinámicamente con JavaScript -->
+            </tbody>
+        </table>
     </div>
+</div>
 
-    <!-- Dashboard Resumen -->
-    <div class="dashboard-grid">
-        <div class="dash-card">
-            <div class="dash-title">Total Obligaciones</div>
-            <div class="dash-value" id="dashTotalCommitments">RD$ 0</div>
-        </div>
-        <div class="dash-card">
-            <div class="dash-title">Pagos Realizados</div>
-            <div class="dash-value" style="color: var(--green);" id="dashPaidCount">0 %</div>
-        </div>
-    </div>
+<script>
+    // Recuperar datos almacenados o inicializar arreglo vacío
+    let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
 
-    <!-- Gráfica NATIVA del Dashboard (Sin dependencias externas) -->
-    <div class="chart-section">
-        <h4 style="font-size: 12px; color: var(--gold);">📊 Distribución de Estado de Pagos</h4>
-        <div class="chart-container">
-            <canvas id="mainDoughnutChart" width="140" height="140"></canvas>
-        </div>
-        <div style="display:flex; justify-content:center; gap:15px; font-size:11px; margin-top:5px;">
-            <span style="color: var(--green);">■ Pagado</span>
-            <span style="color: var(--red);">■ Pendiente</span>
-        </div>
-    </div>
+    const form = document.getElementById('finance-form');
+    const transactionList = document.getElementById('transaction-list');
+    const totalIncomeEl = document.getElementById('total-income');
+    const totalExpenseEl = document.getElementById('total-expense');
+    const netBalanceEl = document.getElementById('net-balance');
 
-    <!-- Frase Motivacional -->
-    <div class="phrase-card" id="motivationPhrase">
-        Cargando frase del día...
-    </div>
+    // Asignar fecha de hoy por defecto al campo de fecha
+    document.getElementById('date').valueAsDate = new Date();
 
-    <!-- Calculadora de Balance -->
-    <div class="calculator-card">
-        <h4 style="font-size: 12px; margin-bottom: 8px; color: var(--gold);">💰 Calculadora de Balance</h4>
-        <div class="calc-inputs">
-            <div>
-                <label>Efectivo Disponible</label>
-                <input type="number" id="cashInput" placeholder="RD$ 0" oninput="calculateBalance()">
-            </div>
-            <div>
-                <label>Cuentas Ahorros</label>
-                <input type="number" id="savingsInput" placeholder="RD$ 0" oninput="calculateBalance()">
-            </div>
-        </div>
-        <div id="balanceStatus" class="balance-status status-positive">
-            Ingresa tus fondos para calcular el balance.
-        </div>
-    </div>
+    // Guardar registros en localStorage
+    function saveToLocalStorage() {
+        localStorage.setItem('transactions', JSON.stringify(transactions));
+    }
 
-    <!-- Alertas -->
-    <div class="alerts-section">
-        <div class="alerts-title">🚨 Alertas Próximas a Vencer</div>
-        <div id="alertsList" style="font-size: 11px; line-height: 1.4;">
-            Verificando fechas límite...
-        </div>
-    </div>
+    // Formatear números a moneda
+    function formatCurrency(amount) {
+        return '$' + parseFloat(amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    }
 
-    <!-- Scroll Lista de Tarjetas Rectangulares -->
-    <h3 style="font-size: 14px; margin-bottom: 10px;">Tarjetas de Obligaciones</h3>
-    <div class="scroll-container" id="cardsContainer">
-        <!-- Generado dinámicamente -->
-    </div>
+    // Actualizar los valores de las tarjetas principales
+    function updateSummary() {
+        const income = transactions
+            .filter(item => item.type === 'income')
+            .reduce((acc, item) => acc + item.amount, 0);
 
-    <!-- Formulario para Agregar Otros (Al final) -->
-    <div class="add-form-card">
-        <h4 style="font-size: 13px; margin-bottom: 10px; color: var(--gold);">➕ Registrar Nueva Obligación ("Agregar Otros")</h4>
-        <div class="form-group">
-            <label>Título de la Obligación</label>
-            <input type="text" id="newTitle" placeholder="Ej: PRÉSTAMO VEHÍCULO">
-        </div>
-        <div class="form-group">
-            <label>Monto Estimado / Pagar (RD$)</label>
-            <input type="number" id="newAmount" placeholder="Ej: 5000">
-        </div>
-        <div class="form-group">
-            <label>Día Límite de Pago (1 - 31)</label>
-            <input type="number" id="newPayDay" min="1" max="31" placeholder="Ej: 15">
-        </div>
-        <div class="form-group">
-            <label>Comentario u Observación</label>
-            <input type="text" id="newComment" placeholder="Ej: Pago quincenal">
-        </div>
-        <button class="btn-submit" onclick="addObligation()">Guardar e Inserte Obligación</button>
-    </div>
+        const expense = transactions
+            .filter(item => item.type === 'expense')
+            .reduce((acc, item) => acc + item.amount, 0);
 
-    <script>
-        const positivePhrases = [
-            "Vas muy bien este mes, no le bajes, eres brillante.",
-            "¡Excelente trabajo! Cada peso bien administrado te acerca a tus metas.",
-            "Tu esfuerzo está dando resultados. ¡Mantén el ritmo!",
-            "¡Estás advancing! La constancia de hoy construye tu tranquilidad."
-        ];
+        const balance = income - expense;
 
-        let obligations = [
-            { id: 1, title: "1-BANCO ADEMI", cutDay: 13, personalDay: 15, payDay: 5, amount: 12300, comment: "Corte los día 13 hasta 15-30 el día 5", paid: false },
-            { id: 2, title: "2-BANCO POPULAR", cutDay: 28, personalDay: 30, payDay: 22, amount: 24500, comment: "Corte los día 28 hasta 30-15 el día 22", paid: false },
-            { id: 3, title: "3-BANCO VIMENCA", cutDay: 10, personalDay: 15, payDay: 2, amount: 8200, comment: "Corte los día 10 hasta 15-30 el día 02", paid: false },
-            { id: 4, title: "4-BANCO APAP", cutDay: 21, personalDay: 30, payDay: 13, amount: 5000, comment: "Corte los día 21 hasta 30 el día 13", paid: false },
-            { id: 5, title: "COOP ASPIRE", cutDay: 28, personalDay: 30, payDay: 5, amount: 3500, comment: "Pagar todos los días 28, 30 y día final 05", paid: false },
-            { id: 6, title: "BANCO QIK", cutDay: 15, personalDay: 30, payDay: 12, amount: 4000, comment: "Corte los día 15 hasta 30 el día 12", paid: false },
-            { id: 7, title: "BANCO SANTA CRUZ", cutDay: 13, personalDay: 30, payDay: 9, amount: 6500, comment: "Corte los día 13 hasta 30 el día 09", paid: false },
-            { id: 8, title: "PRÉSTAMO BANCO QIK", cutDay: 30, personalDay: 30, payDay: 5, amount: 5500, comment: "Fecha de pago los día 30 los día 05 de cada mes", paid: false },
-            { id: 9, title: "PRÉSTAMO COOP ASPIRÉ", cutDay: 30, personalDay: 30, payDay: 5, amount: 3000, comment: "Fecha de pago los día 30 los día 05 de cada mes", paid: false },
-            { id: 10, title: "CLARO CODETEL", cutDay: 15, personalDay: 30, payDay: 2, amount: 3850, comment: "Fecha de pago los día 15 los día 30 y día 02", paid: false },
-            { id: 11, title: "VIVA", cutDay: 15, personalDay: 15, payDay: 30, amount: 1500, comment: "Fecha de pago los día 15 los día 30", paid: false }
-        ];
+        totalIncomeEl.textContent = formatCurrency(income);
+        totalExpenseEl.textContent = formatCurrency(expense);
+        netBalanceEl.textContent = formatCurrency(balance);
+    }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            loadMotivationalPhrase();
-            renderCards();
-            checkAlerts();
-            updateDashboard();
+    // Renderizar la tabla de transacciones
+    function renderTransactions() {
+        transactionList.innerHTML = '';
+
+        if (transactions.length === 0) {
+            transactionList.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#94a3b8;">No hay registros cargados aún.</td></tr>`;
+            return;
+        }
+
+        transactions.forEach((item, index) => {
+            const row = document.createElement('tr');
+            
+            const isIncome = item.type === 'income';
+            const badgeClass = isIncome ? 'badge-income' : 'badge-expense';
+            const badgeText = isIncome ? 'Ingreso' : 'Gasto';
+
+            row.innerHTML = `
+                <td>${item.date}</td>
+                <td>${item.description}</td>
+                <td><span class="badge ${badgeClass}">${badgeText}</span></td>
+                <td><strong>${formatCurrency(item.amount)}</strong></td>
+                <td><button class="btn-delete" onclick="deleteTransaction(${index})">Eliminar</button></td>
+            `;
+
+            transactionList.appendChild(row);
         });
+    }
 
-        function toggleTheme() {
-            const body = document.body;
-            if (body.getAttribute("data-theme") === "light") {
-                body.removeAttribute("data-theme");
-            } else {
-                body.setAttribute("data-theme", "light");
-            }
-        }
+    // Manejar evento de envío de formulario
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-        function loadMotivationalPhrase() {
-            const randomIndex = Math.floor(Math.random() * positivePhrases.length);
-            document.getElementById("motivationPhrase").innerText = `“${positivePhrases[randomIndex]}”`;
-        }
+        const date = document.getElementById('date').value;
+        const description = document.getElementById('description').value;
+        const amount = parseFloat(document.getElementById('amount').value);
+        const type = document.getElementById('type').value;
 
-        function renderCards() {
-            const container = document.getElementById("cardsContainer");
-            container.innerHTML = "";
-            const today = new Date().getDate();
+        const newTransaction = {
+            date,
+            description,
+            amount,
+            type
+        };
 
-            obligations.forEach((card, index) => {
-                const cardEl = document.createElement("div");
-                cardEl.className = "card";
+        transactions.push(newTransaction);
+        saveToLocalStorage();
+        updateUI();
 
-                let daysLeft = card.payDay - today;
-                if (daysLeft < 0) daysLeft += 30;
+        // Limpiar campos de texto
+        document.getElementById('description').value = '';
+        document.getElementById('amount').value = '';
+    });
 
-                const percent = card.paid ? 100 : Math.min(100, Math.max(10, Math.round(((30 - daysLeft) / 30) * 100)));
+    // Eliminar transacción
+    function deleteTransaction(index) {
+        transactions.splice(index, 1);
+        saveToLocalStorage();
+        updateUI();
+    }
 
-                let barClass = "border-green";
-                if (daysLeft <= 7 && daysLeft > 2) {
-                    barClass = "border-yellow";
-                } else if (daysLeft <= 2) {
-                    barClass = "border-red";
-                }
+    // Actualizar toda la interfaz de usuario
+    function updateUI() {
+        renderTransactions();
+        updateSummary();
+    }
 
-                cardEl.innerHTML = `
-                    <div class="card-header-flex">
-                        <input type="text" class="card-title-input" value="${card.title}" onchange="updateTitle(${index}, this.value)">
-                        <div class="progress-circle-box">
-                            <canvas id="circle-${index}" width="44" height="44"></canvas>
-                            <span class="progress-text">${percent}%</span>
-                        </div>
-                    </div>
+    // Carga inicial al abrir la página
+    updateUI();
+</script>
 
-                    <div class="progress-bar-bg">
-                        <div class="progress-bar-fill ${barClass}" style="width: ${percent}%;"></div>
-                    </div>
-
-                    <div style="display:flex; justify-content:between; font-size:12px; font-weight:bold;">
-                        <span>RD$ ${card.amount.toLocaleString()}</span>
-                        <span style="color: ${daysLeft <= 3 ? 'var(--red)' : 'var(--gold)'};">${daysLeft} días restantes</span>
-                    </div>
-
-                    <button class="btn-toggle-details" onclick="toggleDetails(${index})">📋 Ver Detalles y Fechas</button>
-
-                    <div class="card-details" id="details-${index}">
-                        <p><strong>Fecha de Corte:</strong> Día ${card.cutDay}</p>
-                        <p><strong>Fecha Personal:</strong> Día ${card.personalDay}</p>
-                        <p><strong>Fecha Límite de Pago:</strong> Día ${card.payDay}</p>
-                        <p><strong>Comentario:</strong> ${card.comment}</p>
-                        <button onclick="togglePaid(${index})" style="margin-top:8px; padding:6px 12px; border:none; border-radius:6px; background:var(--gold); font-weight:bold; cursor:pointer; width:100%;">
-                            ${card.paid ? '✅ Marcado como Pagado' : '⏳ Marcar como Pagado'}
-                        </button>
-                    </div>
-                `;
-
-                container.appendChild(cardEl);
-                setTimeout(() => drawCircleChart(`circle-${index}`, percent), 20);
-            });
-        }
-
-        function toggleDetails(index) {
-            const details = document.getElementById(`details-${index}`);
-            details.classList.toggle("active");
-        }
-
-        function updateTitle(index, newTitle) {
-            if(newTitle.trim() !== "") {
-                obligations[index].title = newTitle.toUpperCase();
-            }
-        }
-
-        function togglePaid(index) {
-            obligations[index].paid = !obligations[index].paid;
-            renderCards();
-            updateDashboard();
-        }
-
-        function drawCircleChart(canvasId, percent) {
-            const canvas = document.getElementById(canvasId);
-            if (!canvas) return;
-            const ctx = canvas.getContext("2d");
-            ctx.clearRect(0, 0, 44, 44);
-
-            ctx.beginPath();
-            ctx.arc(22, 22, 18, 0, 2 * Math.PI);
-            ctx.strokeStyle = "rgba(255,255,255,0.1)";
-            ctx.lineWidth = 4;
-            ctx.stroke();
-
-            ctx.beginPath();
-            ctx.arc(22, 22, 18, -Math.PI / 2, (-Math.PI / 2) + (2 * Math.PI * (percent / 100)));
-            ctx.strokeStyle = "#D4AF37";
-            ctx.lineWidth = 4;
-            ctx.stroke();
-        }
-
-        function checkAlerts() {
-            const today = new Date().getDate();
-            const alertsList = document.getElementById("alertsList");
-            let urgentAlerts = [];
-
-            obligations.forEach(card => {
-                let diff = card.payDay - today;
-                if (diff < 0) diff += 30;
-                if (diff <= 3) {
-                    urgentAlerts.push(`⚠️ <strong>${card.title}:</strong> Vence en ${diff === 0 ? 'HOY' : diff + ' día(s)'} (Día ${card.payDay}) - RD$ ${card.amount.toLocaleString()}`);
-                }
-            });
-
-            if (urgentAlerts.length > 0) {
-                alertsList.innerHTML = urgentAlerts.join("<br>");
-            } else {
-                alertsList.innerHTML = "✅ Todas las obligaciones están al día sin vencimientos próximos en 3 días.";
-            }
-        }
-
-        function calculateBalance() {
-            const cash = parseFloat(document.getElementById("cashInput").value) || 0;
-            const savings = parseFloat(document.getElementById("savingsInput").value) || 0;
-            const totalAvailable = cash + savings;
-            const totalCommitments = obligations.reduce((acc, curr) => acc + curr.amount, 0);
-            const remaining = totalAvailable - totalCommitments;
-
-            const balanceStatus = document.getElementById("balanceStatus");
-
-            if (remaining >= 0) {
-                balanceStatus.className = "balance-status status-positive";
-                balanceStatus.innerHTML = `Disponible: <strong>RD$ ${totalAvailable.toLocaleString()}</strong> | Restante: <strong>RD$ ${remaining.toLocaleString()}</strong>`;
-            } else {
-                balanceStatus.className = "ba
+</body>
+</html>
