@@ -4,21 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b4f9c">
+
 <title>PAGOS JUAN HILARIO</title>
 
 <style>
+
 :root{
     --primary:#0b4f9c;
-    --primary-dark:#07366c;
-    --secondary:#1677d2;
-    --green:#159447;
-    --green-bg:#e9f8ef;
-    --yellow:#d99b00;
-    --yellow-bg:#fff8df;
-    --red:#d62828;
-    --red-bg:#fff0f0;
-    --orange:#ef7d00;
-    --bg:#f3f6fa;
+    --primary2:#1677d2;
+    --green:#16a34a;
+    --yellow:#eab308;
+    --red:#dc2626;
+    --bg:#f2f5f9;
     --card:#ffffff;
     --text:#17212b;
     --muted:#687582;
@@ -26,12 +23,17 @@
     --shadow:0 5px 18px rgba(0,0,0,.08);
 }
 
-*{
-    box-sizing:border-box;
+body.dark{
+    --bg:#10151c;
+    --card:#18212b;
+    --text:#f5f7fa;
+    --muted:#aab5c0;
+    --border:#303c48;
+    --shadow:0 5px 18px rgba(0,0,0,.35);
 }
 
-html{
-    scroll-behavior:smooth;
+*{
+    box-sizing:border-box;
 }
 
 body{
@@ -40,18 +42,6 @@ body{
     background:var(--bg);
     color:var(--text);
     transition:.25s;
-}
-
-body.dark{
-    --bg:#10151c;
-    --card:#18212b;
-    --text:#f1f5f9;
-    --muted:#aab5c0;
-    --border:#2d3945;
-    --green-bg:#10291b;
-    --yellow-bg:#30270d;
-    --red-bg:#321717;
-    --shadow:0 5px 18px rgba(0,0,0,.3);
 }
 
 button,
@@ -65,27 +55,30 @@ button{
     cursor:pointer;
 }
 
-.app-container{
-    width:min(1180px,94%);
+.app{
+    width:min(1150px,95%);
     margin:auto;
     padding-bottom:40px;
 }
 
 header{
-    background:linear-gradient(135deg,#063d7d,#0b66c2);
-    color:white;
     margin-top:12px;
+    padding:28px 20px 22px;
     border-radius:18px;
-    padding:25px 20px 20px;
+    background:linear-gradient(
+        135deg,
+        #063b78,
+        #0b66c2
+    );
+    color:#fff;
     box-shadow:var(--shadow);
     position:relative;
 }
 
 header h1{
-    margin:8px 0 4px;
     text-align:center;
-    font-size:clamp(1.65rem,4vw,2.45rem);
-    letter-spacing:.5px;
+    margin:12px 0 5px;
+    font-size:clamp(1.7rem,5vw,2.5rem);
 }
 
 header p{
@@ -94,16 +87,21 @@ header p{
     opacity:.9;
 }
 
-.theme-toggle{
+.theme{
     position:absolute;
-    right:15px;
-    top:15px;
+    right:14px;
+    top:14px;
     border:0;
-    border-radius:30px;
     background:rgba(255,255,255,.18);
     color:white;
+    border-radius:30px;
     padding:9px 13px;
 }
+
+
+/* =========================
+   SECCIONES
+========================= */
 
 .section-title{
     display:flex;
@@ -122,9 +120,15 @@ header p{
     color:var(--muted);
 }
 
-.financial-summary{
+
+/* =========================
+   RESUMEN
+========================= */
+
+.summary{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    grid-template-columns:
+        repeat(auto-fit,minmax(180px,1fr));
     gap:12px;
     margin-top:18px;
 }
@@ -133,20 +137,19 @@ header p{
     background:var(--card);
     border:1px solid var(--border);
     border-radius:15px;
-    padding:18px;
+    padding:17px;
     box-shadow:var(--shadow);
 }
 
 .summary-card span{
-    display:block;
     color:var(--muted);
-    font-size:.88rem;
+    font-size:.86rem;
 }
 
 .summary-card strong{
     display:block;
     margin-top:7px;
-    font-size:1.35rem;
+    font-size:1.3rem;
 }
 
 .summary-card.positive{
@@ -157,19 +160,41 @@ header p{
     border-left:5px solid var(--red);
 }
 
+
+/* =========================
+   MENSAJE
+========================= */
+
+.feedback{
+    margin-top:15px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:14px;
+    text-align:center;
+    box-shadow:var(--shadow);
+    font-weight:bold;
+}
+
+
+/* =========================
+   FORMULARIOS
+========================= */
+
 .form-section{
     background:var(--card);
     border:1px solid var(--border);
     border-radius:16px;
     padding:18px;
     box-shadow:var(--shadow);
-    margin-top:16px;
+    margin-top:15px;
 }
 
 .form-grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:14px;
+    grid-template-columns:
+        repeat(2,1fr);
+    gap:13px;
 }
 
 .form-group{
@@ -179,181 +204,250 @@ header p{
 }
 
 .form-group label{
-    font-size:.88rem;
+    font-size:.86rem;
     font-weight:bold;
 }
 
 input,
-textarea,
-select{
+select,
+textarea{
     width:100%;
-    padding:11px 12px;
-    border:1px solid var(--border);
+    padding:11px;
     border-radius:10px;
+    border:1px solid var(--border);
     background:var(--card);
     color:var(--text);
     outline:none;
 }
 
-input:focus,
-textarea:focus,
-select:focus{
-    border-color:var(--secondary);
-    box-shadow:0 0 0 3px rgba(22,119,210,.12);
-}
-
 textarea{
-    min-height:85px;
+    min-height:80px;
     resize:vertical;
 }
 
-.form-actions{
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:var(--primary2);
+}
+
+.actions{
     display:flex;
     flex-wrap:wrap;
-    gap:10px;
+    gap:9px;
     margin-top:15px;
 }
 
 .btn{
     border:0;
-    border-radius:10px;
-    padding:11px 16px;
+    border-radius:9px;
+    padding:10px 15px;
     font-weight:bold;
+    color:#fff;
 }
 
 .btn-primary{
     background:var(--primary);
-    color:white;
 }
 
-.btn-success{
+.btn-green{
     background:var(--green);
-    color:white;
 }
 
-.btn-danger{
+.btn-red{
     background:var(--red);
-    color:white;
 }
 
-.btn-secondary{
-    background:#6c757d;
-    color:white;
+.btn-gray{
+    background:#6b7280;
 }
 
-.feedback{
-    margin-top:16px;
-    padding:15px;
-    border-radius:14px;
-    background:var(--card);
-    border:1px solid var(--border);
-    text-align:center;
-    font-weight:bold;
-    box-shadow:var(--shadow);
-}
 
-.feedback-positive{
-    border-left:5px solid var(--green);
-}
+/* =========================
+   TARJETAS
+========================= */
 
-.feedback-negative{
-    border-left:5px solid var(--red);
-}
-
-.obligations-container{
+.obligations{
     display:flex;
     flex-direction:column;
     gap:14px;
 }
 
 .obligation-card{
+    position:relative;
     background:var(--card);
     border:1px solid var(--border);
-    border-left:7px solid var(--green);
-    border-radius:15px;
-    box-shadow:var(--shadow);
+    border-radius:16px;
     overflow:hidden;
-    transition:.25s;
+    box-shadow:var(--shadow);
+    transition:.3s;
 }
 
-.obligation-card.status-green{
-    border-left-color:var(--green);
+.obligation-card:hover{
+    transform:translateY(-1px);
 }
 
-.obligation-card.status-yellow{
-    border-left-color:var(--yellow);
+
+/* barra lateral de color */
+
+.card-color{
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    width:7px;
+    background:#0b4f9c;
 }
 
-.obligation-card.status-red{
-    border-left-color:var(--red);
-}
 
-.obligation-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:12px;
-    padding:17px;
+/* encabezado */
+
+.card-header{
+    padding:17px 17px 13px 21px;
     cursor:pointer;
 }
 
-.obligation-title{
+.card-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+}
+
+.card-title{
     display:flex;
     align-items:center;
     gap:9px;
     min-width:0;
 }
 
-.obligation-title h3{
+.card-title h3{
     margin:0;
+    font-size:1.05rem;
     word-break:break-word;
 }
 
-.obligation-arrow{
-    transition:.2s;
+.arrow{
+    transition:.25s;
+    color:var(--muted);
 }
 
-.obligation-card.open .obligation-arrow{
+.open .arrow{
     transform:rotate(180deg);
 }
 
-.amount-badge{
+.amount{
     white-space:nowrap;
     background:rgba(11,79,156,.1);
     color:var(--primary);
-    border-radius:20px;
     padding:6px 10px;
+    border-radius:20px;
+    font-size:.78rem;
+    font-weight:bold;
+}
+
+
+/* =========================
+   BARRA DE PROGRESO
+========================= */
+
+.progress-area{
+    margin-top:14px;
+}
+
+.progress-labels{
+    display:flex;
+    justify-content:space-between;
+    font-size:.72rem;
+    color:var(--muted);
+    margin-bottom:5px;
+}
+
+.progress-track{
+    height:13px;
+    width:100%;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+    position:relative;
+}
+
+body.dark .progress-track{
+    background:#303944;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    border-radius:20px;
+    transition:
+        width .5s ease,
+        background .5s ease;
+}
+
+.progress-bar.green{
+    background:linear-gradient(
+        90deg,
+        #22c55e,
+        #16a34a
+    );
+}
+
+.progress-bar.yellow{
+    background:linear-gradient(
+        90deg,
+        #fde047,
+        #eab308
+    );
+}
+
+.progress-bar.red{
+    background:linear-gradient(
+        90deg,
+        #f87171,
+        #dc2626
+    );
+}
+
+.progress-status{
+    margin-top:6px;
     font-size:.8rem;
     font-weight:bold;
 }
 
-.obligation-details{
+
+/* =========================
+   DETALLES
+========================= */
+
+.card-details{
     display:none;
-    padding:0 17px 17px;
+    padding:0 17px 18px 21px;
     border-top:1px solid var(--border);
 }
 
-.obligation-card.open .obligation-details{
+.open .card-details{
     display:block;
 }
 
-.detail-grid{
+.details-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
+    grid-template-columns:
+        repeat(3,1fr);
+    gap:9px;
     margin-top:14px;
 }
 
 .detail{
-    background:rgba(128,128,128,.06);
-    border-radius:10px;
+    background:rgba(128,128,128,.07);
+    border-radius:9px;
     padding:10px;
 }
 
 .detail span{
     display:block;
     color:var(--muted);
-    font-size:.76rem;
+    font-size:.72rem;
 }
 
 .detail strong{
@@ -362,106 +456,108 @@ textarea{
     font-size:.9rem;
 }
 
-.status-message{
+.days-box{
     margin-top:12px;
-    padding:10px;
-    border-radius:10px;
-    font-size:.9rem;
+    padding:14px;
+    border-radius:11px;
+    background:rgba(11,79,156,.08);
+}
+
+.days-box .big{
+    font-size:1.25rem;
     font-weight:bold;
 }
 
-.status-green .status-message{
-    background:var(--green-bg);
-    color:var(--green);
+.days-box small{
+    color:var(--muted);
 }
 
-.status-yellow .status-message{
-    background:var(--yellow-bg);
-    color:var(--yellow);
-}
-
-.status-red .status-message{
-    background:var(--red-bg);
-    color:var(--red);
-}
-
-.comment-box{
+.comment{
     margin-top:12px;
     padding:11px;
-    border-radius:10px;
     background:rgba(128,128,128,.07);
+    border-radius:10px;
 }
 
-.card-actions{
+.card-buttons{
     display:flex;
-    gap:8px;
     flex-wrap:wrap;
+    gap:8px;
     margin-top:13px;
 }
 
-.card-actions button{
+.card-buttons button{
     border:0;
+    color:#fff;
     border-radius:8px;
     padding:8px 12px;
-    color:white;
     font-size:.82rem;
 }
 
-.edit-btn{
-    background:var(--secondary);
+.edit{
+    background:var(--primary2);
 }
 
-.delete-btn{
+.delete{
     background:var(--red);
 }
 
-.alerts-section{
-    margin-top:24px;
-    background:var(--red-bg);
+
+/* =========================
+   ALERTAS
+========================= */
+
+.alert-section{
+    margin-top:25px;
+    padding:17px;
     border:2px solid var(--red);
     border-radius:16px;
-    padding:18px;
+    background:rgba(220,38,38,.08);
 }
 
-.alerts-section .section-title h2{
+.alert-section h2{
     color:var(--red);
 }
 
-.alert-card{
+.alert{
+    margin-top:9px;
+    padding:12px;
+    border-radius:10px;
     background:var(--card);
     border-left:5px solid var(--red);
-    padding:13px;
-    border-radius:10px;
-    margin-top:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,.05);
 }
 
-.alert-card.priority{
-    border-left-color:var(--orange);
+.alert.priority{
+    border-left-color:#f97316;
 }
 
-.alert-card strong{
+.alert strong{
     display:block;
 }
 
-.alert-date{
-    color:var(--muted);
-    font-size:.8rem;
-    margin-top:4px;
-}
-
-.no-alerts{
-    background:var(--card);
-    padding:12px;
-    border-radius:10px;
+.alert small{
     color:var(--muted);
 }
 
-.calendar-wrapper{
-    margin-top:24px;
+.alert-button{
+    background:var(--red);
+    color:#fff;
+    border:0;
+    border-radius:9px;
+    padding:9px 12px;
+    font-weight:bold;
 }
+
+
+/* =========================
+   CALENDARIO
+========================= */
 
 .calendar{
+    margin-top:25px;
+}
+
+.calendar-box{
     background:var(--card);
     border:1px solid var(--border);
     border-radius:16px;
@@ -469,531 +565,547 @@ textarea{
     box-shadow:var(--shadow);
 }
 
-.calendar-navigation{
+.calendar-nav{
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
     margin-bottom:14px;
 }
 
-.calendar-navigation button{
+.calendar-nav button{
     border:0;
+    border-radius:8px;
     background:var(--primary);
-    color:white;
-    border-radius:9px;
+    color:#fff;
     padding:8px 12px;
 }
 
-.calendar-month{
+.month{
     font-weight:bold;
-    font-size:1.1rem;
 }
 
-.calendar-weekdays,
+.weekdays,
 .calendar-grid{
     display:grid;
-    grid-template-columns:repeat(7,1fr);
+    grid-template-columns:
+        repeat(7,1fr);
     gap:5px;
 }
 
-.calendar-weekdays div{
+.weekdays div{
     text-align:center;
     color:var(--muted);
-    font-size:.75rem;
+    font-size:.72rem;
     font-weight:bold;
-    padding:6px 0;
 }
 
-.calendar-day{
-    min-height:50px;
+.day{
+    min-height:48px;
     border:1px solid var(--border);
     background:var(--card);
     color:var(--text);
     border-radius:8px;
-    position:relative;
     padding:7px;
-    text-align:left;
+    position:relative;
 }
 
-.calendar-day:hover{
-    border-color:var(--secondary);
+.day.today{
+    outline:2px solid var(--primary2);
 }
 
-.calendar-day.today{
-    outline:2px solid var(--secondary);
-}
-
-.calendar-day.has-event{
+.day.has-event{
     background:rgba(22,119,210,.1);
 }
 
-.calendar-day.has-priority{
-    background:rgba(214,40,40,.14);
+.day.priority{
+    background:rgba(220,38,38,.13);
 }
 
-.day-number{
-    font-weight:bold;
-}
-
-.event-dot{
+.dot{
     position:absolute;
-    right:6px;
     bottom:5px;
+    right:5px;
     width:7px;
     height:7px;
+    background:var(--primary2);
     border-radius:50%;
-    background:var(--secondary);
 }
 
-.calendar-events{
-    margin-top:14px;
+.events{
     display:flex;
-    gap:10px;
+    gap:9px;
     overflow-x:auto;
-    padding-bottom:5px;
+    margin-top:14px;
 }
 
-.calendar-event-card{
+.event-card{
     min-width:220px;
-    max-width:270px;
+    padding:11px;
     background:var(--card);
     border:1px solid var(--border);
-    border-left:5px solid var(--secondary);
-    border-radius:11px;
-    padding:12px;
-    box-shadow:var(--shadow);
+    border-left:5px solid var(--primary2);
+    border-radius:10px;
 }
 
-.calendar-event-card.priority{
+.event-card.priority{
     border-left-color:var(--red);
 }
 
-.calendar-event-card strong{
-    display:block;
-}
 
-.calendar-event-card small{
-    color:var(--muted);
-}
-
-.custom-section{
-    margin-top:30px;
-}
-
-.hidden{
-    display:none !important;
-}
-
-.reminder-button{
-    background:var(--red);
-    color:white;
-    border:0;
-    border-radius:10px;
-    padding:10px 14px;
-    font-weight:bold;
-}
-
-.remaining-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:8px;
-    margin-top:10px;
-}
-
-.remaining-item{
-    padding:9px;
-    border-radius:9px;
-    background:rgba(128,128,128,.06);
-    text-align:center;
-}
-
-.remaining-item span{
-    display:block;
-    font-size:.72rem;
-    color:var(--muted);
-}
-
-.remaining-item strong{
-    display:block;
-    margin-top:3px;
-}
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media(max-width:700px){
 
-    .form-grid{
+    .form-grid,
+    .details-grid{
         grid-template-columns:1fr;
     }
 
-    .detail-grid,
-    .remaining-grid{
-        grid-template-columns:1fr;
-    }
-
-    .obligation-header{
+    .card-top{
         align-items:flex-start;
     }
 
-    .amount-badge{
-        font-size:.72rem;
-    }
-
-    .calendar-day{
-        min-height:44px;
-        font-size:.8rem;
+    .amount{
+        font-size:.7rem;
     }
 
 }
 
 @media(max-width:480px){
 
-    .app-container{
+    .app{
         width:96%;
     }
 
     header{
-        padding-top:50px;
+        padding-top:52px;
     }
 
-    .financial-summary{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .summary-card{
-        padding:13px;
-    }
-
-    .summary-card strong{
-        font-size:1rem;
-    }
-
-    .obligation-title h3{
-        font-size:1rem;
+    .summary{
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
 }
+
 </style>
 </head>
 
+
 <body>
 
-<div class="app-container">
+<div class="app">
 
 <header>
-    <button class="theme-toggle" id="themeToggle">
-        🌙 / ☀️
-    </button>
 
-    <h1>PAGOS JUAN HILARIO</h1>
-    <p>Organiza tus pagos, controla tus obligaciones y cuida tus finanzas.</p>
+<button
+    class="theme"
+    id="themeToggle">
+    🌙 / ☀️
+</button>
+
+<h1>PAGOS JUAN HILARIO</h1>
+
+<p>
+Controla tus pagos, fechas y obligaciones
+</p>
+
 </header>
 
 
-<!-- RESUMEN FINANCIERO -->
+<!-- =========================
+     RESUMEN
+========================= -->
 
-<div class="financial-summary">
+<div class="summary">
 
-    <div class="summary-card">
-        <span>💵 Total efectivo</span>
-        <strong id="cashDisplay">RD$0.00</strong>
-    </div>
-
-    <div class="summary-card">
-        <span>🏦 Total ahorros</span>
-        <strong id="savingsDisplay">RD$0.00</strong>
-    </div>
-
-    <div class="summary-card">
-        <span>📊 Balance disponible</span>
-        <strong id="balanceDisplay">RD$0.00</strong>
-    </div>
-
+<div class="summary-card">
+<span>💵 EFECTIVO</span>
+<strong id="cashDisplay">
+RD$0.00
+</strong>
 </div>
 
-
-<!-- MENSAJE FINANCIERO -->
+<div class="summary-card">
+<span>🏦 AHORROS</span>
+<strong id="savingsDisplay">
+RD$0.00
+</strong>
+</div>
 
 <div
-    id="feedbackMessage"
-    class="feedback">
-    Organiza tus pagos y toma el control de tu dinero.
+    class="summary-card"
+    id="balanceCard">
+
+<span>BALANCE</span>
+
+<strong id="balanceDisplay">
+RD$0.00
+</strong>
+
+</div>
+
+<div class="summary-card">
+
+<span>📋 OBLIGACIONES</span>
+
+<strong id="totalObligations">
+RD$0.00
+</strong>
+
+</div>
+
 </div>
 
 
-<!-- OBLIGACIONES -->
+<div
+    class="feedback"
+    id="feedback">
+Organiza tus pagos y toma el control de tus finanzas.
+</div>
+
+
+<!-- =========================
+     FONDOS
+========================= -->
+
+<section class="form-section">
 
 <div class="section-title">
-    <h2>
-        📋 Mis obligaciones
-    </h2>
 
-    <small id="obligationCounter">
-        0 obligaciones
-    </small>
+<h2>💰 FONDOS DISPONIBLES</h2>
+
+<small>
+Actualiza tus recursos
+</small>
+
 </div>
+
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>
+Total de efectivo
+</label>
+
+<input
+    type="number"
+    id="cashInput"
+    min="0"
+    step="0.01"
+    placeholder="RD$0.00">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Total de ahorros
+</label>
+
+<input
+    type="number"
+    id="savingsInput"
+    min="0"
+    step="0.01"
+    placeholder="RD$0.00">
+
+</div>
+
+</div>
+
+
+<div class="actions">
+
+<button
+    class="btn btn-green"
+    id="saveFunds">
+    💾 GUARDAR FONDOS
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     OBLIGACIONES
+========================= -->
+
+<div class="section-title">
+
+<h2>📋 MIS OBLIGACIONES</h2>
+
+<small id="counter">
+0 obligaciones
+</small>
+
+</div>
+
 
 <div
-    id="obligationsContainer"
-    class="obligations-container">
+    class="obligations"
+    id="obligations">
 </div>
 
 
-<!-- ALERTAS -->
+<!-- =========================
+     ALERTAS
+========================= -->
 
-<section class="alerts-section">
+<section class="alert-section">
 
-    <div class="section-title">
-        <h2>🚨 ALERTAS Y RECORDATORIOS</h2>
+<div class="section-title">
 
-        <button
-            id="enableAlertsBtn"
-            class="reminder-button">
-            🔔 Activar alertas
-        </button>
-    </div>
+<h2>🚨 ALERTAS Y RECORDATORIOS</h2>
 
-    <div id="alertsContainer">
-    </div>
+<button
+    class="alert-button"
+    id="enableAlerts">
+    🔔 ACTIVAR ALERTAS
+</button>
 
-</section>
+</div>
 
-
-<!-- CALENDARIO -->
-
-<section class="calendar-wrapper">
-
-    <div class="section-title">
-        <h2>📅 Calendario de pagos</h2>
-
-        <small>
-            Toca un día para agregar una nota
-        </small>
-    </div>
-
-    <div class="calendar">
-
-        <div class="calendar-navigation">
-
-            <button id="previousMonth">
-                ◀
-            </button>
-
-            <div
-                id="calendarMonth"
-                class="calendar-month">
-            </div>
-
-            <button id="nextMonth">
-                ▶
-            </button>
-
-        </div>
-
-        <div class="calendar-weekdays" id="calendarWeekdays"></div>
-
-        <div
-            id="calendarGrid"
-            class="calendar-grid">
-        </div>
-
-        <div
-            id="calendarEvents"
-            class="calendar-events">
-        </div>
-
-    </div>
+<div id="alerts">
+</div>
 
 </section>
 
 
-<!-- AGREGAR OBLIGACIÓN -->
+<!-- =========================
+     CALENDARIO
+========================= -->
 
-<section class="custom-section">
+<section class="calendar">
 
-    <div class="section-title">
-        <h2>➕ Agregar otros</h2>
+<div class="section-title">
 
-        <small>
-            Crea una nueva obligación
-        </small>
-    </div>
+<h2>📅 CALENDARIO</h2>
 
-    <div class="form-section">
+<small>
+Toca un día para agregar un recordatorio
+</small>
 
-        <form id="obligationForm">
+</div>
 
-            <div class="form-grid">
 
-                <div class="form-group">
+<div class="calendar-box">
 
-                    <label for="obligationName">
-                        Nombre de la obligación
-                    </label>
+<div class="calendar-nav">
 
-                    <input
-                        type="text"
-                        id="obligationName"
-                        placeholder="Ej.: Tarjeta de crédito"
-                        required>
+<button id="prevMonth">
+◀
+</button>
 
-                </div>
+<div
+    class="month"
+    id="month">
+</div>
 
+<button id="nextMonth">
+▶
+</button>
 
-                <div class="form-group">
+</div>
 
-                    <label for="obligationAmount">
-                        Monto a pagar
-                    </label>
 
-                    <input
-                        type="number"
-                        id="obligationAmount"
-                        min="0"
-                        step="0.01"
-                        placeholder="RD$0.00">
+<div
+    class="weekdays"
+    id="weekdays">
+</div>
 
-                </div>
 
+<div
+    class="calendar-grid"
+    id="calendar">
+</div>
 
-                <div class="form-group">
 
-                    <label for="cutoffDate">
-                        Fecha de corte
-                    </label>
+<div
+    class="events"
+    id="events">
+</div>
 
-                    <input
-                        type="date"
-                        id="cutoffDate">
+</div>
 
-                </div>
+</section>
 
 
-                <div class="form-group">
+<!-- =========================
+     AGREGAR / MODIFICAR
+========================= -->
 
-                    <label for="personalDate">
-                        Fecha personal
-                    </label>
+<section class="form-section">
 
-                    <input
-                        type="date"
-                        id="personalDate">
+<div class="section-title">
 
-                </div>
+<h2>➕ AGREGAR / MODIFICAR OBLIGACIÓN</h2>
 
+</div>
 
-                <div class="form-group">
 
-                    <label for="paymentDate">
-                        Fecha límite de pago
-                    </label>
+<form id="form">
 
-                    <input
-                        type="date"
-                        id="paymentDate"
-                        required>
+<div class="form-grid">
 
-                </div>
+<div class="form-group">
 
+<label>
+Nombre
+</label>
 
-                <div class="form-group">
+<input
+    id="name"
+    type="text"
+    required
+    placeholder="Ej.: BANCO ADEMI">
 
-                    <label for="obligationColor">
-                        Color del título
-                    </label>
+</div>
 
-                    <input
-                        type="color"
-                        id="obligationColor"
-                        value="#0b4f9c">
 
-                </div>
+<div class="form-group">
 
+<label>
+Monto a pagar
+</label>
 
-                <div class="form-group">
+<input
+    id="amount"
+    type="number"
+    min="0"
+    step="0.01"
+    placeholder="RD$0.00">
 
-                    <label for="priorityLevel">
-                        Prioridad
-                    </label>
+</div>
 
-                    <select id="priorityLevel">
 
-                        <option value="normal">
-                            Normal
-                        </option>
+<div class="form-group">
 
-                        <option value="alta">
-                            🔴 Alta
-                        </option>
+<label>
+Fecha de corte
+</label>
 
-                        <option value="urgente">
-                            🚨 Urgente
-                        </option>
+<input
+    id="cutoff"
+    type="date">
 
-                    </select>
+</div>
 
-                </div>
 
+<div class="form-group">
 
-                <div class="form-group">
+<label>
+Fecha personal
+</label>
 
-                    <label for="reminderEnabled">
-                        Recordatorio
-                    </label>
+<input
+    id="personal"
+    type="date">
 
-                    <select id="reminderEnabled">
+</div>
 
-                        <option value="true">
-                            Sí, activar
-                        </option>
 
-                        <option value="false">
-                            No
-                        </option>
+<div class="form-group">
 
-                    </select>
+<label>
+Fecha límite de pago
+</label>
 
-                </div>
+<input
+    id="payment"
+    type="date"
+    required>
 
-            </div>
+</div>
 
 
-            <div class="form-group" style="margin-top:14px;">
+<div class="form-group">
 
-                <label for="obligationComment">
-                    Comentarios
-                </label>
+<label>
+🎨 Color del título
+</label>
 
-                <textarea
-                    id="obligationComment"
-                    placeholder="Escribe aquí cualquier comentario, detalle o recordatorio..."></textarea>
+<input
+    id="color"
+    type="color"
+    value="#0b4f9c">
 
-            </div>
+</div>
 
 
-            <div class="form-actions">
+<div class="form-group">
 
-                <button
-                    type="submit"
-                    id="saveObligationBtn"
-                    class="btn btn-primary">
+<label>
+Prioridad
+</label>
 
-                    ➕ Guardar obligación
+<select id="priority">
 
-                </button>
+<option value="normal">
+NORMAL
+</option>
 
-                <button
-                    type="button"
-                    id="cancelEditBtn"
-                    class="btn btn-secondary hidden">
+<option value="alta">
+🔴 ALTA
+</option>
 
-                    Cancelar edición
+<option value="urgente">
+🚨 URGENTE
+</option>
 
-                </button>
+</select>
 
-            </div>
+</div>
 
-        </form>
+</div>
 
-    </div>
+
+<div
+    class="form-group"
+    style="margin-top:13px;">
+
+<label>
+Comentario
+</label>
+
+<textarea
+    id="comment"
+    placeholder="Escribe un comentario o recordatorio..."></textarea>
+
+</div>
+
+
+<div class="actions">
+
+<button
+    class="btn btn-primary"
+    type="submit"
+    id="saveButton">
+
+➕ GUARDAR OBLIGACIÓN
+
+</button>
+
+
+<button
+    class="btn btn-gray"
+    type="button"
+    id="cancelEdit"
+    style="display:none;">
+
+CANCELAR
+
+</button>
+
+</div>
+
+</form>
 
 </section>
 
@@ -1001,82 +1113,193 @@ textarea{
 
 
 <script>
-/* =========================================================
-   ESTADO PRINCIPAL
-   ========================================================= */
-
-const APP_STORAGE_KEY =
-    "pagos_juan_hilario_v4";
-
-const THEME_STORAGE_KEY =
-    "pagos_juan_hilario_theme";
-
 
 /* =========================================================
-   MENSAJES POSITIVOS
-   ========================================================= */
+   CONFIGURACIÓN
+========================================================= */
+
+const STORAGE =
+"pagos_juan_hilario_obligaciones_v5";
+
 
 const positiveMessages = [
 
-    "Vas muy bien este mes. ¡Sigue así y alcanzarás tus objetivos muy pronto!",
-    "¡Excelente trabajo! Cada peso bien administrado te acerca a tus metas.",
-    "Tus finanzas están avanzando en la dirección correcta. ¡Continúa así!",
-    "¡Muy bien! Estás demostrando que puedes tener el control de tu dinero.",
-    "Cada pago realizado es un paso más hacia tu tranquilidad financiera.",
-    "¡Sigue adelante! La disciplina financiera de hoy construye tu estabilidad de mañana.",
-    "Estás administrando bien tus recursos. ¡No bajes la guardia!",
-    "¡Excelente! Mantener tus obligaciones bajo control es una gran decisión.",
-    "Tu organización financiera está dando resultados. ¡Continúa trabajando así!",
-    "¡Muy buen trabajo! Estás construyendo hábitos financieros saludables.",
-    "Cada peso que controlas hoy puede convertirse en una oportunidad mañana.",
-    "¡Vas por buen camino! Mantén el enfoque y protege tu presupuesto.",
-    "La constancia está haciendo la diferencia. ¡Sigue cumpliendo tus compromisos!",
-    "¡Excelente avance! Tener tus pagos organizados te da mayor tranquilidad.",
-    "Estás tomando buenas decisiones financieras. ¡Mantén este ritmo!",
-    "¡Muy bien! Tu disciplina puede ayudarte a alcanzar tus metas más rápido.",
-    "Tus esfuerzos están dando frutos. ¡Continúa cuidando cada peso!",
-    "¡Sigue así! Una buena administración comienza con pequeñas decisiones.",
-    "Estás fortaleciendo tu salud financiera. ¡No pierdas el enfoque!",
-    "¡Excelente trabajo! Tu futuro financiero se construye con las decisiones que tomas hoy."
+"¡Vas muy bien este mes! Si continúas así alcanzarás tus objetivos muy pronto.",
+"¡Excelente trabajo! Cada peso bien administrado te acerca a tus metas.",
+"Estás tomando el control de tus finanzas. ¡Sigue así!",
+"Cada pago realizado es un paso más hacia tu tranquilidad financiera.",
+"¡Muy bien! Tu disciplina financiera está dando resultados.",
+"Continúa así. La organización de hoy construye estabilidad para mañana.",
+"¡Excelente! Mantener tus obligaciones bajo control es una gran decisión.",
+"Tu administración financiera está avanzando correctamente.",
+"¡Sigue adelante! Cada decisión cuenta.",
+"Estás construyendo buenos hábitos financieros."
+
+];
+
+
+const negativeMessages = [
+
+"Estás gastando demasiado este mes. Debes detenerte y controlar tus gastos.",
+"Nadie pagará tus obligaciones por ti. Toma el control.",
+"Tus obligaciones están superando tus recursos.",
+"Debes revisar tus gastos antes de asumir nuevas obligaciones.",
+"Cuidado: estás comprometiendo demasiado dinero.",
+"Tu presupuesto necesita atención.",
+"Controla tus gastos antes de que la situación empeore.",
+"No ignores tus obligaciones.",
+"Tu balance está en negativo. Necesitas actuar.",
+"Prioriza tus pagos antes de realizar nuevos gastos."
 
 ];
 
 
 /* =========================================================
-   MENSAJES NEGATIVOS / ALERTAS
-   ========================================================= */
+   OBLIGACIONES PRECARGADAS
+========================================================= */
 
-const negativeMessages = [
+const defaultObligations = [
 
-    "Estás gastando demasiado este mes. ¡Debes detenerte y controlar tus gastos!",
-    "Nadie cuidará tus finanzas por ti. ¡Toma el control antes de que sea demasiado tarde!",
-    "Tus obligaciones están superando tus recursos. Necesitas ajustar tus gastos.",
-    "Cuidado: estás comprometiendo demasiado dinero. Revisa tus gastos cuanto antes.",
-    "No sigas aumentando tus obligaciones si todavía tienes pagos pendientes.",
-    "Tu presupuesto necesita atención. Evita gastos innecesarios.",
-    "Alerta financiera: revisa tus pagos antes de asumir nuevas deudas.",
-    "Estás acercándote a una situación que puede afectar tu estabilidad financiera.",
-    "Controla tus gastos. Tu dinero necesita una prioridad clara.",
-    "No ignores tus obligaciones. Un pequeño atraso puede convertirse en un problema mayor.",
-    "Tu balance está en negativo. Necesitas reducir gastos o aumentar tus ingresos.",
-    "Cuidado con gastar más de lo que tienes disponible.",
-    "Es momento de detener los gastos innecesarios y concentrarte en tus compromisos.",
-    "Tus finanzas necesitan organización. Revisa qué pagos son realmente prioritarios.",
-    "No dejes tus pagos para último momento. Anticiparte puede evitarte problemas.",
-    "Estás utilizando demasiados recursos. Protege el dinero que necesitas para tus obligaciones.",
-    "Tu situación financiera requiere atención. Haz un plan y síguelo.",
-    "No ignores esta señal. Controlar tus gastos hoy puede evitarte dificultades mañana.",
-    "Prioriza tus obligaciones antes de realizar gastos que pueden esperar.",
-    "¡Alerta! Necesitas tomar acción para recuperar el control de tus finanzas."
+{
+    id:"ademi",
+    name:"BANCO ADEMI",
+    amount:0,
+    cutoffDay:13,
+    personalDay:15,
+    paymentDay:5,
+    color:"#10b981",
+    priority:"alta",
+    comment:"CORTE DÍA 13. FECHA PERSONAL 15-30. PAGO DÍA 05."
+},
+
+{
+    id:"popular",
+    name:"BANCO POPULAR",
+    amount:0,
+    cutoffDay:28,
+    personalDay:15,
+    paymentDay:22,
+    color:"#2563eb",
+    priority:"alta",
+    comment:"CORTE DÍA 28. FECHA PERSONAL ENTRE 15-30. PAGO DÍA 22."
+},
+
+{
+    id:"vimenca",
+    name:"BANCO VIMENCA",
+    amount:0,
+    cutoffDay:10,
+    personalDay:15,
+    paymentDay:2,
+    color:"#1d4ed8",
+    priority:"alta",
+    comment:"CORTE DÍA 10. FECHA PERSONAL ENTRE 15-30. PAGO DÍA 02."
+},
+
+{
+    id:"apap",
+    name:"BANCO APAP",
+    amount:0,
+    cutoffDay:21,
+    personalDay:30,
+    paymentDay:13,
+    color:"#facc15",
+    priority:"alta",
+    comment:"CORTE DÍA 21. FECHA PERSONAL DÍA 30. PAGO DÍA 13."
+},
+
+{
+    id:"coop-aspire",
+    name:"COOP ASPIRE",
+    amount:0,
+    cutoffDay:28,
+    personalDay:30,
+    paymentDay:5,
+    color:"#16a34a",
+    priority:"alta",
+    comment:"PAGAR LOS DÍAS 28, 30 Y FECHA FINAL DÍA 05."
+},
+
+{
+    id:"qik",
+    name:"BANCO QIK",
+    amount:0,
+    cutoffDay:15,
+    personalDay:30,
+    paymentDay:12,
+    color:"#14b8a6",
+    priority:"alta",
+    comment:"CORTE DÍA 15. FECHA PERSONAL DÍA 30. PAGO DÍA 12."
+},
+
+{
+    id:"santa-cruz",
+    name:"BANCO SANTA CRUZ",
+    amount:0,
+    cutoffDay:13,
+    personalDay:30,
+    paymentDay:9,
+    color:"#2563eb",
+    priority:"alta",
+    comment:"CORTE DÍA 13. FECHA PERSONAL DÍA 30. PAGO DÍA 09."
+},
+
+{
+    id:"prestamo-qik",
+    name:"PRÉSTAMO BANCO QIK",
+    amount:0,
+    cutoffDay:30,
+    personalDay:30,
+    paymentDay:5,
+    color:"#06b6d4",
+    priority:"alta",
+    comment:"FECHA DE PAGO DÍA 30 / DÍA 05 DE CADA MES."
+},
+
+{
+    id:"prestamo-aspire",
+    name:"PRÉSTAMO COOP ASPIRE",
+    amount:0,
+    cutoffDay:30,
+    personalDay:30,
+    paymentDay:5,
+    color:"#16a34a",
+    priority:"alta",
+    comment:"FECHA DE PAGO DÍA 30 / DÍA 05 DE CADA MES."
+},
+
+{
+    id:"claro",
+    name:"CLARO CODETEL",
+    amount:0,
+    cutoffDay:15,
+    personalDay:30,
+    paymentDay:2,
+    color:"#dc2626",
+    priority:"alta",
+    comment:"FECHA DE PAGO DÍA 15, DÍA 30 Y FECHA FINAL DÍA 02."
+},
+
+{
+    id:"viva",
+    name:"VIVA",
+    amount:0,
+    cutoffDay:15,
+    personalDay:30,
+    paymentDay:30,
+    color:"#22c55e",
+    priority:"normal",
+    comment:"FECHA DE PAGO DÍA 15 Y DÍA 30."
+}
 
 ];
 
 
 /* =========================================================
    ESTADO
-   ========================================================= */
+========================================================= */
 
-let appState = {
+let state = {
 
     cash:0,
 
@@ -1086,2859 +1309,59 @@ let appState = {
 
     calendarEvents:[],
 
-    currentCalendarDate:new Date(),
+    currentDate:new Date(),
 
-    editingObligationId:null
-
-};
-
-
-/* =========================================================
-   ELEMENTOS
-   ========================================================= */
-
-const elements = {
-
-    themeToggle:
-        document.getElementById("themeToggle"),
-
-    cashDisplay:
-        document.getElementById("cashDisplay"),
-
-    savingsDisplay:
-        document.getElementById("savingsDisplay"),
-
-    balanceDisplay:
-        document.getElementById("balanceDisplay"),
-
-    balanceSummaryCard:
-        document.querySelector(".summary-card:nth-child(3)"),
-
-    feedbackMessage:
-        document.getElementById("feedbackMessage"),
-
-    obligationsContainer:
-        document.getElementById("obligationsContainer"),
-
-    obligationCounter:
-        document.getElementById("obligationCounter"),
-
-    alertsContainer:
-        document.getElementById("alertsContainer"),
-
-    calendarGrid:
-        document.getElementById("calendarGrid"),
-
-    calendarMonth:
-        document.getElementById("calendarMonth"),
-
-    calendarEvents:
-        document.getElementById("calendarEvents"),
-
-    previousMonth:
-        document.getElementById("previousMonth"),
-
-    nextMonth:
-        document.getElementById("nextMonth"),
-
-    obligationForm:
-        document.getElementById("obligationForm"),
-
-    obligationName:
-        document.getElementById("obligationName"),
-
-    obligationAmount:
-        document.getElementById("obligationAmount"),
-
-    cutoffDate:
-        document.getElementById("cutoffDate"),
-
-    personalDate:
-        document.getElementById("personalDate"),
-
-    paymentDate:
-        document.getElementById("paymentDate"),
-
-    obligationColor:
-        document.getElementById("obligationColor"),
-
-    priorityLevel:
-        document.getElementById("priorityLevel"),
-
-    reminderEnabled:
-        document.getElementById("reminderEnabled"),
-
-    obligationComment:
-        document.getElementById("obligationComment"),
-
-    saveObligationBtn:
-        document.getElementById("saveObligationBtn"),
-
-    cancelEditBtn:
-        document.getElementById("cancelEditBtn")
+    editing:null
 
 };
 
 
 /* =========================================================
-   UTILIDADES
-   ========================================================= */
+   CARGAR
+========================================================= */
 
-function generateId(){
-
-    return Date.now().toString(36) +
-        Math.random()
-        .toString(36)
-        .substring(2,9);
-
-}
-
-
-function formatMoney(value){
-
-    return new Intl.NumberFormat(
-        "es-DO",
-        {
-            style:"currency",
-            currency:"DOP",
-            minimumFractionDigits:2
-        }
-    ).format(Number(value)||0);
-
-}
-
-
-function escapeHTML(value){
-
-    return String(value ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-
-function getRandomMessage(list){
-
-    return list[
-        Math.floor(
-            Math.random()*list.length
-        )
-    ];
-
-}
-
-
-/* =========================================================
-   PERSISTENCIA
-   ========================================================= */
-
-function saveAppState(){
-
-    localStorage.setItem(
-        APP_STORAGE_KEY,
-        JSON.stringify(appState)
-    );
-
-}
-
-
-function loadAppState(){
-
-    try{
-
-        const saved =
-            localStorage.getItem(
-                APP_STORAGE_KEY
-            );
-
-        if(!saved) return;
-
-        const data =
-            JSON.parse(saved);
-
-        appState = {
-            cash:Number(data.cash)||0,
-            savings:Number(data.savings)||0,
-            obligations:Array.isArray(data.obligations)
-                ? data.obligations
-                : [],
-            calendarEvents:Array.isArray(data.calendarEvents)
-                ? data.calendarEvents
-                : [],
-            currentCalendarDate:data.currentCalendarDate
-                ? new Date(data.currentCalendarDate)
-                : new Date(),
-            editingObligationId:null
-        };
-
-        if(
-            isNaN(
-                appState.currentCalendarDate.getTime()
-            )
-        ){
-            appState.currentCalendarDate =
-                new Date();
-        }
-
-    }catch(error){
-
-        console.error(
-            "Error cargando datos:",
-            error
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   TEMA
-   ========================================================= */
-
-function applyTheme(theme){
-
-    document.body.classList.toggle(
-        "dark",
-        theme === "dark"
-    );
-
-    localStorage.setItem(
-        THEME_STORAGE_KEY,
-        theme
-    );
-
-}
-
-
-function initializeTheme(){
+function load(){
 
     const saved =
         localStorage.getItem(
-            THEME_STORAGE_KEY
+            STORAGE
         );
+
 
     if(saved){
 
-        applyTheme(saved);
-
-    }else{
-
-        applyTheme(
-            window.matchMedia &&
-            window.matchMedia(
-                "(prefers-color-scheme: dark)"
-            ).matches
-            ? "dark"
-            : "light"
-        );
-
-    }
-
-}
-
-
-elements.themeToggle.addEventListener(
-    "click",
-    function(){
-
-        applyTheme(
-            document.body.classList.contains("dark")
-            ? "light"
-            : "dark"
-        );
-
-    }
-);
-
-
-/* =========================================================
-   FECHAS
-   ========================================================= */
-
-function parseDateOnly(dateString){
-
-    if(!dateString) return null;
-
-    const parts =
-        dateString.split("-")
-            .map(Number);
-
-    return new Date(
-        parts[0],
-        parts[1]-1,
-        parts[2]
-    );
-
-}
-
-
-function formatDate(dateString){
-
-    if(!dateString) return "No indicada";
-
-    const date =
-        parseDateOnly(dateString);
-
-    if(!date) return "No indicada";
-
-    return date.toLocaleDateString(
-        "es-DO",
-        {
-            day:"2-digit",
-            month:"2-digit",
-            year:"numeric"
-        }
-    );
-
-}
-
-
-function getDateDifferenceInDays(dateString){
-
-    if(!dateString) return null;
-
-    const target =
-        parseDateOnly(dateString);
-
-    const today =
-        new Date();
-
-    today.setHours(0,0,0,0);
-
-    const difference =
-        target.getTime() -
-        today.getTime();
-
-    return Math.ceil(
-        difference /
-        (1000*60*60*24)
-    );
-
-}
-
-
-function daysText(days){
-
-    if(days === null){
-        return "Sin fecha";
-    }
-
-    if(days < 0){
-        return `Vencido hace ${Math.abs(days)} día${Math.abs(days)===1?"":"s"}`;
-    }
-
-    if(days === 0){
-        return "Es hoy";
-    }
-
-    if(days === 1){
-        return "Falta 1 día";
-    }
-
-    return `Faltan ${days} días`;
-
-}
-
-
-/* =========================================================
-   OBLIGACIONES
-   ========================================================= */
-
-function getTotalObligations(){
-
-    return appState.obligations.reduce(
-        (total,item)=>{
-            return total +
-                (Number(item.amount)||0);
-        },
-        0
-    );
-
-}
-
-
-function getTotalAvailableFunds(){
-
-    return (
-        Number(appState.cash)||0
-    ) + (
-        Number(appState.savings)||0
-    );
-
-}
-
-
-function calculateFinancialBalance(){
-
-    return (
-        getTotalAvailableFunds() -
-        getTotalObligations()
-    );
-
-}
-
-
-function getObligationStatus(obligation){
-
-    const payment =
-        getDateDifferenceInDays(
-            obligation.paymentDate
-        );
-
-    const personal =
-        getDateDifferenceInDays(
-            obligation.personalDate
-        );
-
-    const cutoff =
-        getDateDifferenceInDays(
-            obligation.cutoffDate
-        );
-
-    if(
-        payment !== null &&
-        payment <= 2
-    ){
-        return "red";
-    }
-
-    if(
-        personal !== null &&
-        personal <= 2
-    ){
-        return "yellow";
-    }
-
-    if(
-        cutoff !== null &&
-        cutoff <= 2
-    ){
-        return "yellow";
-    }
-
-    return "green";
-
-}
-
-
-function getStatusMessage(obligation){
-
-    const status =
-        getObligationStatus(
-            obligation
-        );
-
-    const days =
-        getDateDifferenceInDays(
-            obligation.paymentDate
-        );
-
-    if(status==="red"){
-
-        if(days < 0){
-            return "🚨 Pago vencido. Atiéndelo inmediatamente.";
-        }
-
-        if(days === 0){
-            return "🔴 El pago vence HOY.";
-        }
-
-        return "🔴 Fecha límite muy próxima. Prepárate para realizar el pago.";
-
-    }
-
-    if(status==="yellow"){
-
-        return "🟡 Atención: una de tus fechas importantes está próxima.";
-
-    }
-
-    return "🟢 Todo bajo control. Continúa planificando con anticipación.";
-
-}
-
-
-/* =========================================================
-   CREAR TARJETA
-   ========================================================= */
-
-function createObligationCard(obligation){
-
-    const card =
-        document.createElement("div");
-
-    const status =
-        getObligationStatus(
-            obligation
-        );
-
-    card.className =
-        `obligation-card status-${status}`;
-
-    card.dataset.id =
-        obligation.id;
-
-
-    const paymentDays =
-        getDateDifferenceInDays(
-            obligation.paymentDate
-        );
-
-    const personalDays =
-        getDateDifferenceInDays(
-            obligation.personalDate
-        );
-
-    const cutoffDays =
-        getDateDifferenceInDays(
-            obligation.cutoffDate
-        );
-
-
-    card.style.borderLeftColor =
-        obligation.color ||
-        "var(--green)";
-
-
-    card.innerHTML = `
-
-        <div class="obligation-header">
-
-            <div class="obligation-title">
-
-                <span
-                    class="obligation-arrow">
-                    ▼
-                </span>
-
-                <h3
-                    style="color:${
-                        escapeHTML(
-                            obligation.color ||
-                            "#0b4f9c"
-                        )
-                    }">
-
-                    ${escapeHTML(
-                        obligation.name
-                    )}
-
-                </h3>
-
-            </div>
-
-            ${
-                Number(obligation.amount)>0
-                ? `
-                    <div class="amount-badge">
-                        ${formatMoney(obligation.amount)}
-                    </div>
-                  `
-                : ""
-            }
-
-        </div>
-
-
-        <div class="obligation-details">
-
-            <div class="detail-grid">
-
-                <div class="detail">
-                    <span>Fecha de corte</span>
-                    <strong>
-                        ${formatDate(obligation.cutoffDate)}
-                    </strong>
-                </div>
-
-                <div class="detail">
-                    <span>Fecha personal</span>
-                    <strong>
-                        ${formatDate(obligation.personalDate)}
-                    </strong>
-                </div>
-
-                <div class="detail">
-                    <span>Fecha límite</span>
-                    <strong>
-                        ${formatDate(obligation.paymentDate)}
-                    </strong>
-                </div>
-
-                <div class="detail">
-                    <span>Monto</span>
-                    <strong>
-                        ${
-                            Number(obligation.amount)>0
-                            ? formatMoney(obligation.amount)
-                            : "No especificado"
-                        }
-                    </strong>
-                </div>
-
-                <div class="detail">
-                    <span>Prioridad</span>
-                    <strong>
-                        ${
-                            obligation.priority === "urgente"
-                            ? "🚨 Urgente"
-                            : obligation.priority === "alta"
-                            ? "🔴 Alta"
-                            : "Normal"
-                        }
-                    </strong>
-                </div>
-
-                <div class="detail">
-                    <span>Recordatorio</span>
-                    <strong>
-                        ${
-                            obligation.reminder
-                            ? "🔔 Activado"
-                            : "Desactivado"
-                        }
-                    </strong>
-                </div>
-
-            </div>
-
-
-            <div class="remaining-grid">
-
-                <div class="remaining-item">
-                    <span>Corte</span>
-                    <strong>
-                        ${daysText(cutoffDays)}
-                    </strong>
-                </div>
-
-                <div class="remaining-item">
-                    <span>Fecha personal</span>
-                    <strong>
-                        ${daysText(personalDays)}
-                    </strong>
-                </div>
-
-                <div class="remaining-item">
-                    <span>Pago</span>
-                    <strong>
-                        ${daysText(paymentDays)}
-                    </strong>
-                </div>
-
-            </div>
-
-
-            <div class="status-message">
-                ${getStatusMessage(obligation)}
-            </div>
-
-
-            ${
-                obligation.comment
-                ? `
-                    <div class="comment-box">
-                        <strong>📝 Comentario:</strong><br>
-                        ${escapeHTML(obligation.comment)}
-                    </div>
-                  `
-                : ""
-            }
-
-
-            <div class="card-actions">
-
-                <button
-                    class="edit-btn"
-                    data-action="edit">
-
-                    ✏️ Editar
-
-                </button>
-
-                <button
-                    class="delete-btn"
-                    data-action="delete">
-
-                    🗑️ Eliminar
-
-                </button>
-
-            </div>
-
-        </div>
-
-    `;
-
-
-    const header =
-        card.querySelector(
-            ".obligation-header"
-        );
-
-
-    header.addEventListener(
-        "click",
-        function(){
-
-            card.classList.toggle(
-                "open"
-            );
-
-        }
-    );
-
-
-    card.querySelector(
-        '[data-action="edit"]'
-    ).addEventListener(
-        "click",
-        function(event){
-
-            event.stopPropagation();
-
-            editObligation(
-                obligation.id
-            );
-
-        }
-    );
-
-
-    card.querySelector(
-        '[data-action="delete"]'
-    ).addEventListener(
-        "click",
-        function(event){
-
-            event.stopPropagation();
-
-            deleteObligation(
-                obligation.id
-            );
-
-        }
-    );
-
-
-    return card;
-
-}
-
-
-/* =========================================================
-   RENDERIZAR OBLIGACIONES
-   ========================================================= */
-
-function renderObligations(){
-
-    elements.obligationsContainer.innerHTML =
-        "";
-
-
-    if(
-        appState.obligations.length === 0
-    ){
-
-        elements.obligationsContainer.innerHTML = `
-
-            <div class="form-section"
-                 style="text-align:center;">
-
-                <div style="font-size:2rem;">
-                    📋
-                </div>
-
-                <strong>
-                    No tienes obligaciones registradas.
-                </strong>
-
-                <p style="color:var(--muted);">
-                    Agrega tu primera obligación
-                    en el formulario de abajo.
-                </p>
-
-            </div>
-
-        `;
-
-    }else{
-
-        appState.obligations.forEach(
-            obligation=>{
-
-                elements.obligationsContainer.appendChild(
-                    createObligationCard(
-                        obligation
-                    )
-                );
-
-            }
-        );
-
-    }
-
-
-    elements.obligationCounter.textContent =
-        `${appState.obligations.length} ${
-            appState.obligations.length === 1
-            ? "obligación"
-            : "obligaciones"
-        }`;
-
-}
-
-
-/* =========================================================
-   CREAR OBLIGACIÓN
-   ========================================================= */
-
-function createObligationFromForm(){
-
-    const obligation = {
-
-        id:generateId(),
-
-        name:
-            elements.obligationName.value.trim(),
-
-        amount:
-            Number(
-                elements.obligationAmount.value
-            ) || 0,
-
-        cutoffDate:
-            elements.cutoffDate.value,
-
-        personalDate:
-            elements.personalDate.value,
-
-        paymentDate:
-            elements.paymentDate.value,
-
-        color:
-            elements.obligationColor.value ||
-            "#0b4f9c",
-
-        priority:
-            elements.priorityLevel.value,
-
-        reminder:
-            elements.reminderEnabled.value === "true",
-
-        comment:
-            elements.obligationComment.value.trim()
-
-    };
-
-
-    appState.obligations.push(
-        obligation
-    );
-
-
-    saveAppState();
-
-    resetObligationForm();
-
-    renderObligations();
-
-    updateFinancialSummary();
-
-    generateAlerts();
-
-}
-
-
-/* =========================================================
-   EDITAR
-   ========================================================= */
-
-function editObligation(id){
-
-    const obligation =
-        appState.obligations.find(
-            item=>item.id===id
-        );
-
-
-    if(!obligation) return;
-
-
-    appState.editingObligationId =
-        id;
-
-
-    elements.obligationName.value =
-        obligation.name || "";
-
-    elements.obligationAmount.value =
-        obligation.amount || "";
-
-    elements.cutoffDate.value =
-        obligation.cutoffDate || "";
-
-    elements.personalDate.value =
-        obligation.personalDate || "";
-
-    elements.paymentDate.value =
-        obligation.paymentDate || "";
-
-    elements.obligationColor.value =
-        obligation.color || "#0b4f9c";
-
-    elements.priorityLevel.value =
-        obligation.priority || "normal";
-
-    elements.reminderEnabled.value =
-        String(
-            obligation.reminder !== false
-        );
-
-    elements.obligationComment.value =
-        obligation.comment || "";
-
-
-    elements.saveObligationBtn.textContent =
-        "💾 Actualizar obligación";
-
-
-    elements.cancelEditBtn.classList.remove(
-        "hidden"
-    );
-
-
-    document.querySelector(
-        ".custom-section"
-    ).scrollIntoView({
-        behavior:"smooth"
-    });
-
-}
-
-
-/* =========================================================
-   ACTUALIZAR
-   ========================================================= */
-
-function updateObligationFromForm(){
-
-    const id =
-        appState.editingObligationId;
-
-
-    const index =
-        appState.obligations.findIndex(
-            item=>item.id===id
-        );
-
-
-    if(index===-1){
-
-        resetObligationForm();
-        return;
-
-    }
-
-
-    appState.obligations[index] = {
-
-        ...appState.obligations[index],
-
-        name:
-            elements.obligationName.value.trim(),
-
-        amount:
-            Number(
-                elements.obligationAmount.value
-            ) || 0,
-
-        cutoffDate:
-            elements.cutoffDate.value,
-
-        personalDate:
-            elements.personalDate.value,
-
-        paymentDate:
-            elements.paymentDate.value,
-
-        color:
-            elements.obligationColor.value ||
-            "#0b4f9c",
-
-        priority:
-            elements.priorityLevel.value,
-
-        reminder:
-            elements.reminderEnabled.value === "true",
-
-        comment:
-            elements.obligationComment.value.trim()
-
-    };
-
-
-    saveAppState();
-
-    resetObligationForm();
-
-    renderObligations();
-
-    updateFinancialSummary();
-
-    generateAlerts();
-
-}
-
-
-/* =========================================================
-   ELIMINAR
-   ========================================================= */
-
-function deleteObligation(id){
-
-    const obligation =
-        appState.obligations.find(
-            item=>item.id===id
-        );
-
-
-    if(!obligation) return;
-
-
-    const confirmed =
-        confirm(
-            `¿Deseas eliminar "${obligation.name}"?`
-        );
-
-
-    if(!confirmed) return;
-
-
-    appState.obligations =
-        appState.obligations.filter(
-            item=>item.id!==id
-        );
-
-
-    saveAppState();
-
-    renderObligations();
-
-    updateFinancialSummary();
-
-    generateAlerts();
-
-}
-
-
-/* =========================================================
-   REINICIAR FORMULARIO
-   ========================================================= */
-
-function resetObligationForm(){
-
-    elements.obligationForm.reset();
-
-    elements.obligationColor.value =
-        "#0b4f9c";
-
-    elements.priorityLevel.value =
-        "normal";
-
-    elements.reminderEnabled.value =
-        "true";
-
-
-    appState.editingObligationId =
-        null;
-
-
-    elements.saveObligationBtn.textContent =
-        "➕ Guardar obligación";
-
-
-    elements.cancelEditBtn.classList.add(
-        "hidden"
-    );
-
-}
-
-
-/* =========================================================
-   FORMULARIO
-   ========================================================= */
-
-elements.obligationForm.addEventListener(
-    "submit",
-    function(event){
-
-        event.preventDefault();
-
-
-        if(
-            !elements.obligationName.value.trim()
-        ){
-
-            alert(
-                "Escribe el nombre de la obligación."
-            );
-
-            return;
-
-        }
-
-
-        if(
-            !elements.paymentDate.value
-        ){
-
-            alert(
-                "Selecciona la fecha límite de pago."
-            );
-
-            return;
-
-        }
-
-
-        if(
-            appState.editingObligationId
-        ){
-
-            updateObligationFromForm();
-
-        }else{
-
-            createObligationFromForm();
-
-        }
-
-    }
-);
-
-
-elements.cancelEditBtn.addEventListener(
-    "click",
-    function(){
-
-        resetObligationForm();
-
-    }
-);
-
-
-/* =========================================================
-   ALERTAS
-   ========================================================= */
-
-function addAlert(
-    alerts,
-    type,
-    icon,
-    title,
-    message,
-    dateString,
-    priority=false
-){
-
-    alerts.push({
-
-        type,
-        icon,
-        title,
-        message,
-        dateString,
-        priority
-
-    });
-
-}
-
-
-function checkDateForAlert(
-    alerts,
-    dateString,
-    title,
-    type,
-    priority=false
-){
-
-    if(!dateString) return;
-
-
-    const days =
-        getDateDifferenceInDays(
-            dateString
-        );
-
-
-    if(days < 0){
-
-        addAlert(
-            alerts,
-            type,
-            "🚨",
-            title,
-            "Esta fecha ya pasó. Revisa esta obligación.",
-            dateString,
-            priority
-        );
-
-    }else if(days === 0){
-
-        addAlert(
-            alerts,
-            type,
-            "🔴",
-            title,
-            "La fecha es HOY.",
-            dateString,
-            true
-        );
-
-    }else if(days === 2){
-
-        addAlert(
-            alerts,
-            type,
-            "🔔",
-            title,
-            "Faltan exactamente 2 días. Prepárate para realizar el pago.",
-            dateString,
-            priority
-        );
-
-    }else if(days === 1){
-
-        addAlert(
-            alerts,
-            type,
-            "⚠️",
-            title,
-            "Falta solamente 1 día.",
-            dateString,
-            true
-        );
-
-    }
-
-}
-
-
-function generateAlerts(){
-
-    const alerts = [];
-
-    let twoDayAlert = false;
-
-
-    appState.obligations.forEach(
-        obligation=>{
-
-            checkDateForAlert(
-                alerts,
-                obligation.cutoffDate,
-                `${obligation.name} - Fecha de corte`,
-                "cutoff",
-                false
-            );
-
-
-            checkDateForAlert(
-                alerts,
-                obligation.personalDate,
-                `${obligation.name} - Fecha personal`,
-                "personal",
-                obligation.priority !== "normal"
-            );
-
-
-            checkDateForAlert(
-                alerts,
-                obligation.paymentDate,
-                `${obligation.name} - Fecha límite de pago`,
-                "payment",
-                true
-            );
-
-
-            [
-                obligation.cutoffDate,
-                obligation.personalDate,
-                obligation.paymentDate
-            ].forEach(
-                date=>{
-
-                    if(
-                        date &&
-                        getDateDifferenceInDays(date)===2
-                    ){
-
-                        twoDayAlert = true;
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-
-    appState.calendarEvents.forEach(
-        event=>{
-
-            const days =
-                getDateDifferenceInDays(
-                    event.date
-                );
-
-
-            if(
-                days <= 2 &&
-                days >= 0
-            ){
-
-                addAlert(
-                    alerts,
-                    "calendar",
-                    event.priority
-                    ? "🚨"
-                    : "📅",
-                    event.title,
-                    event.comment ||
-                    "Tienes un recordatorio en el calendario.",
-                    event.date,
-                    event.priority
-                );
-
-                if(
-                    days === 2
-                ){
-
-                    twoDayAlert = true;
-
-                }
-
-            }
-
-        }
-    );
-
-
-    alerts.sort(
-        (a,b)=>{
-
-            if(
-                a.priority !==
-                b.priority
-            ){
-
-                return a.priority
-                    ? -1
-                    : 1;
-
-            }
-
-            return (
-                getDateDifferenceInDays(
-                    a.dateString
-                ) || 0
-            ) -
-            (
-                getDateDifferenceInDays(
-                    b.dateString
-                ) || 0
-            );
-
-        }
-    );
-
-
-    renderAlerts(
-        alerts
-    );
-
-
-    if(twoDayAlert){
-
-        triggerReminderFeedback();
-
-    }
-
-}
-
-
-function renderAlerts(alerts){
-
-    elements.alertsContainer.innerHTML =
-        "";
-
-
-    if(!alerts.length){
-
-        elements.alertsContainer.innerHTML = `
-
-            <div class="no-alerts">
-                ✅ No tienes alertas importantes en este momento.
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    alerts.forEach(
-        alert=>{
-
-            const div =
-                document.createElement("div");
-
-
-            div.className =
-                `alert-card ${
-                    alert.priority
-                    ? "priority"
-                    : ""
-                }`;
-
-
-            div.innerHTML = `
-
-                <strong>
-                    ${alert.icon}
-                    ${escapeHTML(alert.title)}
-                </strong>
-
-                <div>
-                    ${escapeHTML(alert.message)}
-                </div>
-
-                <div class="alert-date">
-                    📅 ${formatDate(alert.dateString)}
-                </div>
-
-            `;
-
-
-            elements.alertsContainer.appendChild(
-                div
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   SONIDO Y VIBRACIÓN
-   ========================================================= */
-
-let audioContext = null;
-
-let lastReminderKey = "";
-
-
-function playAlertSound(){
-
-    try{
-
-        if(!audioContext){
-
-            audioContext =
-                new (
-                    window.AudioContext ||
-                    window.webkitAudioContext
-                )();
-
-        }
-
-
-        if(
-            audioContext.state ===
-            "suspended"
-        ){
-
-            audioContext.resume();
-
-        }
-
-
-        const oscillator =
-            audioContext.createOscillator();
-
-        const gain =
-            audioContext.createGain();
-
-
-        oscillator.type =
-            "sine";
-
-        oscillator.frequency.value =
-            880;
-
-
-        gain.gain.setValueAtTime(
-            .001,
-            audioContext.currentTime
-        );
-
-        gain.gain.exponentialRampToValueAtTime(
-            .25,
-            audioContext.currentTime+.04
-        );
-
-        gain.gain.exponentialRampToValueAtTime(
-            .001,
-            audioContext.currentTime+.45
-        );
-
-
-        oscillator.connect(gain);
-
-        gain.connect(
-            audioContext.destination
-        );
-
-
-        oscillator.start();
-
-        oscillator.stop(
-            audioContext.currentTime+.45
-        );
-
-    }catch(error){
-
-        console.log(
-            "El sonido no está disponible.",
-            error
-        );
-
-    }
-
-}
-
-
-function vibrateDevice(){
-
-    if(
-        "vibrate" in navigator
-    ){
-
-        navigator.vibrate([
-            250,
-            120,
-            250,
-            120,
-            450
-        ]);
-
-    }
-
-}
-
-
-function triggerReminderFeedback(){
-
-    const today =
-        new Date()
-        .toISOString()
-        .slice(0,10);
-
-
-    const key =
-        today + "_" +
-        appState.obligations
-        .filter(
-            item=>
-                getDateDifferenceInDays(
-                    item.paymentDate
-                )===2 ||
-                getDateDifferenceInDays(
-                    item.personalDate
-                )===2 ||
-                getDateDifferenceInDays(
-                    item.cutoffDate
-                )===2
-        )
-        .map(item=>item.id)
-        .join(",");
-
-
-    if(
-        key &&
-        key === lastReminderKey
-    ){
-
-        return;
-
-    }
-
-
-    if(key){
-
-        lastReminderKey =
-            key;
-
-    }
-
-
-    playAlertSound();
-
-    vibrateDevice();
-
-}
-
-
-/* =========================================================
-   NOTIFICACIONES
-   ========================================================= */
-
-async function requestNotificationPermission(){
-
-    if(
-        !("Notification" in window)
-    ){
-
-        return;
-
-    }
-
-
-    if(
-        Notification.permission ===
-        "default"
-    ){
-
         try{
 
-            await Notification.requestPermission();
+            const data =
+                JSON.parse(saved);
 
-        }catch(error){
 
-            console.log(error);
+            state.cash =
+                Number(data.cash)||0;
 
-        }
 
-    }
+            state.savings =
+                Number(data.savings)||0;
 
-}
 
-
-function showBrowserNotification(
-    title,
-    body
-){
-
-    if(
-        !("Notification" in window)
-    ){
-
-        return;
-
-    }
-
-
-    if(
-        Notification.permission ===
-        "granted"
-    ){
-
-        new Notification(
-            title,
-            {
-                body,
-                icon:""
-            }
-        );
-
-    }
-
-}
-
-
-document
-.getElementById("enableAlertsBtn")
-.addEventListener(
-    "click",
-    async function(){
-
-        await requestNotificationPermission();
-
-        playAlertSound();
-
-        vibrateDevice();
-
-        this.textContent =
-            "✅ Alertas activadas";
-
-        setTimeout(
-            ()=>{
-                this.textContent =
-                    "🔔 Activar alertas";
-            },
-            2000
-        );
-
-    }
-);
-
-
-/* =========================================================
-   CALENDARIO
-   ========================================================= */
-
-const monthNames = [
-    "Enero",
-    "Febrero",
-    "Marzo",
-    "Abril",
-    "Mayo",
-    "Junio",
-    "Julio",
-    "Agosto",
-    "Septiembre",
-    "Octubre",
-    "Noviembre",
-    "Diciembre"
-];
-
-
-const weekdayNames = [
-    "Dom",
-    "Lun",
-    "Mar",
-    "Mié",
-    "Jue",
-    "Vie",
-    "Sáb"
-];
-
-
-function dateToKey(
-    year,
-    month,
-    day
-){
-
-    return `${year}-${String(month+1).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
-
-}
-
-
-function renderCalendar(){
-
-    if(
-        !(appState.currentCalendarDate instanceof Date)
-    ){
-
-        appState.currentCalendarDate =
-            new Date(
-                appState.currentCalendarDate
-            );
-
-    }
-
-
-    if(
-        isNaN(
-            appState.currentCalendarDate.getTime()
-        )
-    ){
-
-        appState.currentCalendarDate =
-            new Date();
-
-    }
-
-
-    const year =
-        appState.currentCalendarDate
-        .getFullYear();
-
-
-    const month =
-        appState.currentCalendarDate
-        .getMonth();
-
-
-    elements.calendarMonth.textContent =
-        `${monthNames[month]} ${year}`;
-
-
-    const weekdays =
-        document.getElementById(
-            "calendarWeekdays"
-        );
-
-
-    weekdays.innerHTML =
-        weekdayNames
-        .map(
-            day=>`<div>${day}</div>`
-        )
-        .join("");
-
-
-    elements.calendarGrid.innerHTML =
-        "";
-
-
-    const firstDay =
-        new Date(
-            year,
-            month,
-            1
-        ).getDay();
-
-
-    const daysInMonth =
-        new Date(
-            year,
-            month+1,
-            0
-        ).getDate();
-
-
-    for(
-        let i=0;
-        i<firstDay;
-        i++
-    ){
-
-        const blank =
-            document.createElement("div");
-
-        elements.calendarGrid.appendChild(
-            blank
-        );
-
-    }
-
-
-    const today =
-        new Date();
-
-
-    today.setHours(
-        0,0,0,0
-    );
-
-
-    for(
-        let day=1;
-        day<=daysInMonth;
-        day++
-    ){
-
-        const key =
-            dateToKey(
-                year,
-                month,
-                day
-            );
-
-
-        const button =
-            document.createElement("button");
-
-
-        button.className =
-            "calendar-day";
-
-
-        button.type =
-            "button";
-
-
-        const date =
-            new Date(
-                year,
-                month,
-                day
-            );
-
-
-        date.setHours(
-            0,0,0,0
-        );
-
-
-        if(
-            date.getTime() ===
-            today.getTime()
-        ){
-
-            button.classList.add(
-                "today"
-            );
-
-        }
-
-
-        const events =
-            getCalendarItemsForDate(
-                key
-            );
-
-
-        if(events.length){
-
-            button.classList.add(
-                "has-event"
-            );
-
-        }
-
-
-        if(
-            events.some(
-                item=>item.priority
-            )
-        ){
-
-            button.classList.add(
-                "has-priority"
-            );
-
-        }
-
-
-        button.innerHTML = `
-
-            <span class="day-number">
-                ${day}
-            </span>
-
-            ${
-                events.length
-                ? `<span class="event-dot"></span>`
-                : ""
-            }
-
-        `;
-
-
-        button.addEventListener(
-            "click",
-            function(){
-
-                openCalendarDay(
-                    key
-                );
-
-            }
-        );
-
-
-        elements.calendarGrid.appendChild(
-            button
-        );
-
-    }
-
-
-    renderCalendarEvents();
-
-}
-
-
-function getCalendarItemsForDate(
-    key
-){
-
-    const items = [];
-
-
-    appState.calendarEvents
-        .filter(
-            event=>event.date===key
-        )
-        .forEach(
-            event=>{
-                items.push(event);
-            }
-        );
-
-
-    appState.obligations.forEach(
-        obligation=>{
-
-            if(
-                obligation.cutoffDate===key
-            ){
-
-                items.push({
-                    title:
-                        `${obligation.name} - Corte`,
-                    comment:
-                        "Fecha de corte",
-                    date:key,
-                    priority:false
-                });
-
-            }
-
-
-            if(
-                obligation.personalDate===key
-            ){
-
-                items.push({
-                    title:
-                        `${obligation.name} - Fecha personal`,
-                    comment:
-                        "Fecha personal",
-                    date:key,
-                    priority:
-                        obligation.priority !== "normal"
-                });
-
-            }
-
-
-            if(
-                obligation.paymentDate===key
-            ){
-
-                items.push({
-                    title:
-                        `${obligation.name} - Pago`,
-                    comment:
-                        "Fecha límite de pago",
-                    date:key,
-                    priority:true
-                });
-
-            }
-
-        }
-    );
-
-
-    return items;
-
-}
-
-
-function renderCalendarEvents(){
-
-    const items = [];
-
-
-    appState.calendarEvents
-        .forEach(
-            event=>{
-                items.push({
-                    ...event,
-                    source:"calendar"
-                });
-            }
-        );
-
-
-    appState.obligations
-        .forEach(
-            obligation=>{
-
-                if(
-                    obligation.cutoffDate
-                ){
-
-                    items.push({
-                        title:
-                            `${obligation.name} - Fecha de corte`,
-                        comment:
-                            "Fecha de corte",
-                        date:
-                            obligation.cutoffDate,
-                        priority:false
-                    });
-
-                }
-
-
-                if(
-                    obligation.personalDate
-                ){
-
-                    items.push({
-                        title:
-                            `${obligation.name} - Fecha personal`,
-                        comment:
-                            "Fecha personal",
-                        date:
-                            obligation.personalDate,
-                        priority:
-                            obligation.priority !== "normal"
-                    });
-
-                }
-
-
-                if(
-                    obligation.paymentDate
-                ){
-
-                    items.push({
-                        title:
-                            `${obligation.name} - Fecha de pago`,
-                        comment:
-                            "Fecha límite de pago",
-                        date:
-                            obligation.paymentDate,
-                        priority:true
-                    });
-
-                }
-
-            }
-        );
-
-
-    items.sort(
-        (a,b)=>
-            a.date.localeCompare(
-                b.date
-            )
-    );
-
-
-    elements.calendarEvents.innerHTML =
-        "";
-
-
-    if(!items.length){
-
-        elements.calendarEvents.innerHTML = `
-
-            <div class="calendar-event-card">
-                <strong>📅 Sin eventos</strong>
-                <small>
-                    Agrega recordatorios desde el calendario.
-                </small>
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    items.forEach(
-        item=>{
-
-            const card =
-                document.createElement("div");
-
-
-            card.className =
-                `calendar-event-card ${
-                    item.priority
-                    ? "priority"
-                    : ""
-                }`;
-
-
-            card.innerHTML = `
-
-                <strong>
-                    ${
-                        item.priority
-                        ? "🚨 "
-                        : "📅 "
-                    }
-                    ${escapeHTML(item.title)}
-                </strong>
-
-                <small>
-                    ${formatDate(item.date)}
-                </small>
-
-                <div style="margin-top:6px;">
-                    ${escapeHTML(
-                        item.comment || ""
-                    )}
-                </div>
-
-            `;
-
-
-            elements.calendarEvents.appendChild(
-                card
-            );
-
-        }
-    );
-
-}
-
-
-function openCalendarDay(
-    dateKey
-){
-
-    const existing =
-        appState.calendarEvents.find(
-            event=>event.date===dateKey
-        );
-
-
-    const title =
-        prompt(
-            `Recordatorio para ${formatDate(dateKey)}:\n\nEscribe el título o deja vacío para cancelar.`,
-            existing?.title || ""
-        );
-
-
-    if(
-        title === null ||
-        !title.trim()
-    ){
-
-        return;
-
-    }
-
-
-    const comment =
-        prompt(
-            "Comentario:",
-            existing?.comment || ""
-        );
-
-
-    const priority =
-        confirm(
-            "¿Quieres marcar este recordatorio como PRIORIDAD?"
-        );
-
-
-    if(existing){
-
-        existing.title =
-            title.trim();
-
-        existing.comment =
-            comment || "";
-
-        existing.priority =
-            priority;
-
-    }else{
-
-        appState.calendarEvents.push({
-
-            id:generateId(),
-
-            date:dateKey,
-
-            title:title.trim(),
-
-            comment:
-                comment || "",
-
-            priority
-
-        });
-
-    }
-
-
-    saveAppState();
-
-    renderCalendar();
-
-    generateAlerts();
-
-
-    if(priority){
-
-        playAlertSound();
-
-        vibrateDevice();
-
-    }
-
-}
-
-
-/* =========================================================
-   NAVEGACIÓN CALENDARIO
-   ========================================================= */
-
-elements.previousMonth.addEventListener(
-    "click",
-    function(){
-
-        appState.currentCalendarDate.setMonth(
-            appState.currentCalendarDate.getMonth()-1
-        );
-
-        saveAppState();
-
-        renderCalendar();
-
-    }
-);
-
-
-elements.nextMonth.addEventListener(
-    "click",
-    function(){
-
-        appState.currentCalendarDate.setMonth(
-            appState.currentCalendarDate.getMonth()+1
-        );
-
-        saveAppState();
-
-        renderCalendar();
-
-    }
-);
-
-
-/* =========================================================
-   RESUMEN FINANCIERO
-   ========================================================= */
-
-function updateFinancialSummary(){
-
-    const cash =
-        Number(appState.cash)||0;
-
-
-    const savings =
-        Number(appState.savings)||0;
-
-
-    const available =
-        cash+savings;
-
-
-    const obligations =
-        getTotalObligations();
-
-
-    const balance =
-        available-obligations;
-
-
-    elements.cashDisplay.textContent =
-        formatMoney(cash);
-
-
-    elements.savingsDisplay.textContent =
-        formatMoney(savings);
-
-
-    elements.balanceDisplay.textContent =
-        formatMoney(balance);
-
-
-    elements.balanceSummaryCard.classList.remove(
-        "positive",
-        "negative"
-    );
-
-
-    if(balance>=0){
-
-        elements.balanceSummaryCard.classList.add(
-            "positive"
-        );
-
-
-        elements.feedbackMessage.className =
-            "feedback feedback-positive";
-
-
-        elements.feedbackMessage.innerHTML = `
-
-            ${escapeHTML(
-                getRandomMessage(
-                    positiveMessages
+            state.obligations =
+                Array.isArray(
+                    data.obligations
                 )
-            )}
-
-            <br>
-
-            <small>
-                Disponible:
-                ${formatMoney(available)}
-                |
-                Obligaciones:
-                ${formatMoney(obligations)}
-            </small>
-
-        `;
-
-    }else{
-
-        const shortage =
-            Math.abs(balance);
+                ? data.obligations
+                : [];
 
 
-        elements.balanceSummaryCard.classList.add(
-            "negative"
-        );
-
-
-        elements.feedbackMessage.className =
-            "feedback feedback-negative";
-
-
-        elements.feedbackMessage.innerHTML = `
-
-            ${escapeHTML(
-                getRandomMessage(
-                    negativeMessages
+            state.calendarEvents =
+                Array.isArray(
+                    data.calendarEvents
                 )
-            )}
+                ? data.calendarEvents
+                : [];
 
-            <br>
 
-            <strong>
-                Te faltan
-                ${formatMoney(shortage)}
-                para cubrir todas tus obligaciones.
-            </strong>
+            if(
+                data.currentDate
+            ){
 
-            <br>
-
-            <small>
-                Disponible:
-                ${formatMoney(available)}
-                |
-                Obligaciones:
-                ${formatMoney(obligations)}
-            </small>
-
-        `;
-
-    }
-
-}
-
-
-/* =========================================================
-   CREAR SECCIÓN DE EFECTIVO Y AHORROS
-   ========================================================= */
-
-function createFinancialInputs(){
-
-    const summary =
-        document.querySelector(
-            ".financial-summary"
-        );
-
-
-    if(
-        document.getElementById(
-            "financialInputs"
-        )
-    ){
-
-        return;
-
-    }
-
-
-    const section =
-        document.createElement(
-            "section"
-        );
-
-
-    section.id =
-        "financialInputs";
-
-    section.className =
-        "form-section";
-
-
-    section.innerHTML = `
-
-        <div class="section-title">
-
-            <h2>
-                💰 Fondos disponibles
-            </h2>
-
-            <small>
-                Actualiza tus recursos
-            </small>
-
-        </div>
-
-
-        <div class="form-grid">
-
-            <div class="form-group">
-
-                <label>
-                    💵 Total de efectivo
-                </label>
-
-                <input
-                    id="cashInput"
-                    type="number"
-                    min="0"
-                    step="0.01"
-                    placeholder="RD$0.00"
-                    value="${appState.cash}">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    🏦 Total de ahorros
-                </label>
-
-                <input
-                    id="savingsInput"
-                    type="number"
-                    min="0"
-                    step="0.01"
-                    placeholder="RD$0.00"
-                    value="${appState.savings}">
-
-            </div>
-
-        </div>
-
-
-        <div class="form-actions">
-
-            <button
-                id="saveFundsBtn"
-                type="button"
-                class="btn btn-success">
-
-                💾 Guardar fondos
-
-            </button>
-
-        </div>
-
-    `;
-
-
-    summary.parentNode.insertBefore(
-        section,
-        summary.nextSibling
-    );
-
-
-    const cashInput =
-        document.getElementById(
-            "cashInput"
-        );
-
-
-    const savingsInput =
-        document.getElementById(
-            "savingsInput"
-        );
-
-
-    cashInput.addEventListener(
-        "input",
-        function(){
-
-            appState.cash =
-                Number(
-                    this.value
-                )||0;
-
-            updateFinancialSummary();
-
-        }
-    );
-
-
-    savingsInput.addEventListener(
-        "input",
-        function(){
-
-            appState.savings =
-                Number(
-                    this.value
-                )||0;
-
-            updateFinancialSummary();
-
-        }
-    );
-
-
-    document
-    .getElementById(
-        "saveFundsBtn"
-    )
-    .addEventListener(
-        "click",
-        function(){
-
-            appState.cash =
-                Number(
-                    cashInput.value
-                )||0;
-
-
-            appState.savings =
-                Number(
-                    savingsInput.value
-                )||0;
-
-
-            saveAppState();
-
-            updateFinancialSummary();
-
-            this.textContent =
-                "✅ Fondos guardados";
-
-
-            setTimeout(
-                ()=>{
-                    this.textContent =
-                        "💾 Guardar fondos";
-                },
-                1800
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   NOTIFICACIONES DE DOS DÍAS
-   ========================================================= */
-
-function checkTwoDayNotifications(){
-
-    const today =
-        new Date()
-        .toISOString()
-        .slice(0,10);
-
-
-    appState.obligations.forEach(
-        obligation=>{
-
-            const dates = [
-
-                {
-                    date:obligation.cutoffDate,
-                    label:"Fecha de corte"
-                },
-
-                {
-                    date:obligation.personalDate,
-                    label:"Fecha personal"
-                },
-
-                {
-                    date:obligation.paymentDate,
-                    label:"Fecha límite de pago"
-                }
-
-            ];
-
-
-            dates.forEach(
-                item=>{
-
-                    if(!item.date) return;
-
-
-                    const days =
-                        getDateDifferenceInDays(
-                            item.date
-                        );
-
-
-                    if(days===2){
-
-                        const key =
-                            `notification_${today}_${obligation.id}_${item.label}`;
-
-
-                        if(
-                            !localStorage.getItem(
-                                key
-                            )
-                        ){
-
-                            showBrowserNotification(
-                                "🔔 Recordatorio de pago",
-                                `${obligation.name}: faltan 2 días para ${item.label}.`
-                            );
-
-
-                            localStorage.setItem(
-                                key,
-                                "1"
-                            );
-
-                        }
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-}
-
-
-setInterval(
-    checkTwoDayNotifications,
-    5*60*1000
-);
-
-
-/* =========================================================
-   ACTUALIZACIÓN AUTOMÁTICA
-   ========================================================= */
-
-setInterval(
-    function(){
-
-        renderObligations();
-
-        renderCalendar();
-
-        updateFinancialSummary();
-
-        generateAlerts();
-
-    },
-    60*1000
-);
-
-
-/* =========================================================
-   GUARDAR AL SALIR / OCULTAR
-   ========================================================= */
-
-window.addEventListener(
-    "beforeunload",
-    function(){
-
-        saveAppState();
-
-    }
-);
-
-
-document.addEventListener(
-    "visibilitychange",
-    function(){
-
-        if(
-            document.visibilityState ===
-            "hidden"
-        ){
-
-            saveAppState();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   INICIALIZACIÓN
-   ========================================================= */
-
-loadAppState();
-
-initializeTheme();
-
-createFinancialInputs();
-
-renderObligations();
-
-renderCalendar();
-
-updateFinancialSummary();
-
-generateAlerts();
-
-checkTwoDayNotifications();
-
-
-/* =========================================================
-   CORRECCIÓN DE FECHA GUARDADA
-   ========================================================= */
-
-if(
-    !(appState.currentCalendarDate instanceof Date)
-){
-
-    appState.currentCalendarDate =
-        new Date(
-            appState.currentCalendarDate
-        );
-
-}
-
-
-if(
-    isNaN(
-        appState.currentCalendarDate.getTime()
-    )
-){
-
-    appState.currentCalendarDate =
-        new Date();
-
-}
-
-
-saveAppState();
-
-
-/* =========================================================
-   ATAJO ESCAPE
-   ========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(
-            event.key==="Escape" &&
-            appState.editingObligationId
-        ){
-
-            resetObligationForm();
-
-        }
-
-    }
-);
-
-</script>
-
-</body>
-</html>
+                state.cur
