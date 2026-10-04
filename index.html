@@ -25,182 +25,258 @@
             --border-color: #E5E7EB;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background-color 0.3s, color 0.3s; }
-        body { background-color: var(--bg-color); color: var(--text-color); padding: 20px; padding-top: 40px; min-height: 100vh; }
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            transition: background-color 0.3s, color 0.3s; 
+        }
 
-        /* Encabezado */
-        .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-        .user-profile { display: flex; align-items: center; }
-        .avatar { width: 44px; height: 44px; background: linear-gradient(135deg, var(--gold), #F59E0B); color: #0F111A; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 16px; margin-right: 12px; }
-        .app-title-container { margin-top: 15px; margin-bottom: 20px; text-align: center; }
-        .app-title-container h1 { font-size: 22px; font-weight: 800; color: var(--gold); tracking: 1px; }
+        body { 
+            background-color: var(--bg-color); 
+            color: var(--text-color); 
+            padding: 20px; 
+            padding-top: 40px; 
+            min-height: 100vh; 
+        }
+
+        /* Encabezado y Título Desplazado */
+        .header { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            margin-bottom: 20px; 
+        }
+        .user-profile { 
+            display: flex; 
+            align-items: center; 
+        }
+        .avatar { 
+            width: 44px; 
+            height: 44px; 
+            background: linear-gradient(135deg, var(--gold), #F59E0B); 
+            color: #0F111A; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-weight: bold; 
+            font-size: 16px; 
+            margin-right: 12px; 
+        }
+        .app-title-container { 
+            margin-top: 25px; 
+            margin-bottom: 20px; 
+            text-align: center; 
+        }
+        .app-title-container h1 { 
+            font-size: 24px; 
+            font-weight: 800; 
+            color: var(--gold); 
+            letter-spacing: 1px; 
+        }
 
         /* Botón Tema */
-        .theme-toggle { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-color); padding: 8px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: bold; }
+        .theme-toggle { 
+            background: var(--card-bg); 
+            border: 1px solid var(--border-color); 
+            color: var(--text-color); 
+            padding: 8px 14px; 
+            border-radius: 20px; 
+            cursor: pointer; 
+            font-size: 12px; 
+            font-weight: bold; 
+        }
 
         /* Frase Motivacional */
-        .phrase-card { background: var(--card-bg); border-left: 4px solid var(--gold); border-radius: 12px; padding: 14px; margin-bottom: 20px; font-style: italic; font-size: 13px; line-height: 1.4; border-top: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .phrase-card { 
+            background: var(--card-bg); 
+            border-left: 4px solid var(--gold); 
+            border-radius: 12px; 
+            padding: 14px; 
+            margin-bottom: 20px; 
+            font-style: italic; 
+            font-size: 13px; 
+            line-height: 1.4; 
+            border-top: 1px solid var(--border-color); 
+            border-right: 1px solid var(--border-color); 
+            border-bottom: 1px solid var(--border-color); 
+        }
 
         /* Calculadora de Balance */
-        .calculator-card { background: var(--card-bg); border-radius: 16px; padding: 18px; margin-bottom: 20px; border: 1px solid var(--border-color); }
-        .calc-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
-        .calc-inputs input { background: rgba(0,0,0,0.1); border: 1px solid var(--border-color); color: var(--text-color); padding: 8px 10px; border-radius: 8px; font-size: 13px; width: 100%; }
-        .balance-status { font-size: 13px; font-weight: bold; margin-top: 8px; padding: 10px; border-radius: 8px; text-align: center; }
-        .status-positive { background: rgba(16, 185, 129, 0.15); color: var(--green); border: 1px solid var(--green); }
-        .status-negative { background: rgba(239, 68, 68, 0.15); color: var(--red); border: 1px solid var(--red); }
+        .calculator-card { 
+            background: var(--card-bg); 
+            border-radius: 16px; 
+            padding: 18px; 
+            margin-bottom: 20px; 
+            border: 1px solid var(--border-color); 
+        }
+        .calc-inputs { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 10px; 
+            margin-bottom: 12px; 
+        }
+        .calc-inputs input { 
+            background: rgba(0,0,0,0.1); 
+            border: 1px solid var(--border-color); 
+            color: var(--text-color); 
+            padding: 10px; 
+            border-radius: 8px; 
+            font-size: 13px; 
+            width: 100%; 
+        }
+        .balance-status { 
+            font-size: 13px; 
+            font-weight: bold; 
+            margin-top: 8px; 
+            padding: 12px; 
+            border-radius: 8px; 
+            text-align: center; 
+        }
+        .status-positive { 
+            background: rgba(16, 185, 129, 0.15); 
+            color: var(--green); 
+            border: 1px solid var(--green); 
+        }
+        .status-negative { 
+            background: rgba(239, 68, 68, 0.15); 
+            color: var(--red); 
+            border: 1px solid var(--red); 
+        }
 
-        /* Sección Alertas */
-        .alerts-section { background: rgba(239, 68, 68, 0.1); border: 1px solid var(--red); border-radius: 16px; padding: 16px; margin-bottom: 20px; }
-        .alerts-title { color: var(--red); font-weight: bold; font-size: 15px; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+        /* Sección Alertas Destacada en ROJO */
+        .alerts-section { 
+            background: rgba(239, 68, 68, 0.12); 
+            border: 2px solid var(--red); 
+            border-radius: 16px; 
+            padding: 16px; 
+            margin-bottom: 20px; 
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+        }
+        .alerts-title { 
+            color: var(--red); 
+            font-weight: bold; 
+            font-size: 15px; 
+            margin-bottom: 10px; 
+            display: flex; 
+            align-items: center; 
+            gap: 6px; 
+        }
 
         /* Lista de Tarjetas con Scroll */
-        .scroll-container { max-height: 520px; overflow-y: auto; padding-right: 4px; margin-bottom: 24px; }
-        .scroll-container::-webkit-scrollbar { width: 4px; }
+        .scroll-container { 
+            max-height: 480px; 
+            overflow-y: auto; 
+            padding-right: 4px; 
+            margin-bottom: 24px; 
+        }
+        .scroll-container::-webkit-scrollbar { width: 5px; }
         .scroll-container::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
 
-        .card { background: var(--card-bg); border-radius: 16px; padding: 16px; margin-bottom: 14px; border: 1px solid var(--border-color); position: relative; overflow: hidden; }
-        .card::before { content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; }
+        .card { 
+            background: var(--card-bg); 
+            border-radius: 16px; 
+            padding: 16px; 
+            margin-bottom: 14px; 
+            border: 1px solid var(--border-color); 
+            position: relative; 
+            overflow: hidden; 
+            cursor: pointer;
+        }
+        .card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 6px; 
+            height: 100%; 
+        }
         
-        /* Modos de Urgencia */
+        /* Modos de Urgencia con Desvanecido */
         .status-green::before { background-color: var(--green); }
-        .status-green { background: linear-gradient(90deg, rgba(16, 185, 129, 0.08) 0%, var(--card-bg) 100%); }
+        .status-green { background: linear-gradient(90deg, rgba(16, 185, 129, 0.12) 0%, var(--card-bg) 100%); }
         .status-yellow::before { background-color: var(--yellow); }
-        .status-yellow { background: linear-gradient(90deg, rgba(245, 158, 11, 0.1) 0%, var(--card-bg) 100%); }
+        .status-yellow { background: linear-gradient(90deg, rgba(245, 158, 11, 0.15) 0%, var(--card-bg) 100%); }
         .status-red::before { background-color: var(--red); }
-        .status-red { background: linear-gradient(90deg, rgba(239, 68, 68, 0.12) 0%, var(--card-bg) 100%); }
+        .status-red { background: linear-gradient(90deg, rgba(239, 68, 68, 0.18) 0%, var(--card-bg) 100%); }
 
-        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+        .card-header { display: flex; justify-content: space-between; align-items: center; }
         .card-title { font-size: 15px; font-weight: bold; }
-        .card-details { display: none; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border-color); font-size: 12px; color: var(--subtext-color); }
+        .card-details { 
+            display: none; 
+            margin-top: 12px; 
+            padding-top: 12px; 
+            border-top: 1px solid var(--border-color); 
+            font-size: 12px; 
+            color: var(--subtext-color); 
+            line-height: 1.6;
+        }
         .card-details.active { display: block; }
 
-        .color-picker-btn { width: 18px; height: 18px; border-radius: 50%; border: None; cursor: pointer; display: inline-block; }
-
         /* Calendario */
-        .calendar-card { background: var(--card-bg); border-radius: 16px; padding: 16px; margin-bottom: 24px; border: 1px solid var(--border-color); }
-        .calendar-header { font-weight: bold; margin-bottom: 12px; font-size: 15px; }
+        .calendar-card { 
+            background: var(--card-bg); 
+            border-radius: 16px; 
+            padding: 16px; 
+            margin-bottom: 24px; 
+            border: 1px solid var(--border-color); 
+        }
+        .calendar-header { font-weight: bold; margin-bottom: 12px; font-size: 15px; color: var(--gold); }
         .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; font-size: 11px; }
         .day-name { font-weight: bold; color: var(--subtext-color); padding-bottom: 6px; }
         .day-cell { padding: 8px 2px; border-radius: 6px; background: rgba(0,0,0,0.05); }
         .day-cell.active-pay { background: var(--gold); color: #000; font-weight: bold; }
 
-        .calendar-notes { display: flex; gap: 10px; overflow-x: auto; padding-top: 14px; }
-        .note-box { min-width: 160px; background: rgba(0,0,0,0.1); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px; font-size: 11px; flex-shrink: 0; }
+        .calendar-notes { display: flex; gap: 10px; overflow-x: auto; padding-top: 14px; padding-bottom: 4px; }
+        .note-box { 
+            min-width: 170px; 
+            background: rgba(0,0,0,0.12); 
+            border: 1px solid var(--border-color); 
+            border-radius: 10px; 
+            padding: 10px; 
+            font-size: 11px; 
+            flex-shrink: 0; 
+        }
 
-        /* Formulario Agregar */
-        .add-form-card { background: var(--card-bg); border-radius: 16px; padding: 18px; border: 1px solid var(--border-color); margin-top: 20px; }
+        /* Formulario Agregar (Ubicado al final) */
+        .add-form-card { 
+            background: var(--card-bg); 
+            border-radius: 16px; 
+            padding: 18px; 
+            border: 1px solid var(--border-color); 
+            margin-top: 20px; 
+            margin-bottom: 30px;
+        }
         .form-group { margin-bottom: 10px; }
         .form-group label { display: block; font-size: 11px; color: var(--subtext-color); margin-bottom: 4px; }
-        .form-group input, .form-group select { width: 100%; padding: 8px 10px; background: rgba(0,0,0,0.1); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 8px; font-size: 13px; }
-        .btn-submit { width: 100%; background: var(--gold); color: #000; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .form-group input, .form-group select { 
+            width: 100%; 
+            padding: 10px; 
+            background: rgba(0,0,0,0.1); 
+            border: 1px solid var(--border-color); 
+            color: var(--text-color); 
+            border-radius: 8px; 
+            font-size: 13px; 
+        }
+        .btn-submit { 
+            width: 100%; 
+            background: var(--gold); 
+            color: #000; 
+            border: none; 
+            padding: 12px; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            margin-top: 10px; 
+        }
     </style>
 </head>
-<body>
-
-    <!-- Encabezado y Cambio de Tema -->
-    <div class="header">
-        <div class="user-profile">
-            <div class="avatar">JH</div>
-            <div>
-                <h3 style="font-size: 14px;">Juan Carlos Hilario</h3>
-                <p style="font-size: 11px; color: var(--green);">Estado: Activo</p>
-            </div>
-        </div>
-        <button class="theme-toggle" onclick="toggleTheme()">☀️ / 🌙 Tema</button>
-    </div>
-
-    <!-- Título Desplazado -->
-    <div class="app-title-container">
-        <h1>PAGOS JUAN HILARIO</h1>
-    </div>
-
-    <!-- Mensaje Motivacional -->
-    <div class="phrase-card" id="motivationPhrase">
-        Cargando mensaje motivacional del día...
-    </div>
-
-    <!-- Calculadora de Balance -->
-    <div class="calculator-card">
-        <h4 style="font-size: 13px; margin-bottom: 10px; color: var(--gold);">💰 Balance Disponible vs Compromisos</h4>
-        <div class="calc-inputs">
-            <div>
-                <label style="font-size: 10px; color: var(--subtext-color);">Efectivo / Cuenta</label>
-                <input type="number" id="cashInput" placeholder="RD$ 0" oninput="calculateBalance()">
-            </div>
-            <div>
-                <label style="font-size: 10px; color: var(--subtext-color);">Ahorros Totales</label>
-                <input type="number" id="savingsInput" placeholder="RD$ 0" oninput="calculateBalance()">
-            </div>
-        </div>
-        <div id="balanceStatus" class="balance-status status-positive">
-            Ingresa tus fondos para calcular el balance.
-        </div>
-    </div>
-
-    <!-- Sección de Alertas Destacada en ROJO -->
-    <div class="alerts-section">
-        <div class="alerts-title">🚨 Alertas y Recordatorios Próximos</div>
-        <div id="alertsList" style="font-size: 12px; line-height: 1.5;">
-            Escaneando fechas límite de pago...
-        </div>
-    </div>
-
-    <!-- Lista de Tarjetas con Scroll -->
-    <h3 style="font-size: 15px; margin-bottom: 12px;">Tarjetas & Compromisos Registrados</h3>
-    <div class="scroll-container" id="cardsContainer">
-        <!-- Generado dinámicamente -->
-    </div>
-
-    <!-- Calendario con Notas Horizontal -->
-    <div class="calendar-card">
-        <div class="calendar-header">🗓️ Calendario de Pagos del Mes</div>
-        <div class="calendar-grid">
-            <div class="day-name">Dom</div><div class="day-name">Lun</div><div class="day-name">Mar</div><div class="day-name">Mié</div><div class="day-name">Jue</div><div class="day-name">Vie</div><div class="day-name">Sáb</div>
-            <!-- Días de ejemplo -->
-            <div class="day-cell">1</div><div class="day-cell active-pay">2</div><div class="day-cell">3</div><div class="day-cell">4</div><div class="day-cell active-pay">5</div><div class="day-cell">6</div><div class="day-cell">7</div>
-            <div class="day-cell">8</div><div class="day-cell active-pay">9</div><div class="day-cell active-pay">10</div><div class="day-cell">11</div><div class="day-cell active-pay">12</div><div class="day-cell active-pay">13</div><div class="day-cell">14</div>
-            <div class="day-cell active-pay">15</div><div class="day-cell">16</div><div class="day-cell">17</div><div class="day-cell">18</div><div class="day-cell">19</div><div class="day-cell">20</div><div class="day-cell active-pay">21</div>
-            <div class="day-cell active-pay">22</div><div class="day-cell">23</div><div class="day-cell">24</div><div class="day-cell">25</div><div class="day-cell">26</div><div class="day-cell">27</div><div class="day-cell active-pay">28</div>
-            <div class="day-cell">29</div><div class="day-cell active-pay">30</div><div class="day-cell">31</div>
-        </div>
-
-        <div class="calendar-notes">
-            <div class="note-box"><strong style="color:var(--gold)">Día 02:</strong> Vimenca / Claro</div>
-            <div class="note-box"><strong style="color:var(--gold)">Día 05:</strong> Ademi / Aspire / Qik</div>
-            <div class="note-box"><strong style="color:var(--gold)">Día 09:</strong> Santa Cruz</div>
-            <div class="note-box"><strong style="color:var(--gold)">Día 12/13:</strong> Qik / APAP</div>
-            <div class="note-box"><strong style="color:var(--gold)">Día 15:</strong> Claro / Viva / Ademi</div>
-            <div class="note-box"><strong style="color:var(--gold)">Día 22/28:</strong> Popular / Aspire</div>
-        </div>
-    </div>
-
-    <!-- Formulario para Agregar Otros Compromisos (Abajo del Todo) -->
-    <div class="add-form-card">
-        <h4 style="font-size: 14px; margin-bottom: 12px; color: var(--gold);">➕ Agregar Nuevo Compromiso</h4>
-        <div class="form-group">
-            <label>Título del Compromiso</label>
-            <input type="text" id="newTitle" placeholder="Ej: Préstamo Personal">
-        </div>
-        <div class="form-group">
-            <label>Monto a Pagar (RD$)</label>
-            <input type="number" id="newAmount" placeholder="Ej: 5000">
-        </div>
-        <div class="form-group">
-            <label>Día Límite de Pago de cada mes</label>
-            <input type="number" id="newPayDay" min="1" max="31" placeholder="Ej: 15">
-        </div>
-        <div class="form-group">
-            <label>Comentario / Nota adicional</label>
-            <input type="text" id="newComment" placeholder="Ej: Pagar por transferencia">
-        </div>
-        <button class="btn-submit" onclick="addObligation()">Guardar Obligación</button>
-    </div>
-
-    <!-- Audio de Alerta Alarma -->
-    <audio id="alertSound" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" preload="auto"></audio>
-
-    <script>
+   <script>
+        // Arreglo completo de frases motivacionales positivas
         const positivePhrases = [
+            "Vas muy bien este mes, no le bajes, eres brillante.",
             "Vas muy bien este mes. ¡Sigue así y alcanzarás tus objetivos muy pronto!",
             "¡Excelente trabajo! Cada peso bien administrado te acerca a tus metas.",
             "Tu esfuerzo está dando resultados. ¡Mantén el ritmo!",
@@ -222,7 +298,9 @@
             "Tus metas son posibles. Organiza, ahorra y avanza un día a la vez."
         ];
 
+        // Arreglo completo de frases de advertencia y atraso
         const warningPhrases = [
+            "No desmayes, ponte al día, tú puedes, no gaste mucho este mes, manéjate bien.",
             "Estás gastando demasiado este mes. ¡Debes detenerte y controlar tus gastos!",
             "¡Cuidado! Tus gastos están creciendo más rápido que tus ingresos.",
             "Estás perdiendo el control de tu presupuesto. ¡Es momento de frenar!",
@@ -245,63 +323,17 @@
             "Nadie cuidará tus finanzas por ti. ¡Toma el control antes de que sea demasiado tarde!"
         ];
 
+        // Lista completa de tarjetas y compromisos financieros registrados
         let obligations = [
-            { id: 1, title: "1-BANCO ADEMI", cutDay: 13, payDay: 5, range: "15-30 el Día 5", amount: 12300, color: "#10B981", comment: "Préstamo / Tarjeta" },
-            { id: 2, title: "2-BANCO POPULAR", cutDay: 28, payDay: 22, range: "30-15 el Día 22", amount: 24500, color: "#3B82F6", comment: "Corte el 28" },
-            { id: 3, title: "3-BANCO VIMENCA", cutDay: 10, payDay: 2, range: "15-30 el Día 02", amount: 8200, color: "#6366F1", comment: "Corte el 10" },
-            { id: 4, title: "4-BANCO APAP", cutDay: 21, payDay: 13, range: "30 el Día 13", amount: 5000, color: "#F59E0B", comment: "Tarjeta APAP" },
-            { id: 5, title: "COOP ASPIRE", cutDay: 28, payDay: 5, range: "Pagar 28, 30 y Día final 05", amount: 3500, color: "#10B981", comment: "Ahorro / Préstamo" },
-            { id: 6, title: "Banco QIK", cutDay: 15, payDay: 12, range: "30 el Día 12", amount: 4000, color: "#06B6D4", comment: "Corte el 15" },
-            { id: 7, title: "BANCO SANTA CRUZ", cutDay: 13, payDay: 9, range: "30 el Día 09", amount: 6500, color: "#3B82F6", comment: "Corte el 13" },
-            { id: 8, title: "Préstamo Banco QIK", cutDay: 30, payDay: 5, range: "30 y 05 de cada mes", amount: 5500, color: "#10B981", comment: "Cuota fija" },
-            { id: 9, title: "Préstamo Coop Aspiré", cutDay: 30, payDay: 5, range: "30 y 05 de cada mes", amount: 3000, color: "#10B981", comment: "Cuota fija" },
-            { id: 10, title: "CLARO CODETEL", cutDay: 15, payDay: 2, range: "Días 15, 30 y Día 02", amount: 3850, color: "#EF4444", comment: "Servicio de Internet/Móvil" },
-            { id: 11, title: "VIVA", cutDay: 15, payDay: 30, range: "Días 15 y Día 30", amount: 1500, color: "#10B981", comment: "Línea celular" }
+            { id: 1, title: "1-BANCO ADEMI", cutDay: 13, payDay: 5, range: "15-30 el Día 5", amount: 12300, color: "#10B981", comment: "Préstamo / Tarjeta - Cuota fija" },
+            { id: 2, title: "2-BANCO POPULAR", cutDay: 28, payDay: 22, range: "30-15 el Día 22", amount: 24500, color: "#3B82F6", comment: "Corte el 28 de cada mes" },
+            { id: 3, title: "3-BANCO VIMENCA", cutDay: 10, payDay: 2, range: "15-30 el Día 02", amount: 8200, color: "#6366F1", comment: "Corte el 10 de cada mes" },
+            { id: 4, title: "4-BANCO APAP", cutDay: 21, payDay: 13, range: "30 el Día 13", amount: 5000, color: "#F59E0B", comment: "Tarjeta de crédito APAP" },
+            { id: 5, title: "COOP ASPIRE", cutDay: 28, payDay: 5, range: "Pagar 28, 30 y Día final 05", amount: 3500, color: "#10B981", comment: "Ahorro / Préstamo mensual" },
+            { id: 6, title: "Banco QIK", cutDay: 15, payDay: 12, range: "30 el Día 12", amount: 4000, color: "#06B6D4", comment: "Corte el 15 de cada mes" },
+            { id: 7, title: "BANCO SANTA CRUZ", cutDay: 13, payDay: 9, range: "30 el Día 09", amount: 6500, color: "#3B82F6", comment: "Corte el 13 de cada mes" },
+            { id: 8, title: "Préstamo Banco QIK", cutDay: 30, payDay: 5, range: "30 y 05 de cada mes", amount: 5500, color: "#10B981", comment: "Cuota fija mensual" },
+            { id: 9, title: "Préstamo Coop Aspiré", cutDay: 30, payDay: 5, range: "30 y 05 de cada mes", amount: 3000, color: "#10B981", comment: "Cuota fija mensual" },
+            { id: 10, title: "CLARO CODETEL", cutDay: 15, payDay: 2, range: "Días 15, 30 y Día 02", amount: 3850, color: "#EF4444", comment: "Servicio de Internet y Móvil" },
+            { id: 11, title: "VIVA", cutDay: 15, payDay: 30, range: "Días 15 y Día 30", amount: 1500, color: "#10B981", comment: "Línea celular de comunicación" }
         ];
-
-        function toggleTheme() {
-            document.body.classList.toggle('light-theme');
-        }
-
-        function calculateDaysRemaining(targetDay) {
-            const today = new Date();
-            const currentDay = today.getDate();
-            if (targetDay >= currentDay) {
-                return targetDay - currentDay;
-            } else {
-                const daysInMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
-                return (daysInMonth - currentDay) + targetDay;
-            }
-        }
-
-        function renderCards() {
-            const container = document.getElementById('cardsContainer');
-            container.innerHTML = '';
-            let alertsHtml = '';
-            let alertTriggered = false;
-
-            obligations.forEach(item => {
-                const daysLeft = calculateDaysRemaining(item.payDay);
-                let statusClass = 'status-green';
-
-                if (daysLeft <= 2) {
-                    statusClass = 'status-red';
-                    alertsHtml += `<div>⚠️ <strong>${item.title}</strong> vence en ${daysLeft === 0 ? '¡HOY!' : daysLeft + ' día(s)'} (Monto: RD$ ${item.amount.toLocaleString()})</div>`;
-                    alertTriggered = true;
-                } else if (daysLeft <= 6) {
-                    statusClass = 'status-yellow';
-                }
-
-                const card = document.createElement('div');
-                card.className = `card ${statusClass}`;
-                card.innerHTML = `
-                    <div class="card-header" onclick="toggleDetails(${item.id})">
-                        <div>
-                            <span class="card-title" style="color: ${item.color}">${item.title}</span>
-                            <div style="font-size: 11px; color: var(--subtext-color); margin-top:2px;">
-                                Fechas: ${item.range}
-                            </div>
-                        </div>
-                        <div style="text-align: right;">
-                            <div style="font-weight: bold; color: var(--gold); font-size: 14px;">RD$ ${item.amount.toLocaleString()}</div>
-                            <div style="font-size: 10px; opacity:0.8;">${daysLeft} día
